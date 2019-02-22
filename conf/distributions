@@ -1,0 +1,7 @@
+Origin: deb.trend-tech.net.cn
+Label: deb.trend-tech.net.cn
+Codename: stable
+Architectures: i386 amd64 armhf
+Components: main
+Description: BrosTrend Debian repository
+SignWith: support@trend-tech.net.cn

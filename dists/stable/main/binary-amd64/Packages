@@ -1,0 +1,23 @@
+Package: rtl8812au-dkms
+Source: rtl8812au
+Version: 5.2.20.25672.20171213-2
+Architecture: all
+Maintainer: BrosTrend <support@trend-tech.net.cn>
+Installed-Size: 14609
+Depends: dkms (>= 2.1.0.0), linux-libc-dev, libc6-dev
+Homepage: http://trend-tech.net.cn/
+Priority: optional
+Section: kernel
+Filename: pool/main/r/rtl8812au/rtl8812au-dkms_5.2.20.25672.20171213-2_all.deb
+Size: 1610712
+SHA256: 7fa787d8b4aba5b85e8b522c34d86865bb4978386bed4584726d9f7d83894b7a
+SHA1: a6b29d750bb8d17f7de0e9c8616f87e225992d35
+MD5sum: 0f6ea32a9bdcc2e19aa9f1828602a3d6
+Description: dkms source for the r8812au network driver
+ rtl8812au is the Linux device driver released for the RealTek RTL8812AU WiFi
+ controllers with USB interface.
+ .
+ This package provides the dkms source code for the rtl8812au kernel module.
+ Kernel source or headers are required to compile these modules.
+Modaliases: 8812au(usb:v056Ep4007d*dc*dsc*dp*ic*isc*ip*in*, usb:v0411p0242d*dc*dsc*dp*ic*isc*ip*in*, usb:v2019pAB32d*dc*dsc*dp*ic*isc*ip*in*, usb:v0846p9052d*dc*dsc*dp*ic*isc*ip*in*, usb:v0E66p0023d*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p3318d*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p3314d*dc*dsc*dp*ic*isc*ip*in*, usb:v04BBp0953d*dc*dsc*dp*ic*isc*ip*in*, usb:v7392pA813d*dc*dsc*dp*ic*isc*ip*in*, usb:v7392pA812d*dc*dsc*dp*ic*isc*ip*in*, usb:v7392pA811d*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp0820d*dc*dsc*dp*icFFiscFFipFFin*, usb:v0BDAp8822d*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp0821d*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp0811d*dc*dsc*dp*ic*isc*ip*in*, usb:v0411p025Dd*dc*dsc*dp*ic*isc*ip*in*, usb:v2357p0103d*dc*dsc*dp*ic*isc*ip*in*, usb:v2357p0101d*dc*dsc*dp*ic*isc*ip*in*, usb:v20F4p805Bd*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p3316d*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p3315d*dc*dsc*dp*ic*isc*ip*in*, usb:v07B8p8812d*dc*dsc*dp*ic*isc*ip*in*, usb:v2019pAB30d*dc*dsc*dp*ic*isc*ip*in*, usb:v1740p0100d*dc*dsc*dp*ic*isc*ip*in*, usb:v148Fp9097d*dc*dsc*dp*ic*isc*ip*in*, usb:v13B1p003Fd*dc*dsc*dp*ic*isc*ip*in*, usb:v1058p0632d*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p3313d*dc*dsc*dp*ic*isc*ip*in*, usb:v0586p3426d*dc*dsc*dp*ic*isc*ip*in*, usb:v0E66p0022d*dc*dsc*dp*ic*isc*ip*in*, usb:v0B05p17D2d*dc*dsc*dp*ic*isc*ip*in*, usb:v0409p0408d*dc*dsc*dp*ic*isc*ip*in*, usb:v0789p016Ed*dc*dsc*dp*ic*isc*ip*in*, usb:v04BBp0952d*dc*dsc*dp*ic*isc*ip*in*, usb:v0DF6p0074d*dc*dsc*dp*ic*isc*ip*in*, usb:v7392pA822d*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p330Ed*dc*dsc*dp*ic*isc*ip*in*, usb:v050Dp1109d*dc*dsc*dp*ic*isc*ip*in*, usb:v050Dp1106d*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp881Cd*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp881Bd*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp881Ad*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp8812d*dc*dsc*dp*ic*isc*ip*in*)
+

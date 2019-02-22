@@ -1,0 +1,404 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.6.2 (Linux)"/>
+	<meta name="author" content="BrosTrend"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changedby" content="Άλκης Γεωργόπουλος"/>
+	<meta name="changed" content="2018-04-20T09:40:29.217615478"/>
+</head>
+<body lang="en-US" dir="ltr">
+<h1>Supported distributions</h1>
+<p>The AC1/AC3 adapters are supported in the following distributions:</p>
+<ul>
+	<li/>
+<p>Ubuntu 16.04 (Xenial) and later</p>
+	<li/>
+<p>Debian 9 (Stretch) and later</p>
+	<li/>
+<p>Raspbian 9 (Stretch) and later</p>
+</ul>
+<p>The adapters should also work in many more Debian and Ubuntu based
+distributions, like LinuxMint. A table follows with a list of
+distributions where the AC1/AC3 adapters were successfully tested.</p>
+<h1>List of distributions where the AC1/AC3 adapters were tested</h1>
+<table cellpadding="2" cellspacing="0" border="1">
+	<tr>
+		<th>
+			<p>Date</p>
+		</th>
+		<th>
+			<p>lsb_release -i / xsession</p>
+		</th>
+		<th>
+			<p>lsb_release -r</p>
+		</th>
+		<th>
+			<p>uname -r</p>
+		</th>
+		<th>
+			<p>uname -m</p>
+		</th>
+		<th>
+			<p>Kernel package</p>
+		</th>
+		<th>
+			<p>Headers package</p>
+		</th>
+		<th>
+			<p>grep model /proc/cpuinfo; comments</p>
+		</th>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-19</p>
+		</td>
+		<td>
+			<p>Ubuntu MATE</p>
+		</td>
+		<td>
+			<p>16.04</p>
+		</td>
+		<td>
+			<p>4.4.0-119-generic</p>
+		</td>
+		<td>
+			<p>x86_64</p>
+		</td>
+		<td>
+			<p>linux-image-generic</p>
+		</td>
+		<td>
+			<p>linux-headers-generic</p>
+		</td>
+		<td>
+			<p>Intel(R) Core(TM) i5-4440 CPU @ 3.10GHz</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-19</p>
+		</td>
+		<td>
+			<p>Ubuntu MATE</p>
+		</td>
+		<td>
+			<p>18.04</p>
+		</td>
+		<td>
+			<p>4.15.0-1005-raspi2</p>
+		</td>
+		<td>
+			<p>armv7l</p>
+		</td>
+		<td>
+			<p>linux-image-raspi2</p>
+		</td>
+		<td>
+			<p>linux-headers-raspi2</p>
+		</td>
+		<td>
+			<p>ARMv7 Processor rev 5 (v7l)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-19</p>
+		</td>
+		<td>
+			<p>Ubuntu MATE</p>
+		</td>
+		<td>
+			<p>18.04</p>
+		</td>
+		<td>
+			<p>4.15.0-13-generic</p>
+		</td>
+		<td>
+			<p>x86_64</p>
+		</td>
+		<td>
+			<p>linux-image-generic</p>
+		</td>
+		<td>
+			<p>linux-headers-generic</p>
+		</td>
+		<td>
+			<p>AMD E2-2000 APU with Radeon(tm) HD Graphics</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-19</p>
+		</td>
+		<td>
+			<p>Raspbian LXDE</p>
+		</td>
+		<td>
+			<p>9.3</p>
+		</td>
+		<td>
+			<p>4.9.80-v7+</p>
+		</td>
+		<td>
+			<p>armv7l</p>
+		</td>
+		<td>
+			<p>raspberrypi-kernel</p>
+		</td>
+		<td>
+			<p>raspberrypi-kernel-headers</p>
+		</td>
+		<td>
+			<p>ARMv7 Processor rev 5 (v7l)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-19</p>
+		</td>
+		<td>
+			<p>Debian MATE</p>
+		</td>
+		<td>
+			<p>8.7</p>
+		</td>
+		<td>
+			<p>3.16.0-5-686-pae</p>
+		</td>
+		<td>
+			<p>i686</p>
+		</td>
+		<td>
+			<p>linux-image-686-pae</p>
+		</td>
+		<td>
+			<p>linux-headers-686-pae</p>
+		</td>
+		<td>
+			<p>Intel(R) Core(TM) i5-4440 CPU @ 3.10GHz<br/>
+`apt install
+			file.deb` doesn't work; use dpkg -i</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-19</p>
+		</td>
+		<td>
+			<p>Debian GNOME</p>
+		</td>
+		<td>
+			<p>9.4</p>
+		</td>
+		<td>
+			<p>4.9.0-6-686</p>
+		</td>
+		<td>
+			<p>i686</p>
+		</td>
+		<td>
+			<p>linux-image-686</p>
+		</td>
+		<td>
+			<p>linux-headers-686</p>
+		</td>
+		<td>
+			<p>Intel(R) Core(TM) i5-4440 CPU @ 3.10GHz</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-19</p>
+		</td>
+		<td>
+			<p>Ubuntu Unity</p>
+		</td>
+		<td>
+			<p>14.04</p>
+		</td>
+		<td>
+			<p>4.4.0-119-generic</p>
+		</td>
+		<td>
+			<p>x86_64</p>
+		</td>
+		<td>
+			<p>linux-image-generic-lts-xenial</p>
+		</td>
+		<td>
+			<p>linux-headers-generic-lts-xenial</p>
+		</td>
+		<td>
+			<p>Intel(R) Core(TM) i5-4440 CPU @ 3.10GHz<br/>
+<a href="https://bugs.launchpad.net/ubuntu/+source/unity/+bug/1765615">Alt+F2 doesn't
+			work</a>; use a terminal</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-20</p>
+		</td>
+		<td>
+			<p>Ubuntu KDE</p>
+		</td>
+		<td>
+			<p>16.04</p>
+		</td>
+		<td>
+			<p>4.4.0-31-generic</p>
+		</td>
+		<td>
+			<p>x86_64</p>
+		</td>
+		<td>
+			<p>linux-image-generic</p>
+		</td>
+		<td>
+			<p>linux-headers-generic</p>
+		</td>
+		<td>
+			<p>Intel(R) Core(TM) i5-4440 CPU @ 3.10GHz</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-20</p>
+		</td>
+		<td>
+			<p>LinuxMint Cinnamon</p>
+		</td>
+		<td>
+			<p>18.3</p>
+		</td>
+		<td>
+			<p>4.10.0-38-generic</p>
+		</td>
+		<td>
+			<p>i686</p>
+		</td>
+		<td>
+			<p>linux-kernel-generic</p>
+		</td>
+		<td>
+			<p>-</p>
+		</td>
+		<td>
+			<p>Intel(R) Core(TM) i5-4440 CPU @ 3.10GHz</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-20</p>
+		</td>
+		<td>
+			<p>Lubuntu</p>
+		</td>
+		<td>
+			<p>17.10</p>
+		</td>
+		<td>
+			<p>4.13.0-16-generic</p>
+		</td>
+		<td>
+			<p>i686</p>
+		</td>
+		<td>
+			<p>linux-image-generic</p>
+		</td>
+		<td>
+			<p>linux-headers-generic</p>
+		</td>
+		<td>
+			<p>Intel(R) Core(TM) i5-4440 CPU @ 3.10GHz</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-20</p>
+		</td>
+		<td>
+			<p>Xubuntu</p>
+		</td>
+		<td>
+			<p>16.04</p>
+		</td>
+		<td>
+			<p>4.10.0-28-generic</p>
+		</td>
+		<td>
+			<p>i686</p>
+		</td>
+		<td>
+			<p>linux-image-generic-hwe-16.04</p>
+		</td>
+		<td>
+			<p>linux-headers-generic-hwe-16.04</p>
+		</td>
+		<td>
+			<p>Intel(R) Core(TM) i5-4440 CPU @ 3.10GHz</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-20</p>
+		</td>
+		<td>
+			<p>Ubuntu GNOME</p>
+		</td>
+		<td>
+			<p>17.10</p>
+		</td>
+		<td>
+			<p>4.13.0-16-generic</p>
+		</td>
+		<td>
+			<p>x86_64</p>
+		</td>
+		<td>
+			<p>linux-image-generic</p>
+		</td>
+		<td>
+			<p>linux-headers-generic</p>
+		</td>
+		<td>
+			<p>Intel(R) Core(TM) i5-4440 CPU @ 3.10GHz</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2018-04-20</p>
+		</td>
+		<td>
+			<p>Ubuntu Unity</p>
+		</td>
+		<td>
+			<p>16.04</p>
+		</td>
+		<td>
+			<p>4.13.0-38-generic</p>
+		</td>
+		<td>
+			<p>x86_64</p>
+		</td>
+		<td>
+			<p>linux-image-generic-hwe-16.04</p>
+		</td>
+		<td>
+			<p>linux-headers-generic-hwe-16.04</p>
+		</td>
+		<td>
+			<p>Intel(R) Core(TM) i5-4440 CPU @ 3.10GHz<br/>
+<a href="https://bugs.launchpad.net/ubuntu/+source/unity/+bug/1765615">Alt+F2 doesn't
+			work</a>; use a terminal</p>
+		</td>
+	</tr>
+</table>
+<p><br/>
+<br/>
+
+</p>
+</body>
+</html>
