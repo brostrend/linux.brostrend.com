@@ -6,7 +6,7 @@
 	<meta name="generator" content="LibreOffice 6.0.7.3 (Linux)"/>
 	<meta name="author" content="BrosTrend"/>
 	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="2019-04-15T09:09:53.028726583"/>
+	<meta name="changed" content="2019-04-15T09:39:51.651340355"/>
 	<style type="text/css">
 		h2.ctl { font-family: "FreeSans" }
 		pre { margin-left: 1cm; background: #f5fffa }
@@ -38,9 +38,10 @@ run them again in the past:</span></p>
 <tt class="western">lsmod | grep 8812</tt>
 
 
-<tt class="western"><font color="#00a65d"># This shows your kernel name:</font></tt>
+<tt class="western"><font color="#00a65d"># Th</font></tt><tt class="western"><font color="#00a65d">ese</font></tt><tt class="western"><font color="#00a65d"> show your kernel </font></tt><tt class="western"><font color="#00a65d">and distribution </font></tt><tt class="western"><font color="#00a65d">name:</font></tt>
 
-<tt class="western">uname -a</tt>
+<tt class="western">uname -a<br/>
+</tt><tt class="western">grep PRETTY /etc/os-release</tt>
 
 
 <tt class="western"><font color="#00a65d"># These check if the correct headers are installed:</font></tt>
@@ -48,7 +49,6 @@ run them again in the past:</span></p>
 <tt class="western">ls /lib/modules</tt>
 
 <tt class="western">dpkg -l &quot;*$(uname -r)*&quot; | tail -n +6</tt>
-
 </pre><p>
 After these steps, please select all the text that is shown on the
 terminal with the mouse, including the commands and their output.
@@ -65,7 +65,7 @@ attachments.</p>
 <p>If the driver was correctly loaded, but the signal is weak,
 	or the access point keeps asking for a password, please also include
 	the output of the following command:</p>
-	<pre class="western">iwlist scanning</pre>
+	<pre class="western" style="margin-bottom: 0.5cm">iwlist scanning</pre>
 </ul>
 </body>
 </html>
