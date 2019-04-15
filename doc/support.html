@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Troubleshooting</title>
+	<meta name="generator" content="LibreOffice 6.0.7.3 (Linux)"/>
+	<meta name="author" content="BrosTrend"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2019-04-15T09:09:53.028726583"/>
+	<style type="text/css">
+		h2.ctl { font-family: "FreeSans" }
+		pre { margin-left: 1cm; background: #f5fffa }
+		pre.cjk { font-family: "Courier New", monospace }
+		tt.cjk { font-family: "Courier New", monospace }
+	</style>
+</head>
+<body lang="en-US" dir="ltr">
+<h1>Linux support for BrosTrend WiFi Adapter</h1>
+<p><span style="background: transparent">To request Linux support for
+our AC1 or AC3 models, please send an email to
+<a href="mailto:linux@trend-tech.net.cn">linux@trend-tech.net.cn</a>,
+including the following information. Use Alt+Ctrl+T or the menus to
+open a terminal, then run all the following commands, even if you had
+run them again in the past:</span></p>
+<pre class="western"><tt class="western"><font color="#00a65d"># These execute the installer, so that we see the error messages:</font></tt>
+
+<tt class="western">wget deb.trendtechcn.com/installer.sh -O /tmp/installer.sh</tt>
+
+<tt class="western">sh /tmp/installer.sh</tt>
+
+
+<tt class="western"><font color="#00a65d"># Now (remove and) insert the adapter. If it doesn’t work, continue.</font></tt>
+
+<tt class="western"><font color="#00a65d"># These verify that the adapter was inserted and the module loaded:</font></tt>
+
+<tt class="western">lsusb | grep 8812</tt>
+
+<tt class="western">lsmod | grep 8812</tt>
+
+
+<tt class="western"><font color="#00a65d"># This shows your kernel name:</font></tt>
+
+<tt class="western">uname -a</tt>
+
+
+<tt class="western"><font color="#00a65d"># These check if the correct headers are installed:</font></tt>
+
+<tt class="western">ls /lib/modules</tt>
+
+<tt class="western">dpkg -l &quot;*$(uname -r)*&quot; | tail -n +6</tt>
+
+</pre><p>
+After these steps, please select all the text that is shown on the
+terminal with the mouse, including the commands and their output.
+Right click and Copy the text, then go to your mail application and
+paste the text inside the message body, without creating any
+attachments.</p>
+<h2 class="western">Common problems</h2>
+<ul>
+	<li/>
+<p>Currently, our driver only supports kernels up to 4.18.x,
+	which is what Ubuntu 18.04.2 ships with. Newer kernels like 4.19 or
+	5.x will be supported later on by a newer driver from Realtek.</p>
+	<li/>
+<p>If the driver was correctly loaded, but the signal is weak,
+	or the access point keeps asking for a password, please also include
+	the output of the following command:</p>
+	<pre class="western">iwlist scanning</pre>
+</ul>
+</body>
+</html>
