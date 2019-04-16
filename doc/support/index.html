@@ -6,7 +6,7 @@
 	<meta name="generator" content="LibreOffice 6.0.7.3 (Linux)"/>
 	<meta name="author" content="BrosTrend"/>
 	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="2019-04-15T09:39:51.651340355"/>
+	<meta name="changed" content="2019-04-16T08:31:45.902381219"/>
 	<style type="text/css">
 		h2.ctl { font-family: "FreeSans" }
 		pre { margin-left: 1cm; background: #f5fffa }
@@ -35,21 +35,21 @@ run them again in the past:</span></p>
 
 <tt class="western">lsusb | grep 8812</tt>
 
-<tt class="western">lsmod | grep 8812</tt>
+<tt class="western">lsmod | grep 8812 </tt><tt class="western">|| sudo dpkg-reconfigure </tt><tt class="western">rtl8812au-dkms </tt><tt class="western">&amp;&amp; </tt><tt class="western">sudo modprobe 8812au</tt>
 
 
-<tt class="western"><font color="#00a65d"># Th</font></tt><tt class="western"><font color="#00a65d">ese</font></tt><tt class="western"><font color="#00a65d"> show your kernel </font></tt><tt class="western"><font color="#00a65d">and distribution </font></tt><tt class="western"><font color="#00a65d">name:</font></tt>
+<tt class="western"><font color="#00a65d"># These show your kernel and distribution name:</font></tt>
 
-<tt class="western">uname -a<br/>
-</tt><tt class="western">grep PRETTY /etc/os-release</tt>
+<tt class="western">uname -a</tt>
+
+<tt class="western">grep PRETTY /etc/os-release</tt>
 
 
 <tt class="western"><font color="#00a65d"># These check if the correct headers are installed:</font></tt>
 
 <tt class="western">ls /lib/modules</tt>
 
-<tt class="western">dpkg -l &quot;*$(uname -r)*&quot; | tail -n +6</tt>
-</pre><p>
+<tt class="western">dpkg -l &quot;*$(uname -r)*&quot; | grep &quot;$(uname -r)&quot;</tt></pre><p>
 After these steps, please select all the text that is shown on the
 terminal with the mouse, including the commands and their output.
 Right click and Copy the text, then go to your mail application and
