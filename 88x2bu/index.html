@@ -6,11 +6,11 @@
 	<meta name="generator" content="LibreOffice 5.1.6.2 (Linux)"/>
 	<meta name="author" content="BrosTrend"/>
 	<meta name="created" content="00:00:00"/>
-	<meta name="changedby" content="Άλκης Γεωργόπουλος"/>
+	<meta name="changedby" content="Alkis Georgopoulos"/>
 	<meta name="changed" content="2018-04-19T21:46:21.444002065"/>
 	<style type="text/css">
-		h2.ctl { font-family: "FreeSans" }
-		tt.cjk { font-family: "Courier New", monospace }
+		h2 { font-family: "FreeSans" }
+		tt { font-family: "Courier New", monospace; color: green }
 	</style>
 </head>
 <body lang="en-US" dir="ltr">
@@ -42,15 +42,15 @@ adapter, please do not hesitate to contact us by sending an email at
 Our technical support team will reply to you as soon as possible. In
 case of a failed installation, please attach all the terminal output
 so that our team can see what went wrong.</p>
-<h2 class="western">Installation steps</h2>
+<h2>Installation steps</h2>
 <ol>
 	<li/>
 <p>Do not plug in the WiFi adapter yet.</p>
 	<li/>
 <p>Select all the following line and right click → copy it
 	to the clipboard:</p>
-	<p><tt class="western">sh -c 'wget deb.trendtechcn.com/installer.sh
-	-O /tmp/installer.sh &amp;&amp; sh /tmp/installer.sh'</tt></p>
+	<p><tt>sh -c 'wget deb.trendtechcn.com/88x2bu.sh
+	-O /tmp/88x2bu.sh &amp;&amp; sh /tmp/88x2bu.sh'</tt></p>
 	<li/>
 <p>Press Alt+F2 to invoke your distribution's “Execute
 	command” dialog, or open a terminal. Right click → paste the
@@ -63,13 +63,17 @@ so that our team can see what went wrong.</p>
 <p>When the installer finishes, insert the WiFi adapter into a
 	USB slot. The driver should be automatically loaded, but in special
 	cases, a reboot might be necessary.</p>
+	<li/>
+<p>If the installer reported an error, please copy all the text in the terminal
+    and paste it in a mail to <a href="mailto:support@trend-tech.net.cn">support@trend-tech.net.cn</a>,
+    so that we can see what went wrong.</p>
 </ol>
-<h2 class="western">Deb package</h2>
+<h2>Deb package</h2>
 <p>The driver actually comes in a .deb package:
-<a href="https://deb.trendtechcn.com/rtl8812au-dkms.deb">https://deb.trendtechcn.com/rtl8812au-dkms.deb</a>.
+<a href="https://deb.trendtechcn.com/rtl88x2bu-dkms.deb">https://deb.trendtechcn.com/rtl88x2bu-dkms.deb</a>.
 But please use the installer to download and install it, as it has
 some additional logic to detect and install the required kernel
-header packages. You may examine the <a href="https://deb.trendtechcn.com/installer.sh">installer
+header packages. You may examine the <a href="https://deb.trendtechcn.com/88x2bu.sh">installer
 source code</a> if you want to see the exact shell commands that it
 runs.</p>
 </body>
