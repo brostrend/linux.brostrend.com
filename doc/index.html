@@ -2,12 +2,12 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title></title>
+	<title>How-to install BrosTrend WiFi Adapter in Linux</title>
 	<meta name="generator" content="LibreOffice 5.1.6.2 (Linux)"/>
 	<meta name="author" content="BrosTrend"/>
 	<meta name="created" content="00:00:00"/>
 	<meta name="changedby" content="Alkis Georgopoulos"/>
-	<meta name="changed" content="2018-04-19T21:46:21.444002065"/>
+	<meta name="changed" content="2019-04-19T21:46:21.444002065"/>
 	<style type="text/css">
 		h2 { font-family: "FreeSans" }
 		tt { font-family: "Courier New", monospace; color: green }
@@ -32,8 +32,11 @@ dependencies. That means that you might have to use a wired
 connection, i.e. a LAN cable.</p>
 <p>The instructions should work in any distributions that are based
 on Debian 9 (Stretch) or on Ubuntu 16.04 (Xenial) or on newer
-versions of them. The supported architectures are PCs (x86_32,
-x86_64) and Raspberry Pi 2+ (armhf). Our repository is automatically
+versions of them. The latest supported kernel is 5.0.x, which is the one
+shipped by Ubuntu 19.04. The supported architectures are PCs (x86_32,
+x86_64) and Raspberry Pi 2+ (armhf). It's reported to work in some other
+architectures as well, like BeagleBone or Nvidia Jetson, but it's not
+officially supported there. Our repository is automatically
 added to your software sources, so as to enable automatic driver
 updates.</p>
 <p>In case you need any other assistance in using this BrosTrend WiFi
@@ -45,35 +48,32 @@ so that our team can see what went wrong.</p>
 <h2>Installation steps</h2>
 <ol>
 	<li/>
-<p>Do not plug in the WiFi adapter yet.</p>
+<p>Insert the WiFi adapter into a USB slot.</p>
 	<li/>
 <p>Select all the following line and right click → copy it
 	to the clipboard:</p>
-	<p><tt>sh -c 'wget deb.trendtechcn.com/88x2bu.sh
-	-O /tmp/88x2bu.sh &amp;&amp; sh /tmp/88x2bu.sh'</tt></p>
+	<p><tt>sh -c 'wget deb.trendtechcn.com/installer.sh
+	-O /tmp/installer.sh &amp;&amp; sh /tmp/installer.sh'</tt></p>
 	<li/>
 <p>Press Alt+F2 to invoke your distribution's “Execute
 	command” dialog, or open a terminal. Right click → paste the
 	previous command in order to execute it.</p>
 	<li/>
-<p>The installer requires root rights, so it will ask for your
-	password. It will then automatically download and install the driver
-	for you.</p>
-	<li/>
-<p>When the installer finishes, insert the WiFi adapter into a
-	USB slot. The driver should be automatically loaded, but in special
-	cases, a reboot might be necessary.</p>
+<p>The installer requires root rights, so it will ask for your password.
+	It will then automatically download and install the driver for you.
+	When the installer finishes, the driver should be automatically loaded,
+    but in special cases, a reboot might be necessary.</p>
 	<li/>
 <p>If the installer reported an error, please copy all the text in the terminal
     and paste it in a mail to <a href="mailto:support@trend-tech.net.cn">support@trend-tech.net.cn</a>,
     so that we can see what went wrong.</p>
 </ol>
-<h2>Deb package</h2>
-<p>The driver actually comes in a .deb package:
-<a href="https://deb.trendtechcn.com/rtl88x2bu-dkms.deb">https://deb.trendtechcn.com/rtl88x2bu-dkms.deb</a>.
-But please use the installer to download and install it, as it has
+<h2>Deb packages</h2>
+<p>The drivers are actually packaged in .deb format:
+<a href="https://deb.trendtechcn.com/rtl8812au-dkms.deb">rtl8812au-dkms.deb</a> for the first version of the adapter and <a href="https://deb.trendtechcn.com/rtl88x2bu-dkms.deb">rtl88x2bu-dkms.deb</a> for the second version.
+But please use the installer to download and install them, as it has
 some additional logic to detect and install the required kernel
-header packages. You may examine the <a href="https://deb.trendtechcn.com/88x2bu.sh">installer
+header packages. You may examine the <a href="https://deb.trendtechcn.com/installer.sh">installer
 source code</a> if you want to see the exact shell commands that it
 runs.</p>
 </body>
