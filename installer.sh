@@ -113,6 +113,7 @@ detect_adapter() {
         8812au|88x2bu|8821cu) _CHIP=$fname; return 0 ;;
     esac
     while [ -z "$_CHIP" ]; do
+        # TODO: lsusb isn't available in e.g. debian-mate
         for product in $(lsusb | grep -o '\b0bda:[0-9a-f]\{4\}\b'); do
             case "$product" in
                 0bda:8812) _CHIP=8812au ;;
@@ -200,7 +201,7 @@ main() {
         # The downside of using dpkg instead of apt is that dkms etc
         # will be marked as "manually installed".
         apt-get install --yes --no-install-recommends \
-            dkms linux-libc-dev libc6-dev &&
+            dkms linux-libc-dev libc6-dev bc &&
             dpkg -i "./rtl$_CHIP-dkms.deb"
     fi
 
