@@ -102,6 +102,7 @@ install_kernel_headers() {
 # V1: Bus 003 Device 008: ID 0bda:8812 Realtek Semiconductor Corp.
 #     RTL8812AU 802.11a/b/g/n/ac WLAN Adapter
 # V2: Bus 003 Device 007: ID 0bda:b812 Realtek Semiconductor Corp.
+# V3: Bus 003 Device 027: ID 0bda:c811 Realtek Semiconductor Corp.
 detect_adapter() {
     local fname product choice
 
@@ -109,13 +110,14 @@ detect_adapter() {
     fname=${0##*/}
     fname=${fname%.sh}
     case "$fname" in
-        8812au|88x2bu) _CHIP=$fname; return 0 ;;
+        8812au|88x2bu|8821cu) _CHIP=$fname; return 0 ;;
     esac
     while [ -z "$_CHIP" ]; do
         for product in $(lsusb | grep -o '\b0bda:[0-9a-f]\{4\}\b'); do
             case "$product" in
                 0bda:8812) _CHIP=8812au ;;
                 0bda:b812) _CHIP=88x2bu ;;
+                0bda:c811) _CHIP=8821cu ;;
             esac
         done
         test -n "$_CHIP" && return 0
@@ -125,12 +127,14 @@ and press [Enter] to continue.
 If you don't have the adapter currently, you may type:
   (a) to install the 8812au driver for the first version of the adapter, or
   (b) to install the 88x2bu driver for the second version of the adapter, or
+  (c) to install the 8821cu driver for the third version of the adapter, or
   (q) to quit without installing a driver"
         bold -n "Please type your choice, or [Enter] to autodetect: "
         read -r choice
         case "$choice" in
             a) _CHIP=8812au ;;
             b) _CHIP=88x2bu ;;
+            c) _CHIP=8821cu ;;
             q) die "Aborted"
         esac
     done

@@ -21,6 +21,29 @@ Description: dkms source for the r8812au network driver
  Kernel source or headers are required to compile these modules.
 Modaliases: 8812au(usb:v056Ep4007d*dc*dsc*dp*ic*isc*ip*in*, usb:v0411p0242d*dc*dsc*dp*ic*isc*ip*in*, usb:v2019pAB32d*dc*dsc*dp*ic*isc*ip*in*, usb:v0846p9052d*dc*dsc*dp*ic*isc*ip*in*, usb:v0E66p0023d*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p3318d*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p3314d*dc*dsc*dp*ic*isc*ip*in*, usb:v04BBp0953d*dc*dsc*dp*ic*isc*ip*in*, usb:v7392pA813d*dc*dsc*dp*ic*isc*ip*in*, usb:v7392pA812d*dc*dsc*dp*ic*isc*ip*in*, usb:v7392pA811d*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp0820d*dc*dsc*dp*icFFiscFFipFFin*, usb:v0BDAp8822d*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp0821d*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp0811d*dc*dsc*dp*ic*isc*ip*in*, usb:v0411p025Dd*dc*dsc*dp*ic*isc*ip*in*, usb:v2357p0103d*dc*dsc*dp*ic*isc*ip*in*, usb:v2357p0101d*dc*dsc*dp*ic*isc*ip*in*, usb:v20F4p805Bd*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p3316d*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p3315d*dc*dsc*dp*ic*isc*ip*in*, usb:v07B8p8812d*dc*dsc*dp*ic*isc*ip*in*, usb:v2019pAB30d*dc*dsc*dp*ic*isc*ip*in*, usb:v1740p0100d*dc*dsc*dp*ic*isc*ip*in*, usb:v148Fp9097d*dc*dsc*dp*ic*isc*ip*in*, usb:v13B1p003Fd*dc*dsc*dp*ic*isc*ip*in*, usb:v1058p0632d*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p3313d*dc*dsc*dp*ic*isc*ip*in*, usb:v0586p3426d*dc*dsc*dp*ic*isc*ip*in*, usb:v0E66p0022d*dc*dsc*dp*ic*isc*ip*in*, usb:v0B05p17D2d*dc*dsc*dp*ic*isc*ip*in*, usb:v0409p0408d*dc*dsc*dp*ic*isc*ip*in*, usb:v0789p016Ed*dc*dsc*dp*ic*isc*ip*in*, usb:v04BBp0952d*dc*dsc*dp*ic*isc*ip*in*, usb:v0DF6p0074d*dc*dsc*dp*ic*isc*ip*in*, usb:v7392pA822d*dc*dsc*dp*ic*isc*ip*in*, usb:v2001p330Ed*dc*dsc*dp*ic*isc*ip*in*, usb:v050Dp1109d*dc*dsc*dp*ic*isc*ip*in*, usb:v050Dp1106d*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp881Cd*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp881Bd*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp881Ad*dc*dsc*dp*ic*isc*ip*in*, usb:v0BDAp8812d*dc*dsc*dp*ic*isc*ip*in*)
 
+Package: rtl8821cu-dkms
+Source: rtl8821cu
+Version: 5.8.1.34171.20190628-1
+Architecture: all
+Maintainer: BrosTrend <support@trend-tech.net.cn>
+Installed-Size: 26644
+Depends: dkms (>= 2.1.0.0), linux-libc-dev, libc6-dev
+Homepage: http://trend-tech.net.cn/
+Priority: optional
+Section: kernel
+Filename: pool/main/r/rtl8821cu/rtl8821cu-dkms_5.8.1.34171.20190628-1_all.deb
+Size: 2322960
+SHA256: 010474a90bd20b90a15cdb17bcae86f093aa658ac04d5d80a003875b1fca541e
+SHA1: 787ee827f1eacd7199973193726e9d4ebe71d9d3
+MD5sum: 8a1ef199d083f8c7be64f96a57a668de
+Description: dkms source for the r8821cu network driver
+ rtl8821cu is the Linux device driver released for the RealTek RTL8821CU WiFi
+ controllers with USB interface.
+ .
+ This package provides the dkms source code for the rtl8821cu kernel module.
+ Kernel source or headers are required to compile these modules.
+Modaliases: 8821cu(usb:v0BDApbc811*dc*dsc*dp*ic*isc*ip*in*)
+
 Package: rtl88x2bu-dkms
 Source: rtl88x2bu
 Version: 5.6.1.5.35370.20191021-1

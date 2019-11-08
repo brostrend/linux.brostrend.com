@@ -25,6 +25,10 @@ Ubuntu based Linux distributions:</p>
 <p>AC3 Model: BrosTrend 1200Mbps Long Range USB Wireless
 	Internet Adapter; AC 1200 Dual Band 5GHz Wireless Speed 867Mbps,
 	2.4GHz 300Mbps; 2 X 5dBi WiFi Antenna.</p>
+	<li/>
+<p>AC5 Model: BrosTrend 1200Mbps Long Range USB Wireless
+	Internet Adapter; AC 1200 Dual Band 5GHz Wireless Speed 867Mbps,
+	2.4GHz 300Mbps.</p>
 </ul>
 <p>Please note that <b>an Internet connection is required at the time
 of installation</b>, so as to be able to download the driver and its
@@ -32,8 +36,8 @@ dependencies. That means that you might have to use a wired
 connection, i.e. a LAN cable.</p>
 <p>The instructions should work in any distributions that are based
 on Debian 9 (Stretch) or on Ubuntu 16.04 (Xenial) or on newer
-versions of them. The latest supported kernel is 5.0.x, which is the one
-shipped by Ubuntu 19.04. The supported architectures are PCs (x86_32,
+versions of them. The latest supported kernel is 5.3.x, which is the one
+shipped by Ubuntu 19.10. The supported architectures are PCs (x86_32,
 x86_64) and Raspberry Pi 2+ (armhf). It's reported to work in some other
 architectures as well, like BeagleBone or Nvidia Jetson, but it's not
 officially supported there. Our repository is automatically
@@ -70,7 +74,7 @@ so that our team can see what went wrong.</p>
 </ol>
 <h2>Deb packages</h2>
 <p>The drivers are actually packaged in .deb format:
-<a href="https://deb.trendtechcn.com/rtl8812au-dkms.deb">rtl8812au-dkms.deb</a> for the first version of the adapter and <a href="https://deb.trendtechcn.com/rtl88x2bu-dkms.deb">rtl88x2bu-dkms.deb</a> for the second version.
+<a href="https://deb.trendtechcn.com/rtl8812au-dkms.deb">rtl8812au-dkms.deb</a> for the AC1 Model, <a href="https://deb.trendtechcn.com/rtl88x2bu-dkms.deb">rtl88x2bu-dkms.deb</a> for AC3 and <a href="https://deb.trendtechcn.com/rtl8821cu-dkms.deb">rtl8821cu-dkms.deb</a> for AC5.
 But please use the installer to download and install them, as it has
 some additional logic to detect and install the required kernel
 header packages. You may examine the <a href="https://deb.trendtechcn.com/installer.sh">installer
