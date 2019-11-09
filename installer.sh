@@ -207,8 +207,7 @@ main() {
 
     ret=$?
     printf "\n"
-    if [ "$ret" = "0" ]; then
-        modprobe "$_CHIP"
+    if [ "$ret" = "0" ] && modprobe "$_CHIP"; then
         bold "
 ========================================
  The driver was successfully installed!
