@@ -126,9 +126,9 @@ detect_adapter() {
         echo "Please insert the BrosTrend WiFi adapter into a USB slot
 and press [Enter] to continue.
 If you don't have the adapter currently, you may type:
-  (a) to install the 8812au driver for the first version of the adapter, or
-  (b) to install the 88x2bu driver for the second version of the adapter, or
-  (c) to install the 8821cu driver for the third version of the adapter, or
+  (a) to install the 8812au driver for the AC1L or AC3L version 1 models, or
+  (b) to install the 88x2bu driver for the AC1L or AC3L version 2 models, or
+  (c) to install the 8821cu driver for the AC5L model, or
   (q) to quit without installing a driver"
         bold -n "Please type your choice, or [Enter] to autodetect: "
         read -r choice

@@ -36,6 +36,6 @@ In case you need any other assistance in using the BrosTrend WiFi adapters, plea
 
 ## Deb packages
 
-The drivers are actually packaged in .deb format: [rtl8812au-dkms.deb](rtl8812au-dkms.deb) for the AC1L model, [rtl88x2bu-dkms.deb](rtl88x2bu-dkms.deb) for AC3L and [rtl8821cu-dkms.deb](rtl8821cu-dkms.deb) for AC5L.
+The drivers are actually packaged in .deb format: [rtl8812au-dkms.deb](rtl8812au-dkms.deb) for the AC1L and AC3L version 1 models, [rtl88x2bu-dkms.deb](rtl88x2bu-dkms.deb) for the AC1L and AC3L version 2 models and [rtl8821cu-dkms.deb](rtl8821cu-dkms.deb) for AC5L.
 But please use the installer to download and install them, as it has some additional logic to detect and install the required kernel header packages.
 You may examine the [installer source code](installer.sh) if you want to see the exact shell commands that it runs.
