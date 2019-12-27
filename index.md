@@ -20,7 +20,7 @@ That means that you might have to use a wired connection, i.e. a LAN cable.
 3. Select all the following line and right click → copy it to the clipboard:
 
     ```shell
-    sh -c 'wget deb.trendtechcn.com/installer.sh -O /tmp/installer.sh && sh /tmp/installer.sh'
+    sh -c 'busybox wget deb.trendtechcn.com/install -O /tmp/install && sh /tmp/install'
     ```
 
 4. Press Alt+F2 to invoke your distribution's “Execute command” dialog, or open a terminal.
