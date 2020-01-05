@@ -7,6 +7,7 @@ nav_order: 3
 If you encounter problems with the driver installation, please open a terminal and run the following commands:
 
 ```shell
+iwlist scanning
 ip a
 dkms status
 lsusb | grep 0bda
