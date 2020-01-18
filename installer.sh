@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright 2018-2019 Alkis Georgopoulos <github.com/alkisg>
+# Copyright 2018-2020 Alkis Georgopoulos <github.com/alkisg>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 usage() {
