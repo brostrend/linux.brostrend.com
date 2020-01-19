@@ -5,7 +5,7 @@
 usage() {
     printf "Usage: %s [OPTIONS] [COMMAND]
 
-Install the drivers for the BrosTrend AC1/AC3 adapters.
+Install the drivers for the BrosTrend AC1L/AC3L/AC5L adapters.
 The main difficulty is in detecting the appropriate kernel *headers* package.
 
 Options:
@@ -142,7 +142,7 @@ If you don't have the adapter currently, you may type:
 }
 
 main() {
-    local title scriptpath ret
+    local title scriptpath wget ret
 
     case "$1" in
         "") ;;
@@ -164,7 +164,7 @@ main() {
     fi
 
     # Get root access if we don't already have it
-    if [ $(id -u) -ne 0 ]; then
+    if [ "$(id -u)" -ne 0 ]; then
         # Make the installer executable, in case it was downloaded from the web.
         scriptpath="$(cd "$(dirname "$0")" ; pwd -P)/$(basename "$0")"
         test -x "$scriptpath" || chmod +x "$scriptpath"
@@ -183,13 +183,20 @@ main() {
     install_kernel_headers
 
     bold "Downloading the driver"
-    cd $(mktemp -d)
-    wget -nv "https://deb.trendtechcn.com/rtl$_CHIP-dkms.deb" ||
+    cd "$(mktemp -d)"
+    # Debian might not have wget. Busybox up to Stretch doesn't support https.
+    # This combination is the best we can do; otherwise just install wget.
+    if commant -v wget >/dev/null; then
+        wget="wget"
+    else
+        wget="busybox wget"
+    fi
+    $wget -nv "https://deb.trendtechcn.com/rtl$_CHIP-dkms.deb" ||
         die "Couldn't download the driver"
 
     bold "Installing and compiling the driver"
     # Prefer apt, but fall back to dpkg if necessary
-    if dpkg --compare-versions $(dpkg-query -W apt | awk '{ print $2 }') gt 1.2
+    if dpkg --compare-versions "$(dpkg-query -W apt | awk '{ print $2 }')" gt 1.2
     then
         # We want --no-install-recommends here because dkms in Debian
         # recommends a lot of kernel header packages that we may not require.
