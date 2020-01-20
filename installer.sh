@@ -186,7 +186,7 @@ main() {
     cd "$(mktemp -d)"
     # Debian might not have wget. Busybox up to Stretch doesn't support https.
     # This combination is the best we can do; otherwise just install wget.
-    if commant -v wget >/dev/null; then
+    if command -v wget >/dev/null; then
         wget="wget"
     else
         wget="busybox wget"
