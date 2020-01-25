@@ -1,5 +1,5 @@
 ---
-nav_order: 2
+parent: Troubleshooting
 ---
 
 # Secure boot
