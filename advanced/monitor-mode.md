@@ -10,7 +10,7 @@ To manually enable it, first follow the [installation procedure](../../), and th
 
 ```shell
 sudo sed 's/^\(CONFIG_WIFI_MONITOR = \).*/\1 y/' -i /usr/src/rtl88*/Makefile
-cd /usr/src
+cd /usr/share
 sudo dpkg-reconfigure rtl88*
 ```
 
