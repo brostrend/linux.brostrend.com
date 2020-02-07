@@ -18,9 +18,16 @@ We make sure that our driver works in all the official Debian, Ubuntu and Raspbi
 
 There are dozens of Debian based distributions where our driver probably works, but they are too many for our team to officially test all of them. Additionally, some distributions like LinuxMint impose restrictions like apt-pinning their kernels, and others like Kali offer custom kernels. The main issue is to get the kernel headers; if those are available, then our installer can properly compile our driver.
 
-Our users report that our driver works in the following distributions:
+Our users have reported that our driver works in the following distributions:
 
-- [Debian based](https://en.wikipedia.org/wiki/Category:Debian-based_distributions): e.g. Linux Mint, Kali, MX Linux, PureOS.
+- Linux Mint, Kali Linux, MX Linux, PureOS
+
+Wikipedia maintains some lists of Debian-based distributions where are driver probably works:
+
+- [Debian based distributions](https://en.wikipedia.org/wiki/Category:Debian-based_distributions)
+- [Ubuntu distributions](https://en.wikipedia.org/wiki/Category:Ubuntu)
+- [Ubuntu based distributions](https://en.wikipedia.org/wiki/Category:Ubuntu_derivatives)
+- [Knoppix based distributions](https://en.wikipedia.org/wiki/Category:Knoppix)
 
 ## Unsupported
 
