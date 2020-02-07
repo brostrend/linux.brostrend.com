@@ -6,7 +6,9 @@ has_toc: false
 
 # Troubleshooting
 
-If you encounter problems with the driver installation, please open a terminal and run the following commands:
+If you encounter problems with the driver installation, the best thing to do is follow [installation step 6](https://deb.trendtechcn.com/#installation-steps) and send us all the installer output. Some common issues are also documented under the Troubleshooting menu to the left of this site, do have a quick look in case yours is one of them.
+
+If these didn't solve the problem, please open a terminal and run the following commands to collect troubleshooting information:
 
 ```shell
 iwlist scanning
