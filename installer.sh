@@ -73,6 +73,7 @@ install_kernel_headers() {
     # Debian: https://packages.debian.org/source/stretch/linux-latest
     # E.g. linux-image-686, linux-image-amd64, linux-image-armmp
     # Raspbian: raspberrypi-kernel
+    # OSMC: rbp2-kernel-osmc, rbp2-image-4.19.55-6-osmc, rbp2-headers-4.19.55-6-osmc
     headers=""
     for kernel in $(dpkg -l 'linux-image*' raspberrypi-kernel 2>/dev/null |
         awk '/^ii/ { print $2 }' | fgrep -v .)
