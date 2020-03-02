@@ -64,7 +64,7 @@ install_kernel_headers() {
     local kernel header headers
 
     # If the appropriate headers are already installed, return
-    test -f "/usr/src/linux-headers-$(uname -r)/Makefile" && return 0
+    test -d "/lib/modules/$(uname -r)/build" && return 0
 
     # We assume that the linux-image package name doesn't contain a dot.
     # Possible names:
@@ -74,6 +74,8 @@ install_kernel_headers() {
     # E.g. linux-image-686, linux-image-amd64, linux-image-armmp
     # Raspbian: raspberrypi-kernel
     # OSMC: rbp2-kernel-osmc, rbp2-image-4.19.55-6-osmc, rbp2-headers-4.19.55-6-osmc
+    # ODROID-XU4: linux-odroid-5422 (Bionic, 4.14.165-172, armv7l, includes headers)
+
     headers=""
     for kernel in $(dpkg -l 'linux-image*' raspberrypi-kernel 2>/dev/null |
         awk '/^ii/ { print $2 }' | fgrep -v .)
