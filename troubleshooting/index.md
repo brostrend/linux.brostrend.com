@@ -11,7 +11,7 @@ If you encounter problems with the driver installation, the best thing to do is 
 If these didn't solve the problem, please open a terminal and run the following commands to collect troubleshooting information:
 
 ```shell
-iwlist scanning
+nmcli dev wifi || iwlist scanning
 ip a
 dkms status
 lsusb | grep 0bda
