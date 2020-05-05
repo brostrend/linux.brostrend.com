@@ -14,6 +14,7 @@ If these didn't solve the problem, please open a terminal and run the following 
 nmcli dev wifi || iwlist scanning
 ip a
 dkms status
+mokutil --sb-state
 lsusb | grep 0bda
 lsmod | grep \\b88
 uname -a
