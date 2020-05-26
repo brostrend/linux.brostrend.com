@@ -179,6 +179,10 @@ main() {
         exec pkexec "$scriptpath" ${_PAUSE_ON_EXIT:+-p} "$@"
     fi
 
+    # Tolerate users using `su` instead of `su -`
+    if ! echo "$PATH" | grep -qw sbin; then
+        export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    fi
     detect_adapter
     bold "Updating your apt sources"
     apt-get update || bold 'Continuing even though `apt-get update` reported failure!'
