@@ -23,19 +23,19 @@ Modaliases: 8812au(usb:v056Ep4007d*dc*dsc*dp*ic*isc*ip*in*, usb:v0411p0242d*dc*d
 
 Package: rtl8821cu-dkms
 Source: rtl8821cu
-Version: 5.8.1.35898.20191211-2
+Version: 5.8.1.37012.20200617-1
 Architecture: all
 Maintainer: BrosTrend <support@trend-tech.net.cn>
-Installed-Size: 26732
+Installed-Size: 27062
 Depends: dkms (>= 2.1.0.0), bc, linux-libc-dev, libc6-dev
 Homepage: http://trend-tech.net.cn/
 Priority: optional
 Section: kernel
-Filename: pool/main/r/rtl8821cu/rtl8821cu-dkms_5.8.1.35898.20191211-2_all.deb
-Size: 2330188
-SHA256: a7b83f11f6d061d298bbaca13e82b0bd40e42861c21b213a824e2be8bac746fb
-SHA1: 51781ee59cebfba74e8750423212c1d43c09abd3
-MD5sum: ffebdfda95c229533181d6c0f20d4f70
+Filename: pool/main/r/rtl8821cu/rtl8821cu-dkms_5.8.1.37012.20200617-1_all.deb
+Size: 2334188
+SHA256: dbc62de87f353584f6e5c72f67762b0deac5e7e99acc3839397516735f43a5b7
+SHA1: f17e0958a155a4e9bec9aac73272395812d2e801
+MD5sum: a1698ed6c4413268f5993191ecfb4b0c
 Description: dkms source for the r8821cu network driver
  rtl8821cu is the Linux device driver released for the RealTek RTL8821CU WiFi
  controllers with USB interface.

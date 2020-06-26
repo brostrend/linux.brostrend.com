@@ -72,7 +72,7 @@ grep PRETTY /etc/os-release
 lsusb | grep 0bda
 lsmod | grep \\b88
 rfkill list
-mokutil --sb-state
+mokutil --sb-state 2>/dev/null
 dkms status || apt policy dkms
 ip a
 ls -d /lib/modules/*/build /usr/src/linux-headers-*
