@@ -1,18 +1,18 @@
 Package: rtl8812au-dkms
 Source: rtl8812au
-Version: 5.6.4.35369.20191021-2
+Version: 5.9.3.36908.20200630-1
 Architecture: all
 Maintainer: BrosTrend <support@trend-tech.net.cn>
-Installed-Size: 13779
+Installed-Size: 14293
 Depends: dkms (>= 2.1.0.0), bc, linux-libc-dev, libc6-dev
 Homepage: http://trend-tech.net.cn/
 Priority: optional
 Section: kernel
-Filename: pool/main/r/rtl8812au/rtl8812au-dkms_5.6.4.35369.20191021-2_all.deb
-Size: 1698672
-SHA256: 17857be06096e6b70b25acea858f8f7d8230707eecaa9f95f8249a015cd35db0
-SHA1: 525e412f4b0e49fd9d66a69302e8c1919dd911bf
-MD5sum: 088bf50ecaf03e0b5b5eda947acc0326
+Filename: pool/main/r/rtl8812au/rtl8812au-dkms_5.9.3.36908.20200630-1_all.deb
+Size: 1757608
+SHA256: 1303e2e73795863be6dbcbd6486c256bf8fbb69af7f3b46814c2d479c9e3eb65
+SHA1: 64e5bd4defe7856677682536b7f2d6ecb3e4ac26
+MD5sum: b40489691773ce9eef38c9281948e381
 Description: dkms source for the r8812au network driver
  rtl8812au is the Linux device driver released for the RealTek RTL8812AU WiFi
  controllers with USB interface.

@@ -1,37 +1,37 @@
 Origin: deb.trend-tech.net.cn
 Label: deb.trend-tech.net.cn
 Codename: stable
-Date: Fri, 26 Jun 2020 05:27:05 UTC
+Date: Tue, 30 Jun 2020 15:17:14 UTC
 Architectures: i386 amd64 armhf
 Components: main
 Description: BrosTrend Debian repository
 MD5Sum:
- a351ea098708a32274c87c7d2f78e2c2 4486 main/binary-i386/Packages
- 4d679658f3396da915dbe1ea7d0ea893 1213 main/binary-i386/Packages.gz
+ 33aa786f0f9c2822666571bc649557d0 4486 main/binary-i386/Packages
+ 2bdf7d2d262cb0122d4c5cfdde520de0 1215 main/binary-i386/Packages.gz
  21141a3d88852337a95e2e969df9232e 135 main/binary-i386/Release
- a351ea098708a32274c87c7d2f78e2c2 4486 main/binary-amd64/Packages
- 4d679658f3396da915dbe1ea7d0ea893 1213 main/binary-amd64/Packages.gz
+ 33aa786f0f9c2822666571bc649557d0 4486 main/binary-amd64/Packages
+ 2bdf7d2d262cb0122d4c5cfdde520de0 1215 main/binary-amd64/Packages.gz
  dc6e7f901de92bb257b788bb69f37da4 136 main/binary-amd64/Release
- a351ea098708a32274c87c7d2f78e2c2 4486 main/binary-armhf/Packages
- 4d679658f3396da915dbe1ea7d0ea893 1213 main/binary-armhf/Packages.gz
+ 33aa786f0f9c2822666571bc649557d0 4486 main/binary-armhf/Packages
+ 2bdf7d2d262cb0122d4c5cfdde520de0 1215 main/binary-armhf/Packages.gz
  f229444cd71316efa692f03012fcb7fd 136 main/binary-armhf/Release
 SHA1:
- 6b4c338003ee576a5b10d456f764621661ff7d0a 4486 main/binary-i386/Packages
- cba33c5af054162e537344f03cfbabf2f8aba142 1213 main/binary-i386/Packages.gz
+ ed35c5f5f468c9af240f7c596d0b29c4f359b67f 4486 main/binary-i386/Packages
+ c78d6eeace1d3eeba8077fbc8fd15c3abac3f05e 1215 main/binary-i386/Packages.gz
  7508e9de68f243340aa6ec5978b68f4c741aecd3 135 main/binary-i386/Release
- 6b4c338003ee576a5b10d456f764621661ff7d0a 4486 main/binary-amd64/Packages
- cba33c5af054162e537344f03cfbabf2f8aba142 1213 main/binary-amd64/Packages.gz
+ ed35c5f5f468c9af240f7c596d0b29c4f359b67f 4486 main/binary-amd64/Packages
+ c78d6eeace1d3eeba8077fbc8fd15c3abac3f05e 1215 main/binary-amd64/Packages.gz
  c96421f4b68ae1b6fd47ca7526dac29060faef0b 136 main/binary-amd64/Release
- 6b4c338003ee576a5b10d456f764621661ff7d0a 4486 main/binary-armhf/Packages
- cba33c5af054162e537344f03cfbabf2f8aba142 1213 main/binary-armhf/Packages.gz
+ ed35c5f5f468c9af240f7c596d0b29c4f359b67f 4486 main/binary-armhf/Packages
+ c78d6eeace1d3eeba8077fbc8fd15c3abac3f05e 1215 main/binary-armhf/Packages.gz
  3fef823e3001881c6fc4e354bd022e220f136a9f 136 main/binary-armhf/Release
 SHA256:
- 490a90030deccc5ec3d051f08ff6bea9643222d358ac0f69acafa04fbe5cf59b 4486 main/binary-i386/Packages
- 1b03473b4ff1b13db51f514b8603ad450a924afac104fc5b7b75a1f4bd2d6f84 1213 main/binary-i386/Packages.gz
+ 3d8118dc675dfc0e0f44506b3230c56d8c96d420e51748a847ddde604fc03c1f 4486 main/binary-i386/Packages
+ 452d88cfaaced91266e01ebfed574e4af0142292ed96c68bd905e0988d2995b6 1215 main/binary-i386/Packages.gz
  17dda1941126d44ffc5b76bb7c440967be744a3f3f3be50119a32113317b0327 135 main/binary-i386/Release
- 490a90030deccc5ec3d051f08ff6bea9643222d358ac0f69acafa04fbe5cf59b 4486 main/binary-amd64/Packages
- 1b03473b4ff1b13db51f514b8603ad450a924afac104fc5b7b75a1f4bd2d6f84 1213 main/binary-amd64/Packages.gz
+ 3d8118dc675dfc0e0f44506b3230c56d8c96d420e51748a847ddde604fc03c1f 4486 main/binary-amd64/Packages
+ 452d88cfaaced91266e01ebfed574e4af0142292ed96c68bd905e0988d2995b6 1215 main/binary-amd64/Packages.gz
  837cca84d6e3ed67d1b46d46ea4cc78c420703eb4f21a9d4162a446e110f78aa 136 main/binary-amd64/Release
- 490a90030deccc5ec3d051f08ff6bea9643222d358ac0f69acafa04fbe5cf59b 4486 main/binary-armhf/Packages
- 1b03473b4ff1b13db51f514b8603ad450a924afac104fc5b7b75a1f4bd2d6f84 1213 main/binary-armhf/Packages.gz
+ 3d8118dc675dfc0e0f44506b3230c56d8c96d420e51748a847ddde604fc03c1f 4486 main/binary-armhf/Packages
+ 452d88cfaaced91266e01ebfed574e4af0142292ed96c68bd905e0988d2995b6 1215 main/binary-armhf/Packages.gz
  de3220cc719c3c4d58ef17af9e84f974f422fedcbd7c3c3c73b823a9280787b6 136 main/binary-armhf/Release
