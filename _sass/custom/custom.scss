@@ -1,0 +1,35 @@
+/* Smaller navigation top padding */
+.site-nav {
+    padding-top: 0;
+}
+
+.site-nav h3 {
+    margin-left: 1em;
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+
+.nav-list .nav-list-item .nav-list-link {
+    min-height: 1.2rem;
+    line-height: 1.2rem;
+}
+
+/* Allow link wrapping */
+.main-content a {
+    white-space: unset
+}
+
+/* Properly align definition lists (#1) */
+.main-content dl {
+	display: unset;
+	grid-template-columns: unset
+}
+.main-content dt {
+	text-align: unset
+}
+.main-content dt::after {
+	content: unset
+}
+.main-content dd {
+	margin-left: 3em;
+}

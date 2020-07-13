@@ -1,7 +1,7 @@
 # See: https://github.com/pmarsceill/just-the-docs/blob/master/_config.yml
 title: deb.trendtechcn.com
 description: BrosTrend WiFi Adapters Linux Support
-remote_theme: alkisg/just-the-docs
+remote_theme: pmarsceill/just-the-docs
 
 url: "https://deb.trendtechcn.com" # the base hostname & protocol for your site, e.g. http://example.com
 
