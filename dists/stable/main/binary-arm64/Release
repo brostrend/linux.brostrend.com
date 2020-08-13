@@ -1,0 +1,5 @@
+Component: main
+Origin: deb.trend-tech.net.cn
+Label: deb.trend-tech.net.cn
+Architecture: arm64
+Description: BrosTrend Debian repository
