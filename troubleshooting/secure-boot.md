@@ -17,7 +17,7 @@ But before starting to execute one of these methods, let’s make sure that you 
 sudo mokutil --sb-state
 ```
 
-If it reports “SecureBoot enabled”, continue reading. If it reports “SecureBoot disabled”, please stop and email us, as your issue like isn’t related to secure boot.
+If it reports “SecureBoot enabled”, continue reading. If it reports “SecureBoot disabled”, please stop and email us, as your issue likely isn’t related to secure boot.
 
 ## Disable secure boot
 
