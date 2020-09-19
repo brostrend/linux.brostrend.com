@@ -77,6 +77,7 @@ dkms status || apt policy dkms
 ip a
 ls -d /lib/modules/*/build /usr/src/linux-headers-*
 dpkg -l "*$(uname -r)*" | grep "$(uname -r)"
+iw reg get
 nmcli dev wifi || iwlist scanning
 journalctl -b
 EOF
