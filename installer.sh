@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright 2018-2020 Alkis Georgopoulos <github.com/alkisg>
+# Copyright 2018-2021 Alkis Georgopoulos <github.com/alkisg>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 usage() {
@@ -95,7 +95,7 @@ install_kernel_headers() {
     # E.g. linux-image-generic, linux-image-lowlatency-hwe-16.04
     # Debian: https://packages.debian.org/source/stretch/linux-latest
     # E.g. linux-image-686, linux-image-amd64, linux-image-armmp
-    # Raspbian: raspberrypi-kernel
+    # Raspberry Pi OS: raspberrypi-kernel
     # OSMC: rbp2-kernel-osmc, rbp2-image-4.19.55-6-osmc, rbp2-headers-4.19.55-6-osmc
     # ODROID-XU4: linux-odroid-5422 (Bionic, 4.14.165-172, armv7l, includes headers)
 
@@ -139,8 +139,9 @@ detect_adapter() {
         8812au|88x2bu|8821cu) _CHIP=$fname; return 0 ;;
     esac
     while [ -z "$_CHIP" ]; do
-        # TODO: lsusb isn't available in e.g. debian-mate
-        for product in $(lsusb | grep -o '\b0bda:[0-9a-f]\{4\}\b'); do
+        # lsusb isn't available in e.g. buster-mate
+        for fname in /sys/bus/usb/devices/*/idVendor; do
+            product="$(cat "$fname"):$(cat "${fname%Vendor}Product")"
             case "$product" in
                 0bda:8812) _CHIP=8812au ;;
                 0bda:b812) _CHIP=88x2bu ;;
@@ -152,8 +153,8 @@ detect_adapter() {
         echo "Please insert the BrosTrend WiFi adapter into a USB slot
 and press [Enter] to continue.
 If you don't have the adapter currently, you may type:
-  (a) to install the 8812au driver for the AC1L or AC3L version 1 models, or
-  (b) to install the 88x2bu driver for the AC1L or AC3L version 2 models, or
+  (a) to install the 8812au driver for the old AC1L/AC3L models before 2019, or
+  (b) to install the 88x2bu driver for the new AC1L/AC3L version 2 models, or
   (c) to install the 8821cu driver for the AC5L model, or
   (q) to quit without installing a driver"
         bold -n "Please type your choice, or [Enter] to autodetect: "
