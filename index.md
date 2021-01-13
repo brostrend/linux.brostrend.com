@@ -5,8 +5,8 @@ nav_order: 1
 # Installation
 
 The following instructions should allow you to install the [AC1L](https://www.trendtechcn.com/Product.aspx?ProductId=328), [AC3L](https://www.trendtechcn.com/Product.aspx?ProductId=329) or [AC5L](https://www.trendtechcn.com/Product.aspx?ProductId=332) BrosTrend WiFi adapters in any distribution that is based on Debian 9 (Stretch) or on Ubuntu 16.04 (Xenial) or on newer versions of them.
-The latest supported kernel is 5.4.x, which is the one shipped by Ubuntu 20.04.
-The supported architectures are PCs (x86_32, x86_64) and Raspberry Pi 2+ (armhf).
+The supported Linux kernels are from 4.0 to 5.9; this includes all [officially supported Ubuntu kernels](https://packages.ubuntu.com/search?arch=amd64&keywords=linux-image-generic).
+The supported architectures are PCs (x86_32, x86_64) and Raspberry Pi 2+ (armhf for Raspberry Pi OS, amd64 for Kali Linux).
 Some other architectures like BeagleBone or Nvidia Jetson are also reported to work, but we cannot officially support them.
 Our repository is automatically added to your software sources, to provide automatic driver updates.
 
