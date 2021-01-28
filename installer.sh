@@ -255,9 +255,11 @@ Please attach that file in an email to:
     printf "\n"
     if [ "$ret" = "0" ] && modprobe "$_CHIP"; then
         bold "
-========================================
+=====================================================
  The driver was successfully installed!
-========================================"
+ We'd appreciate an Amazon product review:
+ https://www.amazon.com/review/create-review/listing
+====================================================="
     else
         request_info
     fi
