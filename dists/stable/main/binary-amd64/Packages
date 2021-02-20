@@ -46,19 +46,19 @@ Modaliases: 8821cu(usb:v0BDApbc811*dc*dsc*dp*ic*isc*ip*in*)
 
 Package: rtl88x2bu-dkms
 Source: rtl88x2bu
-Version: 5.8.7.4.37264.20200922-1
+Version: 5.8.7.4.37264.20200922-2
 Architecture: all
 Maintainer: BrosTrend <support@trend-tech.net.cn>
-Installed-Size: 27207
+Installed-Size: 27208
 Depends: dkms (>= 2.1.0.0), bc, linux-libc-dev, libc6-dev
 Homepage: http://trend-tech.net.cn/
 Priority: optional
 Section: kernel
-Filename: pool/main/r/rtl88x2bu/rtl88x2bu-dkms_5.8.7.4.37264.20200922-1_all.deb
-Size: 3947228
-SHA256: 851d3d943da2b739be07dd432bf56afb72fe3fb6101608440199ea67d1dcafab
-SHA1: c6e834f9aee6f1154fb4b378638e29731c4e6d5f
-MD5sum: 087370b9866b9c4ef5af3d6f47c6ec09
+Filename: pool/main/r/rtl88x2bu/rtl88x2bu-dkms_5.8.7.4.37264.20200922-2_all.deb
+Size: 3947298
+SHA256: f0ab9ea8de156a2d6f768461b10da4460d9bd17ddfe250526041398f412799c9
+SHA1: 08feac6af9b10faf679ca29ac70fcf1b440413fb
+MD5sum: 316f63bbb32c8df3fb93fae31c11c6c9
 Description: dkms source for the r88x2bu network driver
  rtl88x2bu is the Linux device driver released for the RealTek RTL88x2BU WiFi
  controllers with USB interface.
