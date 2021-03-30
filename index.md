@@ -30,7 +30,7 @@ Right click → paste the previous command in order to execute it.
 It will then automatically download and install the driver for you.
 When the installer finishes, the driver should be automatically loaded, but in special cases, a reboot might be necessary.
 
-6. If the installer reported an error, please copy all the text in the terminal and paste it in a mail to [support@trend-tech.net.cn](mailto:support@trend-tech.net.cn) so that we can see what went wrong.
+6. If the installer reported an error, please copy all the text in the terminal and paste it in a mail to [support@trend-tech.net.cn](mailto:support@trend-tech.net.cn) so that we can see what went wrong. Please also attach the auto-generated log file, /tmp/troubleshooting.txt.
 
 In case you need any other assistance in using the BrosTrend WiFi adapters, please do not hesitate to contact us by sending an email at [support@trend-tech.net.cn](mailto:support@trend-tech.net.cn).
 
