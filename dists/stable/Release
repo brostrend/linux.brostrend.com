@@ -1,46 +1,46 @@
 Origin: deb.trend-tech.net.cn
 Label: deb.trend-tech.net.cn
 Codename: stable
-Date: Sat, 20 Feb 2021 10:18:12 UTC
+Date: Thu, 01 Apr 2021 18:28:09 UTC
 Architectures: i386 amd64 armhf arm64
 Components: main
 Description: BrosTrend Debian repository
 MD5Sum:
- a9ffbc27d9ece509b5474eede128c7b5 4486 main/binary-i386/Packages
- b8720c3e6f3a048b71d7b3f0c234cd02 1215 main/binary-i386/Packages.gz
+ 4aac5cb01d07852b345aad4beb677df4 4486 main/binary-i386/Packages
+ cd2d9b98104dec8f1b9aab4f6af5ed42 1211 main/binary-i386/Packages.gz
  21141a3d88852337a95e2e969df9232e 135 main/binary-i386/Release
- a9ffbc27d9ece509b5474eede128c7b5 4486 main/binary-amd64/Packages
- b8720c3e6f3a048b71d7b3f0c234cd02 1215 main/binary-amd64/Packages.gz
+ 4aac5cb01d07852b345aad4beb677df4 4486 main/binary-amd64/Packages
+ cd2d9b98104dec8f1b9aab4f6af5ed42 1211 main/binary-amd64/Packages.gz
  dc6e7f901de92bb257b788bb69f37da4 136 main/binary-amd64/Release
- a9ffbc27d9ece509b5474eede128c7b5 4486 main/binary-armhf/Packages
- b8720c3e6f3a048b71d7b3f0c234cd02 1215 main/binary-armhf/Packages.gz
+ 4aac5cb01d07852b345aad4beb677df4 4486 main/binary-armhf/Packages
+ cd2d9b98104dec8f1b9aab4f6af5ed42 1211 main/binary-armhf/Packages.gz
  f229444cd71316efa692f03012fcb7fd 136 main/binary-armhf/Release
- a9ffbc27d9ece509b5474eede128c7b5 4486 main/binary-arm64/Packages
- b8720c3e6f3a048b71d7b3f0c234cd02 1215 main/binary-arm64/Packages.gz
+ 4aac5cb01d07852b345aad4beb677df4 4486 main/binary-arm64/Packages
+ cd2d9b98104dec8f1b9aab4f6af5ed42 1211 main/binary-arm64/Packages.gz
  9eaf6d5b0a77edb1cfdf89e8d09a9f53 136 main/binary-arm64/Release
 SHA1:
- be1d742b8f7e0ff0126dcc9cc58d674c4d2006ed 4486 main/binary-i386/Packages
- 604793934ab2807be386e8f1713f2dc1d8353174 1215 main/binary-i386/Packages.gz
+ 5246b7b710bf0435b4c84d4f12ccaa16a872664a 4486 main/binary-i386/Packages
+ 98262ad16a3ba17a4c0802bef1aafa54e61f9248 1211 main/binary-i386/Packages.gz
  7508e9de68f243340aa6ec5978b68f4c741aecd3 135 main/binary-i386/Release
- be1d742b8f7e0ff0126dcc9cc58d674c4d2006ed 4486 main/binary-amd64/Packages
- 604793934ab2807be386e8f1713f2dc1d8353174 1215 main/binary-amd64/Packages.gz
+ 5246b7b710bf0435b4c84d4f12ccaa16a872664a 4486 main/binary-amd64/Packages
+ 98262ad16a3ba17a4c0802bef1aafa54e61f9248 1211 main/binary-amd64/Packages.gz
  c96421f4b68ae1b6fd47ca7526dac29060faef0b 136 main/binary-amd64/Release
- be1d742b8f7e0ff0126dcc9cc58d674c4d2006ed 4486 main/binary-armhf/Packages
- 604793934ab2807be386e8f1713f2dc1d8353174 1215 main/binary-armhf/Packages.gz
+ 5246b7b710bf0435b4c84d4f12ccaa16a872664a 4486 main/binary-armhf/Packages
+ 98262ad16a3ba17a4c0802bef1aafa54e61f9248 1211 main/binary-armhf/Packages.gz
  3fef823e3001881c6fc4e354bd022e220f136a9f 136 main/binary-armhf/Release
- be1d742b8f7e0ff0126dcc9cc58d674c4d2006ed 4486 main/binary-arm64/Packages
- 604793934ab2807be386e8f1713f2dc1d8353174 1215 main/binary-arm64/Packages.gz
+ 5246b7b710bf0435b4c84d4f12ccaa16a872664a 4486 main/binary-arm64/Packages
+ 98262ad16a3ba17a4c0802bef1aafa54e61f9248 1211 main/binary-arm64/Packages.gz
  d06362622c15b504023bbfe31c30ee3138403359 136 main/binary-arm64/Release
 SHA256:
- 48ee168b8fc28d4e6cc4bdee6eaeeee2378d8ae22f35de82d20375131fc6bf10 4486 main/binary-i386/Packages
- a5bf73369583c148086c9bb196dee126432b1c28f9564e733b5ba4925c9d062c 1215 main/binary-i386/Packages.gz
+ f11fafbd52849ea4878ff4ea5f4fe35d132d691bfd32776399ae2a63b4803320 4486 main/binary-i386/Packages
+ 18ea9c1952e67978e69c2eb7a47545b28967969bf037d441fdf81213172d45f7 1211 main/binary-i386/Packages.gz
  17dda1941126d44ffc5b76bb7c440967be744a3f3f3be50119a32113317b0327 135 main/binary-i386/Release
- 48ee168b8fc28d4e6cc4bdee6eaeeee2378d8ae22f35de82d20375131fc6bf10 4486 main/binary-amd64/Packages
- a5bf73369583c148086c9bb196dee126432b1c28f9564e733b5ba4925c9d062c 1215 main/binary-amd64/Packages.gz
+ f11fafbd52849ea4878ff4ea5f4fe35d132d691bfd32776399ae2a63b4803320 4486 main/binary-amd64/Packages
+ 18ea9c1952e67978e69c2eb7a47545b28967969bf037d441fdf81213172d45f7 1211 main/binary-amd64/Packages.gz
  837cca84d6e3ed67d1b46d46ea4cc78c420703eb4f21a9d4162a446e110f78aa 136 main/binary-amd64/Release
- 48ee168b8fc28d4e6cc4bdee6eaeeee2378d8ae22f35de82d20375131fc6bf10 4486 main/binary-armhf/Packages
- a5bf73369583c148086c9bb196dee126432b1c28f9564e733b5ba4925c9d062c 1215 main/binary-armhf/Packages.gz
+ f11fafbd52849ea4878ff4ea5f4fe35d132d691bfd32776399ae2a63b4803320 4486 main/binary-armhf/Packages
+ 18ea9c1952e67978e69c2eb7a47545b28967969bf037d441fdf81213172d45f7 1211 main/binary-armhf/Packages.gz
  de3220cc719c3c4d58ef17af9e84f974f422fedcbd7c3c3c73b823a9280787b6 136 main/binary-armhf/Release
- 48ee168b8fc28d4e6cc4bdee6eaeeee2378d8ae22f35de82d20375131fc6bf10 4486 main/binary-arm64/Packages
- a5bf73369583c148086c9bb196dee126432b1c28f9564e733b5ba4925c9d062c 1215 main/binary-arm64/Packages.gz
+ f11fafbd52849ea4878ff4ea5f4fe35d132d691bfd32776399ae2a63b4803320 4486 main/binary-arm64/Packages
+ 18ea9c1952e67978e69c2eb7a47545b28967969bf037d441fdf81213172d45f7 1211 main/binary-arm64/Packages.gz
  ca04ea85723d00fbd8fcb13d6aa15b9e6062655197b60444ebce787d6c342fc1 136 main/binary-arm64/Release
