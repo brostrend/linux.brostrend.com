@@ -1,6 +1,6 @@
 ---
 has_children: true
-nav_order: 3
+nav_order: 5
 has_toc: false
 ---
 
@@ -11,10 +11,12 @@ Also, some common issues are documented under the Troubleshooting menu to the le
 
 If these didn't solve the problem, please do the following steps:
 
-1. Open a terminal and copy-paste the following command to download our troubleshooting script:
+1. Open a terminal and copy-paste **one** of the following commands to download our troubleshooting script:
 
     ```shell
+    wget deb.trendtechcn.com/install -O ~/troubleshooting.sh
     busybox wget deb.trendtechcn.com/install -O ~/troubleshooting.sh
+    curl deb.trendtechcn.com/install -LO ~/troubleshooting.sh
     ```
 
 2. Reboot your system to clear the system logs.

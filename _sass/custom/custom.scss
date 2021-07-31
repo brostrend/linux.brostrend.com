@@ -33,3 +33,9 @@
 .main-content dd {
 	margin-left: 3em;
 }
+
+/* Allow thinner table columns */
+th,
+td {
+  min-width: 80px;
+}
