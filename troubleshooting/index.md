@@ -16,7 +16,7 @@ If these didn't solve the problem, please do the following steps:
     ```shell
     wget deb.trendtechcn.com/install -O ~/troubleshooting.sh
     busybox wget deb.trendtechcn.com/install -O ~/troubleshooting.sh
-    curl deb.trendtechcn.com/install -LO ~/troubleshooting.sh
+    curl deb.trendtechcn.com/install -Lo ~/troubleshooting.sh
     ```
 
 2. Reboot your system to clear the system logs.

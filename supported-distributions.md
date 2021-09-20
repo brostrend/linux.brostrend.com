@@ -4,6 +4,8 @@ nav_order: 2
 
 # Supported distributions
 
+> 📝 **Note** the following table lists the distributions that our installation script supports. Unfortunately, there's an additional restriction; the driver compilation won't succeed when the Linux kernel version is very new; please read our [kernel-version documentation](../troubleshooting/kernel-version/) about this issue.
+
 We try to support as many Linux distributions as possible. But there are so many that it's impossible to test all of them. Also, some do not provide the required kernel headers and build tools, or target exotic hardware that we don't have access to.
 
 The following table lists some of the the distributions where we have successfully tested our installation process. The meaning of the remarks column is:
