@@ -429,7 +429,7 @@ ls -d /lib/modules/*/build /usr/src/linux-headers-*
 is_command dpkg && dpkg -l "*$(uname -r)*" | grep "$(uname -r)"
 iw reg get
 nmcli dev wifi || iwlist scanning
-journalctl -b
+journalctl -b -n 5000
 EOF
 }
 
