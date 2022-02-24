@@ -182,7 +182,7 @@ install_debian_prerequisites() {
 }
 
 install_driver() {
-    local rtlversion
+    local reinstall rtlversion
 
     bold "Downloading the driver"
     re cd "$(mktemp -d)"
@@ -192,11 +192,17 @@ install_driver() {
     apt-get)
         # Prefer apt, but fall back to dpkg if necessary
         if dpkg --compare-versions "$(dpkg-query -W apt | awk '{ print $2 }')" gt 1.2; then
+            # Avoid "Internal Error, No filename for..." error on ^iF
+            if dpkg -l "rtl$_CHIP-dkms" | grep -q ^ii; then
+                reinstall=--reinstall
+            else
+                unset reinstall
+            fi
             # We want --no-install-recommends here because dkms in Debian
             # recommends a lot of kernel header packages that we may not require.
             # Caution, linuxmint uses a wrapper that can run `apt install --yes`
             # but it doesn't understand `apt --yes install`. Meh.
-            re apt install --yes --reinstall --no-install-recommends \
+            re apt install $reinstall --yes --no-install-recommends \
                 "./rtl$_CHIP-dkms.deb"
         else
             # The downside of using dpkg instead of apt is that dkms etc
