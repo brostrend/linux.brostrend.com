@@ -432,7 +432,7 @@ mokutil --sb-state 2>/dev/null
 dkms status || apt policy dkms
 ip a
 ls -d /lib/modules/*/build /usr/src/linux-headers-*
-is_command dpkg && dpkg -l "*$(uname -r)*" | grep "$(uname -r)"
+is_command dpkg && dpkg -S /boot /lib/modules
 iw reg get
 nmcli dev wifi || iwlist scanning
 journalctl -b -n 5000
