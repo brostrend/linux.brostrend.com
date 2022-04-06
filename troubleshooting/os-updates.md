@@ -2,17 +2,18 @@
 parent: Troubleshooting
 ---
 
-# Half updated OS
+# OS updates
 
 In some cases your operating system updates might not be properly installed and may cause our installer to fail. For example, if your running kernel has no matching kernel headers, you may receive an error like the following:
 
-> modprobe: FATAL: Module 88x2bu not found in directory /lib/modules/5.4.51
+> modprobe: FATAL: Module 88x2bu not found in directory /lib/modules/5.15.30
 
-To resolve this and other related issues, please fully update and reboot your system. The following command line instructions are for Ubuntu and Debian based systems; for other distributions, please use graphical tools or similar commands (dnf, zypper):
+To resolve this and other related issues, please fully update and reboot your system. The following command line instructions are for Ubuntu and Debian based systems; for other distributions, please use graphical tools or similar commands (`dnf upgrade`, `zypper update`, `pacman -Syu`):
 
 ```shell
 sudo apt update
 sudo apt full-upgrade
+sudo reboot
 ```
 
 The first command, `apt upgrade`, may show warnings about some of your repositories, usually you can just ignore them.

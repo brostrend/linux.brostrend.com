@@ -2,9 +2,9 @@
 parent: Troubleshooting
 ---
 
-# Keeps asking for password
+# Connectivity issues
 
-If our driver was properly installed and nearby networks get detected, yet you keep getting a prompt to re-enter the wifi password, here are some possible solutions. Please try them and notify us of the result.
+If our driver was properly installed and but you're having a hard time connecting to nearby networks, here are some possible solutions. Please try them and notify us of the result.
 
 ## 1. Extension cable
 
