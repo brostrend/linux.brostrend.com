@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright 2018-2021 Alkis Georgopoulos <github.com/alkisg>
+# Copyright 2018-2022 Alkis Georgopoulos <github.com/alkisg>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 usage() {
@@ -435,7 +435,7 @@ ls -d /lib/modules/*/build /usr/src/linux-headers-*
 is_command dpkg && dpkg -S /boot /lib/modules
 iw reg get
 nmcli dev wifi || iwlist scanning
-journalctl -b -n 5000
+journalctl -b -n 5000 --file "/var/log/journal/$(cat /etc/machine-id)/system.journal"
 EOF
 }
 
