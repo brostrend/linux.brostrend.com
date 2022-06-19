@@ -25,8 +25,6 @@ The following table lists some of the the distributions where we have successful
 | [Artix Linux](https://artixlinux.org/download.php) | [rolling](http://ftp.ntua.gr/pub/linux/artix-iso/artix-cinnamon-openrc-20210101-x86_64.iso) | linux-headers | pacman |
 | [Bluestar Linux](https://sourceforge.net/projects/bluestarlinux) | [rolling](https://kumisystems.dl.sourceforge.net/project/bluestarlinux/distro/bluestar-linux-5.11.15-2021.04.19-x86_64.iso) | linux-headers | pacman |
 | [Bodhi Linux](https://www.bodhilinux.com) | [5.1](https://netix.dl.sourceforge.net/project/bodhilinux/5.1.0/bodhi-5.1.0-64.iso) | linux-headers-generic | apt |
-| [CentOS Linux](https://www.centos.org) | [8](http://ftp.ntua.gr/pub/linux/centos/8.3.2011/isos/x86_64/CentOS-8.3.2011-x86_64-boot.iso) | kernel-devel | dnf, see note 2 |
-| [CentOS Stream](https://www.centos.org) | [8](http://ftp.ntua.gr/pub/linux/centos/8-stream/isos/x86_64/CentOS-Stream-8-x86_64-20210415-boot.iso) | kernel-devel | dnf, see note 2 |
 | [Clear Linux](https://clearlinux.org) | [2.7.2](https://cdn.download.clearlinux.org/releases/34500/clear/clear-34500-live-desktop.iso) | kernel-lts2019-dkms | swupd, needs reboot |
 | [deepin](https://www.deepin.org) | [20.2](http://cdimage.deepin.com/releases/20.2/deepin-desktop-community-20.2-amd64.iso) | linux-headers-deepin-amd64 | apt |
 | [Devuan](https://devuan.org) | [3 (beowulf)](http://merlin.fit.vutbr.cz/mirrors/devuan-cd/devuan_beowulf/desktop-live/devuan_beowulf_3.1.1_amd64_desktop-live.iso) | linux-headers-amd64 | apt |
@@ -49,13 +47,12 @@ The following table lists some of the the distributions where we have successful
 | [LinuxFX](https://www.linuxfx.org) | [10.8](https://deac-riga.dl.sourceforge.net/project/linuxfxdevil/linuxfx-10.8.1.106-plasma-w10.iso) | linux-headers-generic | apt |
 | [LXLE](https://www.linuxfx.org) | [18.04](https://kumisystems.dl.sourceforge.net/project/lxle/Final/OS/18.04.3-32/lxle-18043-32.iso) | linux-headers-generic | apt |
 | [Mageia](https://www.mageia.org) | [8](https://mirror.tuxinator.org/mageia/iso/8/Mageia-8-Live-Xfce-i586/Mageia-8-Live-Xfce-i586.iso) | kernel-devel | dnf |
-| [Manjaro Linux](https://manjaro.org) | [rolling](https://download.manjaro.org/xfce/21.0.1/manjaro-xfce-21.0.1-210410-linux510.iso) | linux-headers | pacman, see note 3 |
+| [Manjaro Linux](https://manjaro.org) | [rolling](https://download.manjaro.org/xfce/21.0.1/manjaro-xfce-21.0.1-210410-linux510.iso) | linux-headers | pacman, see note 2 |
 | [MX Linux](https://mxlinux.org) | [19.2 386](https://jztkft.dl.sourceforge.net/project/mx-linux/Final/MX-19.2_386.iso) | linux-headers-686-pae | apt |
 | [Netrunner](https://www.netrunner.com) | [21.01](https://kumisystems.dl.sourceforge.net/project/netrunneros/netrunner-desktop/netrunner-2101/netrunner-desktop-2101-64bit.iso) | linux-headers-generic | apt |
 | [Nitrux](https://nxos.org) | [1.3.9](https://jztkft.dl.sourceforge.net/project/nitruxos/Release/nitrux-minimal-release-amd64_2021.03.30.iso) | linux-headers-generic | apt |
 | [Oracle Linux](https://www.oracle.com/linux) | [8.3](https://yum.oracle.com/ISOS/OracleLinux/OL8/u3/x86_64/OracleLinux-R8-U3-x86_64-dvd.iso) | kernel-devel | dnf, use -uek kernel |
 | [OpenMandriva](https://www.openmandriva.org) | [4.2 Argon](https://sourceforge.net/projects/openmandriva/files/release/4.2/Final/OpenMandrivaLx.4.2-plasma.x86_64.iso/download) | kernel-devel | dnf |
-| [openSUSE Leap](https://www.opensuse.org) | [15.2](http://mirrors.netix.net/opensuse/distribution/leap/15.2/iso/openSUSE-Leap-15.2-NET-x86_64.iso) | kernel-devel | zypper |
 | [openSUSE Tumbleweed](https://www.opensuse.org) | [20210408](https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso) | kernel-devel | zypper |
 | [Parrot OS](https://parrotlinux.org) | [4.10 Home MATE](https://ftp.cc.uoc.gr/mirrors/linux/parrot/iso/4.10/Parrot-home-4.10_amd64.iso) | linux-headers-amd64 | apt |
 | [PCLinuxOS](https://www.pclinuxos.com) | [2021.02](http://ftp.cc.uoc.gr/mirrors/linux/pclinuxos/pclinuxos/live-cd/64bit/pclinuxos64-MATE-2021.02.iso) | kernel-devel | apt-rpm |
@@ -65,9 +62,8 @@ The following table lists some of the the distributions where we have successful
 | [Q4OS](https://q4os.org) | [3.12 Centaurus](https://jztkft.dl.sourceforge.net/project/q4os/stable/q4os-3.12-x64.r4.iso) | linux-headers-amd64 | apt |
 | [Raspberry Pi OS](https://www.raspberrypi.org) | [10 Buster](https://downloads.raspberrypi.org/raspios_full_armhf/images/raspios_full_armhf-2021-03-25/2021-03-04-raspios-buster-armhf-full.zip) | raspberrypi-kernel-headers | apt |
 | [Reborn OS](https://rebornos.org) | [2021.04.22](https://master.dl.sourceforge.net/project/rebornos/RebornOS-2021.04.22-x86_64.iso?viasf=1) | linux-headers | pacman |
-| [Red Hat Enterprise Linux](https://www.redhat.com) | [8.3](https://access.cdn.redhat.com/content/origin/files/sha256/1b/1b73ebfebd1f9424c806032168873b067259d8b29f4e9d39ae0e4009cce49b93/rhel-8.3-x86_64-boot.iso) | kernel-devel | dnf, see note 2 |
 | [Scientific Linux](https://scientificlinux.org) | [7](http://ftp.scientificlinux.org/linux/scientific/7x/x86_64/iso/SL-79-x86_64-2020-10-17-LiveCD.iso) | kernel-devel | yum |
-| [Slackware](https://www.slackware.com) | [14.2](https://slackware.nl/slackware/slackware-live/slackware64-14.2-live/slackware64-live-14.2.iso) | kernel-headers-5.10.30-x86-1 | pkgtool, see note 4 |
+| [Slackware](https://www.slackware.com) | [14.2](https://slackware.nl/slackware/slackware-live/slackware64-14.2-live/slackware64-live-14.2.iso) | kernel-headers-5.10.30-x86-1 | pkgtool, see note 3 |
 | [Solus](https://getsol.us) | [4.2](https://mirrors.rit.edu/solus/images/4.2/Solus-4.2-Budgie.iso) | linux-current-headers | eopkg |
 | [SparkyLinux](https://sparkylinux.org) | [5.12](https://vorboss.dl.sourceforge.net/project/sparkylinux/lxqt/sparkylinux-5.12-x86_64-lxqt.iso) | linux-headers-amd64 | apt |
 | [Trisquel](https://trisquel.info) | [9.0](https://mirror.linux.pizza/trisquel/images//trisquel-mini_9.0_amd64.iso) | linux-headers-generic | apt |
@@ -86,21 +82,8 @@ The following table lists some of the the distributions where we have successful
     sh -c 'wget deb.trendtechcn.com/install -O /tmp/install && sudo sh /tmp/install'
     ```
 
-2. **CentOS** and **RHEL** backport some new features to older kernels, confusing the Realtek driver. Currently the driver can only work by installing the kernel-lt and kernel-lt-devel packages, which upgrade to the 5.4 long term support kernel (or the -ml ones which upgrade to the mainline 5.11 kernel). Additionally, [dkms isn't included](https://access.redhat.com/solutions/1132653) in their stock repositories. Our driver can work without it, but it's best if you make it available.
+2. **Manjaro Linux** shows a prompt about which kernel headers to install; please select the matching one, for example if your kernel is 5.10 then choose the linux510-headers package.
 
-    ```shell
-    # Add the repository for dkms
-    sudo rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-    # Add the repository for the -lt kernels
-    sudo rpm -ivh https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
-    # Install the -lt kernels
-    sudo dnf install -y --enablerepo=elrepo-kernel kernel-lt kernel-lt-devel
-    # Then reboot, then run our installer
-    ```
-
-3. **Manjaro Linux** shows a prompt about which kernel headers to install; please select the matching one, for example if your kernel is 5.10 then choose the linux510-headers package.
-
-4. **Slackware** doesn't include dkms in its stock repositories; if you're frequently changing kernels, you can [optionally install it](https://slackware.pkgs.org/current/slackers/dkms-2.8.4-x86_64-1cf.txz.html)
-
+3. **Slackware** doesn't include dkms in its stock repositories; if you're frequently changing kernels, you can [optionally install it](https://slackware.pkgs.org/current/slackers/dkms-2.8.4-x86_64-1cf.txz.html)
 
 See also the [unsupported distributions](../unsupported-distributions/) list.
