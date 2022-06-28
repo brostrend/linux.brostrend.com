@@ -20,7 +20,8 @@ Here are some of the distributions that we tested where our installer either doe
 | [Puppy Linux](http://puppylinux.com) | [FossaPup64 9.5](http://distro.ibiblio.org/puppylinux/puppy-fossa/fossapup64-9.5.iso) | kernel_sources-5.4.53-fossapup64.sfs | [ppm](http://wikka.puppylinux.com/PPM), [install devx.sfs first](https://oldforum.puppylinux.com/viewtopic.php?p=1033265&sid=82cf31e93c2ecd321ca75b610b794ced) |
 | [Red Hat Enterprise Linux](https://www.redhat.com) | [8.3](https://access.cdn.redhat.com/content/origin/files/sha256/1b/1b73ebfebd1f9424c806032168873b067259d8b29f4e9d39ae0e4009cce49b93/rhel-8.3-x86_64-boot.iso) | kernel-devel | dnf, see note 1 |
 | [Tails](https://tails.boum.org) | [4.17](https://tails.jason-m.net/tails/stable/tails-amd64-4.17/tails-amd64-4.17.iso) | linux-headers-amd64 | apt, live only, unsupported<!--doable with init=/bin/bash--> |
-| [Tiny Core Linux](http://www.tinycorelinux.net/) | [12](http://www.tinycorelinux.net/12.x/x86/release/CorePlus-current.iso) | - | tcz, unsupported
+| [Tiny Core Linux](http://www.tinycorelinux.net/) | [12](http://www.tinycorelinux.net/12.x/x86/release/CorePlus-current.iso) | - | tcz, unsupported |
+| [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) | [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install) | - | [VM, unsupported](https://github.com/microsoft/WSL/issues/7400) |
 
 ## Notes
 
