@@ -435,7 +435,7 @@ ls -d /lib/modules/*/build /usr/src/linux-headers-*
 is_command dpkg && dpkg -S /boot /lib/modules
 iw reg get
 nmcli dev wifi || iwlist scanning
-journalctl -b -n 5000 --file "/var/log/journal/$(cat /etc/machine-id)/system.journal"
+journalctl -b -n 5000 --file /[vr][au][rn]/log/journal/"$(cat /etc/machine-id)"/system.journal
 EOF
 }
 
