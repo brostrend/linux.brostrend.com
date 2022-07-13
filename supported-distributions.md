@@ -11,12 +11,12 @@ We try to support as many Linux distributions as possible. But there are so many
 The following table lists some of the the distributions where we have successfully tested our installation process. The meaning of the remarks column is:
 
 * apt: our driver repository is added to your sources and you won't have to re-run our installer unless you reinstall your OS from scratch
-* apt-rpm, dnf, pacman, ppm, swupd, yum, xbps, zypper: no driver repository; you'll have to re-run our installer manually after major kernel version updates (e.g. from 5.8 to 5.11)
-* eopkg, pkgtool: no [dkms](https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support); you'll have to re-run our installer manually after even minor kernel version updates (e.g. from 5.10.1 to 5.10.2)
+* apt-rpm, dnf, pacman, ppm, swupd, yum, xbps, zypper: no driver repository; you'll have to re-run our installer manually after major kernel version updates (e.g. from 5.15 to 5.18)
+* eopkg, pkgtool: no [dkms](https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support); you'll have to re-run our installer manually after even minor kernel version updates (e.g. from 5.18.1 to 5.18.2)
 
 | Distribution | Version | Headers package | Remarks |
 |---|---|---|---|
-| [All official Ubuntu flavors](https://wiki.ubuntu.com/UbuntuFlavors) | [16.04 - 21.04](https://ubuntu.com/download) | linux-headers-* | apt |
+| [All official Ubuntu flavors](https://wiki.ubuntu.com/UbuntuFlavors) | [16.04 - 22.04](https://ubuntu.com/download) | linux-headers-* | apt |
 | [All official Debian blends](https://www.debian.org/blends) | [8 - 11](https://www.debian.org/distrib) | linux-headers-* | apt |
 | [ALT Linux](http://en.altlinux.org) | [9.1](https://mirror.yandex.ru/altlinux/p9/images/server/x86_64/alt-server-9.1-x86_64.iso) | kernel-header-modules-std-def | apt-rpm |
 | [antiX Linux](https://antixlinux.com) | [19.3 386](http://ftp.ntua.gr/pub/linux/mxlinux-iso/ANTIX/Final/antiX-19/antiX-19.3_386-full.iso) | linux-headers-4.9.235-antix.1-486-smp | apt, see note 1 |
@@ -43,7 +43,7 @@ The following table lists some of the the distributions where we have successful
 | [Kodachi](https://www.digi77.com/linux-kodachi) | [8.4](https://deac-ams.dl.sourceforge.net/project/linuxkodachi/kodachi-8.4-64.iso) | linux-headers-generic | apt |
 | [Linux CNC](https://linuxcnc.org) | [2.8.0](http://www.linuxcnc.org/iso/linuxcnc-2.8.0-buster.iso) | linux-headers-rt-amd64 | apt |
 | [Linux Lite](https://www.linuxliteos.com) | [5.0](https://dotsrc.dl.osdn.net/osdn/storage/g/l/li/linuxlite/5.0/linux-lite-5.0-64bit.iso) | linux-headers-generic | apt |
-| [Linux Mint](https://www.linuxmint.com) | [19 - 20.1](https://www.linuxmint.com/download_all.php) | linux-headers-generic | apt |
+| [Linux Mint](https://www.linuxmint.com) | [19 - 20.3](https://www.linuxmint.com/download_all.php) | linux-headers-generic | apt |
 | [LinuxFX](https://www.linuxfx.org) | [10.8](https://deac-riga.dl.sourceforge.net/project/linuxfxdevil/linuxfx-10.8.1.106-plasma-w10.iso) | linux-headers-generic | apt |
 | [LXLE](https://www.linuxfx.org) | [18.04](https://kumisystems.dl.sourceforge.net/project/lxle/Final/OS/18.04.3-32/lxle-18043-32.iso) | linux-headers-generic | apt |
 | [Mageia](https://www.mageia.org) | [8](https://mirror.tuxinator.org/mageia/iso/8/Mageia-8-Live-Xfce-i586/Mageia-8-Live-Xfce-i586.iso) | kernel-devel | dnf |
@@ -63,7 +63,7 @@ The following table lists some of the the distributions where we have successful
 | [Raspberry Pi OS](https://www.raspberrypi.org) | [10 Buster](https://downloads.raspberrypi.org/raspios_full_armhf/images/raspios_full_armhf-2021-03-25/2021-03-04-raspios-buster-armhf-full.zip) | raspberrypi-kernel-headers | apt |
 | [Reborn OS](https://rebornos.org) | [2021.04.22](https://master.dl.sourceforge.net/project/rebornos/RebornOS-2021.04.22-x86_64.iso?viasf=1) | linux-headers | pacman |
 | [Scientific Linux](https://scientificlinux.org) | [7](http://ftp.scientificlinux.org/linux/scientific/7x/x86_64/iso/SL-79-x86_64-2020-10-17-LiveCD.iso) | kernel-devel | yum |
-| [Slackware](https://www.slackware.com) | [14.2](https://slackware.nl/slackware/slackware-live/slackware64-14.2-live/slackware64-live-14.2.iso) | kernel-headers-5.10.30-x86-1 | pkgtool, see note 3 |
+| [Slackware](https://www.slackware.com) | [15.0](https://slackware.nl/slackware/slackware-live/slackware64-15.0-live/slackware64-live-15.0.iso) | kernel-headers-5.15.19-x86-2 | pkgtool, see note 3 |
 | [Solus](https://getsol.us) | [4.2](https://mirrors.rit.edu/solus/images/4.2/Solus-4.2-Budgie.iso) | linux-current-headers | eopkg |
 | [SparkyLinux](https://sparkylinux.org) | [5.12](https://vorboss.dl.sourceforge.net/project/sparkylinux/lxqt/sparkylinux-5.12-x86_64-lxqt.iso) | linux-headers-amd64 | apt |
 | [Trisquel](https://trisquel.info) | [9.0](https://mirror.linux.pizza/trisquel/images//trisquel-mini_9.0_amd64.iso) | linux-headers-generic | apt |
