@@ -1,5 +1,5 @@
 Component: previous
-Origin: deb.trend-tech.net.cn
-Label: deb.trend-tech.net.cn
+Origin: linux.brostrend.com
+Label: linux.brostrend.com
 Architecture: arm64
 Description: BrosTrend Debian repository

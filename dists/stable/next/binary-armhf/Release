@@ -1,5 +1,5 @@
 Component: next
-Origin: deb.trend-tech.net.cn
-Label: deb.trend-tech.net.cn
+Origin: linux.brostrend.com
+Label: linux.brostrend.com
 Architecture: armhf
 Description: BrosTrend Debian repository
