@@ -14,9 +14,9 @@ If these didn't solve the problem, please do the following steps:
 1. Open a terminal and copy-paste **one** of the following commands to download our troubleshooting script:
 
     ```shell
-    wget deb.trendtechcn.com/install -O ~/troubleshooting.sh
-    busybox wget deb.trendtechcn.com/install -O ~/troubleshooting.sh
-    curl deb.trendtechcn.com/install -Lo ~/troubleshooting.sh
+    wget linux.brostrend.com/install -O ~/troubleshooting.sh
+    busybox wget linux.brostrend.com/install -O ~/troubleshooting.sh
+    curl linux.brostrend.com/install -Lo ~/troubleshooting.sh
     ```
 
 2. Reboot your system to clear the system logs.
@@ -29,4 +29,4 @@ If these didn't solve the problem, please do the following steps:
     sh ~/troubleshooting.sh -t
     ```
 
-5. This will generate a file named /tmp/troubleshooting.txt in your hard disk. Please attach it in an [email to us](mailto:support@trend-tech.net.cn), while describing the problem.
+5. This will generate a file named /tmp/troubleshooting.txt in your hard disk. Please attach it in an [email to us](mailto:support@brostrend.com), while describing the problem.

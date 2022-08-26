@@ -1,9 +1,9 @@
 # See: https://github.com/pmarsceill/just-the-docs/blob/master/_config.yml
-title: deb.trendtechcn.com
+title: linux.brostrend.com
 description: BrosTrend WiFi Adapters Linux Support
 remote_theme: pmarsceill/just-the-docs
 
-url: "https://deb.trendtechcn.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://linux.brostrend.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 permalink: pretty
 exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "Rakefile"]
@@ -23,10 +23,10 @@ heading_anchors: true
 # Aux links for the upper right navigation
 aux_links:
   "Main website":
-    - "https://www.trendtechcn.com"
+    - "https://www.brostrend.com"
 
 # Footer content appears at the bottom of every page's main content
-footer_content: "Copyright &copy; 2018-2022 <a href=\"https://www.trendtechcn.com\">BrosTrend</a>"
+footer_content: "Copyright &copy; 2018-2022 <a href=\"https://www.brostrend.com\">BrosTrend</a>"
 
 # Color scheme currently only supports "dark" or nil (default)
 color_scheme: nil

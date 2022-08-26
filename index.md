@@ -4,7 +4,7 @@ nav_order: 1
 
 # Installation
 
-The following instructions install the appropriate drivers for the [AC1L](https://www.trendtechcn.com/Product.aspx?ProductId=328), [AC3L](https://www.trendtechcn.com/Product.aspx?ProductId=329) and [AC5L](https://www.trendtechcn.com/Product.aspx?ProductId=332) BrosTrend WiFi adapters in any of the [supported distributions](supported-distributions). All the drivers and the installer are open source (GPL); you may get the code from [here](troubleshooting/source-code).
+The following instructions install the appropriate drivers for the [AC1L](https://www.brostrend.com/products/ac1l), [AC3L](https://www.brostrend.com/products/ac3l) and [AC5L](https://www.brostrend.com/products/ac5l) BrosTrend WiFi adapters in any of the [supported distributions](supported-distributions). All the drivers and the installer are open source (GPL); you may get the code from [here](troubleshooting/source-code).
 
 > 💡 **Tip:** It is highly recommended to [update and reboot your system](troubleshooting/os-updates) before running our installer, to avoid some common issues like mismatched kernel headers or old http certificates.
 
@@ -18,7 +18,7 @@ That means that you might have to use a wired connection (LAN cable) or [mobile 
 3. Select all the following line and right click → copy it to the clipboard:
 
     ```shell
-    sh -c 'wget deb.trendtechcn.com/install -O /tmp/install && sh /tmp/install'
+    sh -c 'wget linux.brostrend.com/install -O /tmp/install && sh /tmp/install'
     ```
 
 4. Press Alt+F2 to invoke your distribution's “Execute command” dialog, or open a terminal.
@@ -27,8 +27,8 @@ Right click → paste the previous command in order to execute it. If it fails w
 5. The installer requires root rights, so it will ask for your password.
 It will then automatically download, install and load the correct driver for your adapter. In some cases a reboot might be necessary.
 
-6. If the installer reports an error, please copy all the text in the terminal and paste it in a mail to [support@trend-tech.net.cn](mailto:support@trend-tech.net.cn) so that we can see what went wrong. Please also attach the auto-generated log file, /tmp/troubleshooting.txt.
+6. If the installer reports an error, please copy all the text in the terminal and paste it in a mail to [support@brostrend.com](mailto:support@brostrend.com) so that we can see what went wrong. Please also attach the auto-generated log file, /tmp/troubleshooting.txt.
 
 If your distribution is based on Debian, our apt repository will be automatically added to your software sources, to provide automatic driver updates. For non-Debian distributions please re-run our installer whenever you need to update to our latest drivers.
 
-In case you need any assistance in using the BrosTrend WiFi adapters, please do not hesitate to contact us by sending an email at [support@trend-tech.net.cn](mailto:support@trend-tech.net.cn).
+In case you need any assistance in using the BrosTrend WiFi adapters, please do not hesitate to contact us by sending an email at [support@brostrend.com](mailto:support@brostrend.com).

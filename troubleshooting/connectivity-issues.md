@@ -33,11 +33,11 @@ If possible, turn your [Android](https://support.google.com/android/answer/90591
 
 ## 7. Enable USB3 mode
 
-Some users have reported that [enabling USB3 mode](https://deb.trendtechcn.com/advanced/usb3/) resolved their connectivity issues.
+Some users have reported that [enabling USB3 mode](https://linux.brostrend.com/advanced/usb3/) resolved their connectivity issues.
 
 ## 8. Disable internal adapters
 
-Some users have reported that [disabling internal wifi adapters](https://deb.trendtechcn.com/advanced/internal-adapters/) resolved their connectivity issues.
+Some users have reported that [disabling internal wifi adapters](https://linux.brostrend.com/advanced/internal-adapters/) resolved their connectivity issues.
 
 ## 9. Disable MAC randomization
 
@@ -62,4 +62,4 @@ reboot
 
 ## 11. Other installation
 
-If none of the above solutions worked, it would help to test our adapter in a [different PC and/or operating system](https://deb.trendtechcn.com/advanced/other-installation/).
+If none of the above solutions worked, it would help to test our adapter in a [different PC and/or operating system](https://linux.brostrend.com/advanced/other-installation/).

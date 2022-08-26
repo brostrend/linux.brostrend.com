@@ -79,7 +79,7 @@ The following table lists some of the the distributions where we have successful
 1. **AntiX Linux** has a broken pkexec, so our installation command should use sudo instead:
 
     ```shell
-    sh -c 'wget deb.trendtechcn.com/install -O /tmp/install && sudo sh /tmp/install'
+    sh -c 'wget linux.brostrend.com/install -O /tmp/install && sudo sh /tmp/install'
     ```
 
 2. **Manjaro Linux** shows a prompt about which kernel headers to install; please select the matching one, for example if your kernel is 5.10 then choose the linux510-headers package.

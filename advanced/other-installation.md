@@ -11,6 +11,6 @@ The quickest way to troubleshoot issues is to locate revealing error messages in
 
 If you have a different operating system available, for example Windows or another Linux installation or another nearby PC, you could test there. But the best test is to create a live USB flash drive and boot with it on the same hardware. We recommend that you download [Ubuntu MATE 22.04](http://cdimage.ubuntu.com/ubuntu-mate/releases/22.04/release) which uses the well tested Network Manager software, to write it to a USB flash drive using e.g. [Ventoy](https://www.ventoy.net) or [Rufus](https://rufus.ie/), and to boot with that.
 
-In the live session, please follow our [installation page](https://deb.trendtechcn.com/) and see if you can connect to the access point without rebooting at all, as changes in the live session are not persistent.
+In the live session, please follow our [installation page](https://linux.brostrend.com/) and see if you can connect to the access point without rebooting at all, as changes in the live session are not persistent.
 
 Of course if this is too much effort for you, feel free to return the adapter to Amazon for a refund, as it's covered by two years of warranty. But please understand that this step is necessary when the logs do not contain enough information to pinpoint the issue.
