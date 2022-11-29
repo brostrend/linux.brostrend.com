@@ -60,10 +60,12 @@ busybox_fallbacks() {
 # Sets $_CHIP, based on the script filename, or the inserted adapter,
 # or the user input.
 # lsusb output:
-# V1: Bus 003 Device 008: ID 0bda:8812 Realtek Semiconductor Corp.
-#     RTL8812AU 802.11a/b/g/n/ac WLAN Adapter
-# V2: Bus 003 Device 007: ID 0bda:b812 Realtek Semiconductor Corp.
-# V3: Bus 003 Device 027: ID 0bda:c811 Realtek Semiconductor Corp.
+# AC1Lv1: Bus 003 Device 008: ID 0bda:8812 Realtek Semiconductor Corp.
+#         RTL8812AU 802.11a/b/g/n/ac WLAN Adapter
+# AC3Lv2: Bus 003 Device 007: ID 0bda:b812 Realtek Semiconductor Corp.
+# AC5L:   Bus 003 Device 027: ID 0bda:c811 Realtek Semiconductor Corp.
+# AX1:    Bus 003 Device 027: ID 0bda:b832 Realtek Semiconductor Corp.
+#         802.11ac WLAN Adapter
 detect_adapter() {
     local fname product choice
 
@@ -71,7 +73,7 @@ detect_adapter() {
     fname=${0##*/}
     fname=${fname%.sh}
     case "$fname" in
-    8812au | 88x2bu | 8821cu)
+    8812au | 88x2bu | 8821cu | 8852bu)
         _CHIP=$fname
         return 0
         ;;
@@ -84,6 +86,7 @@ detect_adapter() {
             0bda:8812) _CHIP=8812au ;;
             0bda:b812) _CHIP=88x2bu ;;
             0bda:c811) _CHIP=8821cu ;;
+            0bda:b832) _CHIP=8852bu ;;
             esac
         done
         test -n "$_CHIP" && return 0
@@ -94,6 +97,7 @@ If you don't have the adapter currently, you may type:
   (a) to install the 8812au driver for the old AC1L/AC3L models before 2019, or
   (b) to install the 88x2bu driver for the new AC1L/AC3L version 2 models, or
   (c) to install the 8821cu driver for the AC5L model, or
+  (d) to install the 8852bu driver for the AX1 model, or
   (q) to quit without installing a driver"
         bold -n "Please type your choice, or [Enter] to autodetect: "
         read -r choice
@@ -101,6 +105,7 @@ If you don't have the adapter currently, you may type:
         a) _CHIP=8812au ;;
         b) _CHIP=88x2bu ;;
         c) _CHIP=8821cu ;;
+        d) _CHIP=8852bu ;;
         q) die "Aborted" ;;
         esac
     done
