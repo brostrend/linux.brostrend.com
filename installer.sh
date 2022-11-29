@@ -5,7 +5,7 @@
 usage() {
     printf "Usage: %s [OPTIONS] [COMMAND]
 
-Install the drivers for the BrosTrend AC1L/AC3L/AC5L adapters.
+Install the drivers for the BrosTrend AC1L/AC3L/AC5L/AX1 adapters.
 The main difficulty is in detecting the appropriate kernel *headers* package.
 
 Options:
@@ -97,7 +97,7 @@ If you don't have the adapter currently, you may type:
   (a) to install the 8812au driver for the old AC1L/AC3L models before 2019, or
   (b) to install the 88x2bu driver for the new AC1L/AC3L version 2 models, or
   (c) to install the 8821cu driver for the AC5L model, or
-  (d) to install the 8852bu driver for the AX1 model, or
+  (d) to install the 8852bu driver for the AX1L/AX4L models, or
   (q) to quit without installing a driver"
         bold -n "Please type your choice, or [Enter] to autodetect: "
         read -r choice
@@ -133,11 +133,11 @@ die() {
 # Download a file from the Internet
 download() {
     if is_command wget; then
-        re wget -nv "$@"
+        re wget --no-check-certificate -nv "$@"
     elif is_command curl; then
-        re curl -O "$@"
+        re curl --insecure -O "$@"
     elif is_command busybox; then
-        re busybox wget -nv "$@"
+        re busybox --no-check-certificate wget -nv "$@"
     else
         die "Please install wget or curl and then re-run the installer"
     fi

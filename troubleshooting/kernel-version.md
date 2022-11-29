@@ -17,3 +17,4 @@ Finally, it's possible to completely ignore our driver, and use other drivers fo
 * Old version 1 of AC1L and AC3L, google for: [8812au github](https://www.google.gr/search?q=8812au+github)
 * New version 2 of AC1L and AC3L, google for: [88x2bu github](https://www.google.gr/search?q=88x2bu+github)
 * AC5L, google for: [8821cu github](https://www.google.gr/search?q=8821cu+github)
+* AX1L and AX4L, google for: [8852bu github](https://www.google.gr/search?q=8852bu+github)

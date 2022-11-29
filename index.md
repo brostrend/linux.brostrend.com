@@ -4,7 +4,7 @@ nav_order: 1
 
 # Installation
 
-The following instructions install the appropriate drivers for the [AC1L](https://www.brostrend.com/products/ac1l), [AC3L](https://www.brostrend.com/products/ac3l) and [AC5L](https://www.brostrend.com/products/ac5l) BrosTrend WiFi adapters in any of the [supported distributions](supported-distributions). All the drivers and the installer are open source (GPL); you may get the code from [here](troubleshooting/source-code).
+The following instructions install the appropriate drivers for the [AC1L](https://www.brostrend.com/products/ac1l), [AC3L](https://www.brostrend.com/products/ac3l), [AC5L](https://www.brostrend.com/products/ac5l), [AX1L](https://www.brostrend.com/products/ax1l) and [AX4L](https://www.brostrend.com/products/ax4l) BrosTrend WiFi adapters in any of the [supported distributions](supported-distributions). All the drivers and the installer are open source (GPL); you may get the code from [here](troubleshooting/source-code).
 
 > 💡 **Tip:** It is highly recommended to [update and reboot your system](troubleshooting/os-updates) before running our installer, to avoid some common issues like mismatched kernel headers or old http certificates.
 
