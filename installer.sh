@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright 2018-2022 Alkis Georgopoulos <github.com/alkisg>
+# Copyright 2018-2023 Alkis Georgopoulos <github.com/alkisg>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 usage() {
@@ -484,9 +484,15 @@ main() {
         test -x "$scriptpath" || die "Could not make $scriptpath executable"
 
         bold "Root access is required"
-        # TODO: for some reason, a delay is needed here, otherwise pkexec might not appear!
-        sleep 1
-        exec pkexec "$scriptpath" ${_PAUSE_ON_EXIT:+-p} "$@"
+        # Prefer sudo when available, to avoid pkexec-over-ssh issues:
+        # https://gitlab.freedesktop.org/polkit/polkit/-/issues/17
+        if groups | grep -qw sudo && is_command sudo; then
+            exec sudo "$scriptpath" ${_PAUSE_ON_EXIT:+-p} "$@"
+        else
+            # TODO: for some reason, a delay is needed here, otherwise pkexec might not appear!
+            sleep 1
+            exec pkexec "$scriptpath" ${_PAUSE_ON_EXIT:+-p} "$@"
+        fi
     fi
 
     # Tolerate users using `su` instead of `su -`
