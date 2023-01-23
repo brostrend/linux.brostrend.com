@@ -32,10 +32,10 @@ Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
 Filename: pool/next/r/rtl8821cu/rtl8821cu-dkms_5.12.0-16b4_all.deb
-Size: 4021660
-SHA256: 41fe888ccb02f0a0d94f1f0c2bd93eb55549619c3327b4ffdca22fbc952d4cf9
-SHA1: 620a88b3ee9a1fdf632bbd42bf2735d2f60fc77c
-MD5sum: 41b8da561d4093b1267ed0c8a4ea6c70
+Size: 4021654
+SHA256: c73fc2f3a188985e8915c3e98de5d91e38183de7a423009d228baf422b1076c6
+SHA1: 7900386dd7c31a805a349cb878ad404d46064a11
+MD5sum: e49e3c769f3bfcc308bbeae1bdec37f6
 Description: dkms source for the r8821cu network driver
  rtl8821cu is the Linux device driver released for the RealTek RTL8821CU WiFi
  controllers with USB interface.
@@ -55,10 +55,10 @@ Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
 Filename: pool/next/r/rtl88x2bu/rtl88x2bu-dkms_5.13.1-20b4_all.deb
-Size: 4122070
-SHA256: e20c2d4700a18ef1987c9f1765bcfe5cd9122b73eb8898fdcfe49e37a820f97f
-SHA1: d8a55b01f392c2c8351c8a7f8ceda151eb5231ad
-MD5sum: 09e45c17cd593e0630df3b374f2f9b36
+Size: 4122132
+SHA256: c1233f185b76dc4428f135dc282bf06df4bbd7999978991a91ed2f52b164729f
+SHA1: 0bd9dd80b661fef4ca1a728cc1bc25cff29939b2
+MD5sum: 83e7f39af47163f4ba11c468b1421de9
 Description: dkms source for the r88x2bu network driver
  rtl88x2bu is the Linux device driver released for the RealTek RTL88x2BU WiFi
  controllers with USB interface.
