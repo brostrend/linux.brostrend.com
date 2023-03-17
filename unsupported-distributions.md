@@ -4,11 +4,18 @@ nav_order: 3
 
 # Unsupported distributions
 
+> 💡 **Tip:** Linux kernels (>= 6.2) include their own drivers for our
+> AC1L/AC3L/AC5L adapters, so **they work out of the box in all distributions
+> that include a very recent kernel**.
+
 We try to support as many Linux distributions as possible. But there are so many that it's impossible to test all of them. Also, some do not provide the required kernel headers and build tools, or target exotic hardware that we don't have access to.
 
-> 📝 **Note** that if your distribution is unsupported and you didn't notice it when you purchased our adapter, you may return the adapter back to Amazon for a refund, as it comes with a two-year warranty.
+> 📝 **Note:** if your distribution is unsupported and you didn't notice it
+> when you purchased our adapter, you may return the adapter back to Amazon for
+> a refund, as it comes with a two-year warranty.
 
-Here are some of the distributions that we tested where our installer either doesn't work at all, or it requires an unreasonable amount of effort:
+Here are some of the distributions that we tested where our installer either
+doesn't work at all, or it requires an unreasonable amount of effort:
 
 | Distribution | Version | Headers package | Remarks |
 |---|---|---|---|
@@ -26,7 +33,14 @@ Here are some of the distributions that we tested where our installer either doe
 
 ## Notes
 
-1. **CentOS**  and **RHEL** backport some new features to older kernels, confusing the Realtek driver. Currently the driver can only work by installing the kernel-lt and kernel-lt-devel packages, which upgrade to thelong term support kernel (or the -ml ones which upgrade to the mainline kernel). Additionally, [dkms isn't included](https://access.redhat.com/solutions/1132653) in their stock repositories. Our driver can work without it, but it's best if you make it available.
+1. **CentOS**  and **RHEL** backport some new features to older kernels,
+   confusing the Realtek driver. Currently the driver can only work by
+   installing the kernel-lt and kernel-lt-devel packages, which upgrade to
+   thelong term support kernel (or the -ml ones which upgrade to the mainline
+   kernel). Additionally, [dkms isn't
+   included](https://access.redhat.com/solutions/1132653) in their stock
+   repositories. Our driver can work without it, but it's best if you make it
+   available.
 
     ```shell
     # Add the repository for dkms
@@ -38,6 +52,8 @@ Here are some of the distributions that we tested where our installer either doe
     # Then reboot, then run our installer
     ```
 
-2. **openSUSE Leap** backports some new features to older kernels, confusing the Realtek driver. Currently the driver is only supported on openSUSE Tumbleweed, which comes with a newer kernel.
+2. **openSUSE Leap** backports some new features to older kernels, confusing
+   the Realtek driver. Currently the driver only works on openSUSE Tumbleweed,
+   which comes with a newer kernel.
 
 See also the [supported distributions](../supported-distributions/) list.

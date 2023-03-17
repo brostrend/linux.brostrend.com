@@ -5,7 +5,7 @@
 usage() {
     printf "Usage: %s [OPTIONS] [COMMAND]
 
-Install the drivers for the BrosTrend AC1L/AC3L/AC5L/AX1 adapters.
+Install the drivers for the BrosTrend AC1L/AC3L/AC5L/AX1L/AX4L adapters.
 The main difficulty is in detecting the appropriate kernel *headers* package.
 
 Options:
@@ -64,7 +64,7 @@ busybox_fallbacks() {
 #         RTL8812AU 802.11a/b/g/n/ac WLAN Adapter
 # AC3Lv2: Bus 003 Device 007: ID 0bda:b812 Realtek Semiconductor Corp.
 # AC5L:   Bus 003 Device 027: ID 0bda:c811 Realtek Semiconductor Corp.
-# AX1:    Bus 003 Device 027: ID 0bda:b832 Realtek Semiconductor Corp.
+# AX1L:   Bus 003 Device 027: ID 0bda:b832 Realtek Semiconductor Corp.
 #         802.11ac WLAN Adapter
 detect_adapter() {
     local fname product choice
@@ -187,7 +187,7 @@ install_debian_prerequisites() {
 }
 
 install_driver() {
-    local reinstall rtlversion
+    local reinstall rtlversion ikd
 
     bold "Downloading the driver"
     re cd "$(mktemp -d)"
@@ -236,8 +236,30 @@ install_driver() {
             re make
             re make install
         fi
+        # Install the conf files which blacklists the in-kernel drivers
+        if [ -L "/etc/modprobe.d/$_CHIP.conf" ]; then
+            rm -f "/etc/modprobe.d/$_CHIP.conf"
+        fi
+        link="/usr/src/rtl$_CHIP-$rtlversion/$_CHIP.conf"
+        if [ -f "$link" ] &&
+            [ -d /etc/modprobe.d ] &&
+            [ ! -e "/etc/modprobe.d/$_CHIP.conf" ]; then
+            re ln -s "$link" /etc/modprobe.d/
+        fi
         ;;
     esac
+    # Unload the competing in-kernel drivers
+    case "$_CHIP" in
+    88x2bu) ikd=rtw88_8822bu ;;
+    8821cu) ikd=rtw88_8821cu ;;
+    *) ikd= ;;
+    esac
+    if [ -n "$ikd" ] && [ -d "/sys/module/$ikd" ]; then
+        bold "Unloading the $ikd in-kernel driver"
+        if ! timeout 10 modprobe -r "$ikd"; then
+            bold "Failed to unload the $ikd in-kernel driver, PLEASE REBOOT"
+        fi
+    fi
     re modprobe "$_CHIP"
 }
 

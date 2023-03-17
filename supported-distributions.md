@@ -4,11 +4,14 @@ nav_order: 2
 
 # Supported distributions
 
-> 📝 **Note** the following table lists the distributions that our installation script supports. Unfortunately, there's an additional restriction; the driver compilation won't succeed when the Linux kernel version is very new; please read our [kernel-version documentation](../troubleshooting/kernel-version/) about this issue.
+> 💡 **Tip:** Linux kernels (>= 6.2) include their own drivers for our
+> AC1L/AC3L/AC5L adapters, so they work out of the box in recent distributions.
+> But these drivers aren't yet as mature as ours, so if you encounter any
+> issues, [use our installer](../) to replace them.
 
-We try to support as many Linux distributions as possible. But there are so many that it's impossible to test all of them. Also, some do not provide the required kernel headers and build tools, or target exotic hardware that we don't have access to.
-
-The following table lists some of the the distributions where we have successfully tested our installation process. The meaning of the remarks column is:
+The following table lists the distributions that our installer supports and the
+versions that we have personally tested so far. The meaning of the remarks
+column is:
 
 * apt: our driver repository is added to your sources and you won't have to re-run our installer unless you reinstall your OS from scratch
 * apt-rpm, dnf, pacman, ppm, swupd, yum, xbps, zypper: no driver repository; you'll have to re-run our installer manually after major kernel version updates (e.g. from 5.15 to 5.18)
@@ -16,7 +19,7 @@ The following table lists some of the the distributions where we have successful
 
 | Distribution | Version | Headers package | Remarks |
 |---|---|---|---|
-| [All official Ubuntu flavors](https://wiki.ubuntu.com/UbuntuFlavors) | [16.04 - 22.04](https://ubuntu.com/download) | linux-headers-* | apt |
+| [All official Ubuntu flavors](https://wiki.ubuntu.com/UbuntuFlavors) | [16.04 - 23.04](https://ubuntu.com/download) | linux-headers-* | apt |
 | [All official Debian blends](https://www.debian.org/blends) | [8 - 11](https://www.debian.org/distrib) | linux-headers-* | apt |
 | [ALT Linux](http://en.altlinux.org) | [9.1](https://mirror.yandex.ru/altlinux/p9/images/server/x86_64/alt-server-9.1-x86_64.iso) | kernel-header-modules-std-def | apt-rpm |
 | [antiX Linux](https://antixlinux.com) | [19.3 386](http://ftp.ntua.gr/pub/linux/mxlinux-iso/ANTIX/Final/antiX-19/antiX-19.3_386-full.iso) | linux-headers-4.9.235-antix.1-486-smp | apt, see note 1 |
@@ -74,8 +77,6 @@ The following table lists some of the the distributions where we have successful
 
 ## Notes
 
-> 📝 **Note** that if you are not satisfied with the level of support that we are able to offer for your distribution, you may return the adapter back to Amazon for a refund, as it comes with a 2 year warranty.
-
 1. **AntiX Linux** has a broken pkexec, so our installation command should use sudo instead:
 
     ```shell
@@ -85,5 +86,13 @@ The following table lists some of the the distributions where we have successful
 2. **Manjaro Linux** shows a prompt about which kernel headers to install; please select the matching one, for example if your kernel is 5.10 then choose the linux510-headers package.
 
 3. **Slackware** doesn't include dkms in its stock repositories; if you're frequently changing kernels, you can [optionally install it](https://slackware.pkgs.org/current/slackers/dkms-2.8.4-x86_64-1cf.txz.html)
+
+> 📝 **Note:**  we try to support as many Linux distributions as possible, but
+> there are so many that it's impossible to test all of them. Also, some do not
+> provide the required kernel headers and build tools, or target exotic
+> hardware that we don't have access to. If you are not satisfied with the
+> level of support that we are able to offer for your distribution, you may
+> return the adapter back to Amazon for a refund, as it comes with a 2 year
+> warranty.
 
 See also the [unsupported distributions](../unsupported-distributions/) list.
