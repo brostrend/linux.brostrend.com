@@ -9,7 +9,7 @@ The following instructions install the appropriate drivers for the
 [AC3L](https://www.brostrend.com/products/ac3l),
 [AC5L](https://www.brostrend.com/products/ac5l),
 [AX1L](https://www.brostrend.com/products/ax1l) and
-[AX4L](https://www.brostrend.com/products/ax4l) BrosTrend WiFi adapters in any
+[AX4L](https://www.brostrend.com/products/ax4l) BrosTrend Wi-Fi adapters in any
 of the [supported distributions](supported-distributions). All the drivers and
 the installer are open source (GPL); you may get the code from
 [here](troubleshooting/source-code).
@@ -31,7 +31,8 @@ tethering](https://www.makeuseof.com/tag/how-to-tether-your-smartphone-in-linux/
 before running our installer, to avoid some common issues like mismatched
 kernel headers or old http certificates.
 
-3. Insert the WiFi adapter into a USB slot.
+3. [After](advanced/usb_modeswitch) the system has booted, insert the Wi-Fi
+   adapter into a USB slot.
 
 4. Select all the following line and right click → copy it to the clipboard:
 
@@ -58,6 +59,6 @@ automatically added to your software sources, to provide automatic driver
 updates. For non-Debian distributions please re-run our installer whenever you
 need to update to our latest drivers.
 
-In case you need any assistance in using the BrosTrend WiFi adapters, please do
+In case you need any assistance in using the BrosTrend Wi-Fi adapters, please do
 not hesitate to contact us by sending an email at
 [support@brostrend.com](mailto:support@brostrend.com).
