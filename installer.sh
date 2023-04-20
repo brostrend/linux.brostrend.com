@@ -155,6 +155,7 @@ install_debian_prerequisites() {
     # E.g. linux-image-generic, linux-image-lowlatency-hwe-18.04
     # Debian: https://packages.debian.org/source/buster/linux-latest
     # E.g. linux-image-686, linux-image-amd64, linux-image-armmp
+    # Proxmox: pve-kernel-5.4, pve-kernel5.15, pve-headers
     # Raspberry Pi OS: raspberrypi-kernel
     # OSMC: rbp2-kernel-osmc, rbp2-image-4.19.55-6-osmc, rbp2-headers-4.19.55-6-osmc
     # ODROID-XU4: linux-odroid-5422 (Bionic, 4.14.165-172, armv7l, includes headers)
@@ -163,9 +164,12 @@ install_debian_prerequisites() {
     # We can't use `dpkg -S .../modules.builtin` as -hwe are metapackages.
     # So we use `dpkg -l linux-image-[^.][^.][^.]*` to avoid linux-image-5.11
     # but include linux-image-hwe-18.04.
-    for kernel in $(dpkg -l 'linux-image[^.][^.][^.]*' raspberrypi-kernel 2>/dev/null |
+    for kernel in $(dpkg -l 'linux-image[^.][^.][^.]*' 'pve-kernel*[^a-z]' raspberrypi-kernel 2>/dev/null |
         awk '/^ii/ { print $2 }'); do
         case "$kernel" in
+        pve-kernel*)
+            header=pve-headers
+            ;;
         raspberrypi-kernel)
             header=raspberrypi-kernel-headers
             ;;
@@ -311,20 +315,34 @@ install_prerequisites() {
 
     bold "Installing prerequisites"
     case "$_PM" in
+    # TODO: see variations in https://github.com/morrownr/88x2bu-20210702
     apt-get | apt-rpm)
         install_debian_prerequisites
         ;;
-    dnf | yum)
-        # E.g. kernel-devel, kernel-lt-devel, -ml, -uek
-        # Fedora returns kernel-core-version, remove -core
-        var=$(rpm -qf "/lib/modules/$(uname -r)/modules.builtin" |
-            sed 's/^\(kernel[-a-z]*\).*/\1devel/;s/-core-devel/-devel/') ||
+    dnf | yum | zypper)
+        # Examples of `rpm -qf "/boot/vmlinuz-$(uname -r)"`:
+        # CentOS Linux 8: kernel-core-4.18.0-348.7.1.el8_5.x86_64
+        # CentOS Linux 8 -lt: kernel-lt-core-5.4.240-1.el8.elrepo.x86_64
+        # fedora-37: kernel-core-6.1.18-200.fc37.x86_64
+        # fedora-38: kernel-modules-core-6.2.11-300.fc38.x86_64
+        # openSUSE Leap 15.3: kernel-default-5.3.18-150300.59.106.1.x86_64
+        # Transform them to e.g.: kernel-devel, kernel-lt-devel, -ml, -uek,
+        # kernel-default-devel
+        var=$(rpm -qf "/boot/vmlinuz-$(uname -r)") ||
             request_info "Unknown kernel"
-        # RHEL-based distributions might not provide dkms
-        if "$_PM" list dkms >/dev/null 2>&1; then
-            inmp "$_PM install -y" bc dkms "headers:$var"
+        var=$(echo "$var" | grep -o 'kernel-[-[:alpha:]]*')
+        var=${var%core-}
+        var=${var%modules-}
+        var="${var}devel"
+        if [ "$_PM" = "zypper" ]; then
+            inmp "zypper install -y" bc dkms "headers:$var"
         else
-            inmp "$_PM install -y" ar:binutils bc :elfutils-libelf-devel gcc make tar "headers:$var"
+            # RHEL-based distributions might not provide dkms
+            if "$_PM" list dkms >/dev/null 2>&1; then
+                inmp "$_PM install -y" bc dkms "headers:$var"
+            else
+                inmp "$_PM install -y" ar:binutils bc :elfutils-libelf-devel gcc make tar "headers:$var"
+            fi
         fi
         ;;
     eopkg)
@@ -343,13 +361,6 @@ install_prerequisites() {
         ;;
     xbps-install)
         inmp "xbps-install -S" bc dkms
-        ;;
-    zypper)
-        # E.g. kernel-devel, kernel-default-devel
-        var=$(rpm -qf "/lib/modules/$(uname -r)/modules.builtin" |
-            sed 's/^\(kernel[-a-z]*\).*/\1devel/;s/-core-devel/-devel/') ||
-            request_info "Unknown kernel"
-        inmp "zypper install -y" bc dkms "headers:$var"
         ;;
     *)
         inmp "unknown" bc ar bc gcc make tar headers
