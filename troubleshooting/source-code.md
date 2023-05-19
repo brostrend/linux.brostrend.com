@@ -9,6 +9,7 @@ Our wifi adapter chipsets and drivers are developed by Realtek and are published
 * [rtl8812au-dkms.deb](../rtl8812au-dkms.deb) for the old AC1L and AC3L version 1 models (before 2019)
 * [rtl88x2bu-dkms.deb](../rtl88x2bu-dkms.deb) for the new AC1L and AC3L version 2 models
 * [rtl8821cu-dkms.deb](../rtl8821cu-dkms.deb) for AC5L
+* [rtl8852bu-dkms.deb](../rtl8852bu-dkms.deb) for AX1L and AX4L
 
 Our installer is licensed under [GPLv3](https://opensource.org/licenses/GPL-3.0); you may [download it](../installer.sh) and view it with any text editor as it's a simple shell script.
 

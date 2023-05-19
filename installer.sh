@@ -64,6 +64,8 @@ busybox_fallbacks() {
 #         RTL8812AU 802.11a/b/g/n/ac WLAN Adapter
 # AC3Lv2: Bus 003 Device 007: ID 0bda:b812 Realtek Semiconductor Corp.
 # AC5L:   Bus 003 Device 027: ID 0bda:c811 Realtek Semiconductor Corp.
+# AX1Lst: Bus 003 Device 027: ID 0bda:1a2b Realtek Semiconductor Corp.
+#         RTL8188GU 802.11n WLAN Adapter (Driver CDROM Mode)
 # AX1L:   Bus 003 Device 027: ID 0bda:b832 Realtek Semiconductor Corp.
 #         802.11ac WLAN Adapter
 detect_adapter() {
@@ -86,6 +88,12 @@ detect_adapter() {
             0bda:8812) _CHIP=8812au ;;
             0bda:b812) _CHIP=88x2bu ;;
             0bda:c811) _CHIP=8821cu ;;
+            0bda:1a2b)
+                _CHIP=8852bu
+                bold "Switching the adapter from storage to WLAN mode"
+                # Background it as it can take up to 30 seconds in a VM
+                rw usb_modeswitch -KQ -v 0bda -p 1a2b &
+                ;;
             0bda:b832) _CHIP=8852bu ;;
             esac
         done
