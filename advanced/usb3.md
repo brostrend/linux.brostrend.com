@@ -6,7 +6,7 @@ nav_exclude: true
 
 Our wifi adapter chipsets and drivers are developed by Realtek. We prefer to package their official drivers while modifying as few of the available parameters as possible. For example, Realtek has chosen to disable USB 3 port mode by default for compatibility with some older systems, which sometimes results in lower wifi connection speeds.
 
-The instructions below mention `88x2bu`, which is the driver name for our AC1L and AC3L adapters. For the AC5L adapter, please replace `88x2bu` with `8821cu` wherever you see it below.
+The instructions below mention `88x2bu`, which is the driver name for our AC1L and AC3L adapters. For the AC5L adapter, please replace `88x2bu` with `8821cu` wherever you see it below. For the AX1L and AX4L adapters, replace it with `8852bu`.
 
 To see your current speed, insert our adapter in a USB 3 slot, open a terminal and run `lsusb -t`. The output should be similar to this:
 
