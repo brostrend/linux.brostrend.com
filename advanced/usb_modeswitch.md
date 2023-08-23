@@ -4,28 +4,47 @@ nav_exclude: true
 
 # USB mode switching
 
-> 💡 **Summary:** If a PC is being (re)booted, and an AX1L or AX4L adapter is
-> inserted in a USB slot, and the driver isn't installed yet, then it might
-> take an extremely long time to boot. To avoid that, just remove the adapter
-> from the USB slot.
+Our AX1L and AX4L adapters have a [dual mode
+functionality](https://en.wikipedia.org/wiki/Virtual_CD-ROM_switching_utility).
+Before installing our drivers, they act like flash storage, which contains the
+Windows drivers in it. After the drivers are installed (in any OS), they switch
+to normal Wi-Fi adapter mode. USB adapters that support this dual functionality
+are called "multi-state", "ZeroCD" or "Virtual CD-ROM" devices.
 
-Our AX1L and AX4L adapters have a dual mode functionality. Before installing
-our drivers, they act like a flash storage, which contains the Windows drivers
-in it. After the drivers are installed (in any OS), they switch to normal Wi-Fi
-adapter mode.
+In Linux, multi-state devices may bump into two issues:
 
-USB devices that support this dual functionality are called "multi-state" or
-"ZeroCD", and the mode of operation can be toggled under Linux with the
-[usb_modeswitch command](https://manpages.debian.org/usb_modeswitch).
+## Adapter isn't switched to WLAN mode
 
-Unfortunately, in certain cases the Linux boot process might hang for a long
-time, while trying to detect that "flash storage". This doesn't happen in
-distributions that ship an updated /lib/udev/rules.d/40-usb_modeswitch.rules
-file. But in any case, after our driver gets installed the device is switched
-to Wi-Fi mode and the problem doesn't happen anymore. So if it happens for you,
-just unplug the device, and after the PC boots insert it in a USB slot and
-install our driver.
+Normally, the /lib/udev/rules.d/40-usb_modeswitch.rules file is responsible to
+call the [usb_modeswitch command](https://manpages.debian.org/usb_modeswitch)
+and switch the adapter to WLAN mode. To check if the adapter has been switched
+to WLAN mode, run:
 
-For more information, see the [usb_modeswitch man
-page](https://manpages.debian.org/usb_modeswitch) or the [Wikipedia Virtual
-CD-ROM page](https://en.wikipedia.org/wiki/Virtual_CD-ROM_switching_utility).
+    lsusb | grep 0bda
+
+    # This output means it was properly switched to WLAN mode:
+    Bus 001 Device 009: ID 0bda:b832 Realtek Semiconductor Corp. 802.11ac WLAN Adapter
+
+    # While this output means it was NOT switched to WLAN mode:
+    Bus 001 Device 003: ID 0bda:1a2b Realtek Semiconductor Corp. RTL8188GU 802.11n WLAN Adapter (Driver CDROM Mode)
+
+If you have an older distribution that doesn't switch the adapter to WLAN mode,
+you may use the following command to switch it manually:
+
+    sudo /usr/sbin/usb_modeswitch -KQ -v 0bda -p 1a2b
+
+## Boot delays
+
+In rare circumstances, it's possible that the Linux boot or shutdown process
+may delay for a long time while trying to access that "flash storage". To check
+if that's the case, remove the adapter from the USB slot and see if the delay
+is gone.
+
+Normally, installing our driver and using an up to date distribution should
+avoid this issue, but if it happens, the [following command line
+parameter](https://www.draisberghof.de/usb_modeswitch/bb/viewtopic.php?f=4&p=20283#p20078)
+can be [added in
+grub](https://askubuntu.com/questions/19486/how-do-i-add-a-kernel-boot-parameter)
+to completely ignore the flash storage mode:
+
+    usb-storage.quirks=0bda:1a2b:i
