@@ -10,6 +10,9 @@ For those reasons, it's impossible for us to provide a "driver DVD" with all the
 
 This is why we require an Internet connection at the time of installation; our install runs `sudo apt update` to get the list of the latest kernels available for your distribution, and then installs them, before installing our .deb package.
 
+> 💡 **Tip:** If you do not have wired Ethernet, the easiest way to get Internet connectivity is with [mobile phone WiFi-to-USB
+tethering](https://www.makeuseof.com/tag/how-to-tether-your-smartphone-in-linux/), which connects your PC to your Wi-Fi access point using your phone like a USB WLAN adapter.
+
 Very advanced users and in limited cases might be able to perform an offline installation, by following the instructions below.
 
 First, run the following command in the target computer, to get the list of dependencies:

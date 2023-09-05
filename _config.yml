@@ -1,7 +1,7 @@
 # See: https://github.com/pmarsceill/just-the-docs/blob/master/_config.yml
 title: linux.brostrend.com
 description: BrosTrend WiFi Adapters Linux Support
-remote_theme: pmarsceill/just-the-docs
+remote_theme: just-the-docs/just-the-docs@v0.3.3
 
 url: "https://linux.brostrend.com" # the base hostname & protocol for your site, e.g. http://example.com
 

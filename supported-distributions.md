@@ -20,7 +20,7 @@ column is:
 | Distribution | Version | Headers package | Remarks |
 |---|---|---|---|
 | [All official Ubuntu flavors](https://wiki.ubuntu.com/UbuntuFlavors) | [16.04 - 23.04](https://ubuntu.com/download) | linux-headers-* | apt |
-| [All official Debian blends](https://www.debian.org/blends) | [8 - 11](https://www.debian.org/distrib) | linux-headers-* | apt |
+| [All official Debian blends](https://www.debian.org/blends) | [8 - 12](https://www.debian.org/distrib) | linux-headers-* | apt |
 | [ALT Linux](http://en.altlinux.org) | [9.1](https://mirror.yandex.ru/altlinux/p9/images/server/x86_64/alt-server-9.1-x86_64.iso) | kernel-header-modules-std-def | apt-rpm |
 | [antiX Linux](https://antixlinux.com) | [19.3 386](http://ftp.ntua.gr/pub/linux/mxlinux-iso/ANTIX/Final/antiX-19/antiX-19.3_386-full.iso) | linux-headers-4.9.235-antix.1-486-smp | apt, see note 1 |
 | [Arch Linux](https://archlinux.org) | [rolling](https://archlinux.org/download) | linux-headers | pacman |

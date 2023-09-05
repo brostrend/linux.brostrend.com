@@ -145,7 +145,8 @@ download() {
     elif is_command curl; then
         re curl --insecure -O "$@"
     elif is_command busybox; then
-        re busybox --no-check-certificate wget -nv "$@"
+        # busybox wget supports --no-check-certificate since 20.04, no point
+        re busybox wget -nv "$@"
     else
         die "Please install wget or curl and then re-run the installer"
     fi
