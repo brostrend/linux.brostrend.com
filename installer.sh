@@ -68,6 +68,8 @@ busybox_fallbacks() {
 #         RTL8188GU 802.11n WLAN Adapter (Driver CDROM Mode)
 # AX1L:   Bus 003 Device 027: ID 0bda:b832 Realtek Semiconductor Corp.
 #         802.11ac WLAN Adapter
+# AICst:  Bus 001 Device 015: ID a69c:5721 aicsemi Aic MSC
+# AIC:    Bus 001 Device 016: ID 368b:88df AICSemi AIC8800DC
 detect_adapter() {
     local fname product choice
 
@@ -95,6 +97,14 @@ detect_adapter() {
                 rw usb_modeswitch -KQ -v 0bda -p 1a2b &
                 ;;
             0bda:b832) _CHIP=8852bu ;;
+            # aic8800fdrvpackage, aic8800_fdrv, aic_load_fw
+            a69c:5721)
+                _CHIP=aic8800
+                bold "Switching the adapter from storage to WLAN mode"
+                # Background it as it can take up to 30 seconds in a VM
+                rw usb_modeswitch -KQ -v a69c -p 5721 &
+                ;;
+            368b:88df) _CHIP=aic8800 ;;
             esac
         done
         test -n "$_CHIP" && return 0

@@ -33,6 +33,14 @@ you may use the following command to switch it manually:
 
     sudo /usr/sbin/usb_modeswitch -KQ -v 0bda -p 1a2b
 
+If you verified that this command works, but you need to execute it manually
+after every boot, then run the following commands to automate it:
+
+    sudo -i
+    echo 'echo ACTION=="add", ATTR{idVendor}=="0bda", ATTR{idProduct}=="1a2b", RUN+="/usr/sbin/usb_modeswitch -KQ -v 0bda -p 1a2b"' >/etc/udev/rules.d/50-custom.rules
+    update-initramfs -u
+    reboot
+
 ## Boot delays
 
 In rare circumstances, it's possible that the Linux boot or shutdown process
