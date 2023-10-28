@@ -4,7 +4,7 @@ nav_exclude: true
 
 # USB mode switching
 
-Our AX1L and AX4L adapters have a [dual mode
+Our AX1L, AX4L and AX5L adapters have a [dual mode
 functionality](https://en.wikipedia.org/wiki/Virtual_CD-ROM_switching_utility).
 Before installing our drivers, they act like flash storage, which contains the
 Windows drivers in it. After the drivers are installed (in any OS), they switch

@@ -15,9 +15,9 @@ following command:
 
     sudo apt purge rtl88x2bu-dkms
 
-## AC5L, AX1L and AX4L
+## AC5L, AX1L, AX4L and AX5L
 
-Our AC5L, AX1L and AX4L adapters do not work out of the box in Orange Pi
+Our AC5L, AX1L, AX4L and AX5L adapters do not work out of the box in Orange Pi
 devices using their customized Linux kernel. To compile our driver, you first
 need to manually download and install the Orange Pi kernel headers.
 Unfortunately they only offer them in a Google drive folder, not in an apt

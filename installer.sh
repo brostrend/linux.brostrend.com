@@ -5,7 +5,7 @@
 usage() {
     printf "Usage: %s [OPTIONS] [COMMAND]
 
-Install the drivers for the BrosTrend AC1L/AC3L/AC5L/AX1L/AX4L adapters.
+Install the drivers for the BrosTrend AC1L/AC3L/AC5L, AX1L/AX4L/AX5L adapters.
 The main difficulty is in detecting the appropriate kernel *headers* package.
 
 Options:
@@ -57,73 +57,60 @@ busybox_fallbacks() {
     done
 }
 
-# Sets $_CHIP, based on the script filename, or the inserted adapter,
-# or the user input.
-# lsusb output:
-# AC1Lv1: Bus 003 Device 008: ID 0bda:8812 Realtek Semiconductor Corp.
-#         RTL8812AU 802.11a/b/g/n/ac WLAN Adapter
-# AC3Lv2: Bus 003 Device 007: ID 0bda:b812 Realtek Semiconductor Corp.
-# AC5L:   Bus 003 Device 027: ID 0bda:c811 Realtek Semiconductor Corp.
-# AX1Lst: Bus 003 Device 027: ID 0bda:1a2b Realtek Semiconductor Corp.
-#         RTL8188GU 802.11n WLAN Adapter (Driver CDROM Mode)
-# AX1L:   Bus 003 Device 027: ID 0bda:b832 Realtek Semiconductor Corp.
-#         802.11ac WLAN Adapter
-# AICst:  Bus 001 Device 015: ID a69c:5721 aicsemi Aic MSC
-# AIC:    Bus 001 Device 016: ID 368b:88df AICSemi AIC8800DC
-detect_adapter() {
-    local fname product choice
+# Set $_DRIVER, based on the script filename, or the inserted adapter,
+# or the user input. It may also be set in the environment.
+select_driver() {
+    local fname product _dummy choice
 
-    _CHIP=""
     fname=${0##*/}
     fname=${fname%.sh}
     case "$fname" in
-    8812au | 88x2bu | 8821cu | 8852bu)
-        _CHIP=$fname
-        return 0
-        ;;
+    8812au | 88x2bu | 8821cu | 8852bu) _DRIVER="rtl$fname" ;;
+    aic8800) _DRIVER=$fname ;;
     esac
-    while [ -z "$_CHIP" ]; do
-        # lsusb isn't available in e.g. buster-mate
-        for fname in /sys/bus/usb/devices/*/idVendor; do
-            product="$(cat "$fname"):$(cat "${fname%Vendor}Product")"
+    while [ -z "$_DRIVER" ]; do
+        while read -r product _dummy; do
             case "$product" in
-            0bda:8812) _CHIP=8812au ;;
-            0bda:b812) _CHIP=88x2bu ;;
-            0bda:c811) _CHIP=8821cu ;;
+            0bda:8812) _DRIVER=rtl8812au ;;
+            0bda:b812) _DRIVER=rtl88x2bu ;;
+            0bda:c811) _DRIVER=rtl8821cu ;;
             0bda:1a2b)
-                _CHIP=8852bu
+                _DRIVER=rtl8852bu
                 bold "Switching the adapter from storage to WLAN mode"
                 # Background it as it can take up to 30 seconds in a VM
                 rw usb_modeswitch -KQ -v 0bda -p 1a2b &
                 ;;
-            0bda:b832) _CHIP=8852bu ;;
-            # aic8800fdrvpackage, aic8800_fdrv, aic_load_fw
+            0bda:b832) _DRIVER=rtl8852bu ;;
             a69c:5721)
-                _CHIP=aic8800
+                _DRIVER=aic8800
                 bold "Switching the adapter from storage to WLAN mode"
                 # Background it as it can take up to 30 seconds in a VM
                 rw usb_modeswitch -KQ -v a69c -p 5721 &
                 ;;
-            368b:88df) _CHIP=aic8800 ;;
+            368b:88df) _DRIVER=aic8800 ;;
             esac
-        done
-        test -n "$_CHIP" && return 0
+        done <<EOF
+$(lsusb_)
+EOF
+        test -n "$_DRIVER" && break
         bold "Could not detect the adapter!"
-        echo "Please insert the BrosTrend WiFi adapter into a USB slot
+        echo "Please insert the BrosTrend Wi-Fi adapter into a USB slot
 and press [Enter] to continue.
 If you don't have the adapter currently, you may type:
   (a) to install the 8812au driver for the old AC1L/AC3L models before 2019, or
   (b) to install the 88x2bu driver for the new AC1L/AC3L version 2 models, or
   (c) to install the 8821cu driver for the AC5L model, or
   (d) to install the 8852bu driver for the AX1L/AX4L models, or
+  (e) to install the aic8800 driver for the AX5L model,
   (q) to quit without installing a driver"
         bold -n "Please type your choice, or [Enter] to autodetect: "
         read -r choice
         case "$choice" in
-        a) _CHIP=8812au ;;
-        b) _CHIP=88x2bu ;;
-        c) _CHIP=8821cu ;;
-        d) _CHIP=8852bu ;;
+        a) _DRIVER=rtl8812au ;;
+        b) _DRIVER=rtl88x2bu ;;
+        c) _DRIVER=rtl8821cu ;;
+        d) _DRIVER=rtl8852bu ;;
+        e) _DRIVER=aic8800 ;;
         q) die "Aborted" ;;
         esac
     done
@@ -210,20 +197,24 @@ install_debian_prerequisites() {
 }
 
 install_driver() {
-    local reinstall rtlversion ikd
+    local module reinstall ver ikd
 
-    bold "Downloading the driver"
+    case "$_DRIVER" in
+    rtl*) module=${_DRIVER#rtl} ;;
+    *) module=aic8800_fdrv ;;
+    esac
+    bold "Downloading the $_DRIVER driver"
     re cd "$(mktemp -d)"
     # Avoid the "Download is performed unsandboxed" apt warning
     re chmod 755 .
-    download "https://linux.brostrend.com/rtl$_CHIP-dkms.deb"
+    download "https://linux.brostrend.com/$_DRIVER-dkms.deb"
     bold "Installing and compiling the driver"
     case "$_PM" in
     apt-get)
         # Prefer apt, but fall back to dpkg if necessary
         if dpkg --compare-versions "$(dpkg-query -W apt | awk '{ print $2 }')" gt 1.2; then
             # Avoid "Internal Error, No filename for..." error on ^iF
-            if dpkg -l "rtl$_CHIP-dkms" | grep -q ^ii; then
+            if dpkg -l "$_DRIVER-dkms" | grep -q ^ii; then
                 reinstall=--reinstall
             else
                 unset reinstall
@@ -233,49 +224,49 @@ install_driver() {
             # Caution, linuxmint uses a wrapper that can run `apt install --yes`
             # but it doesn't understand `apt --yes install`. Meh.
             re apt install $reinstall --yes --no-install-recommends \
-                "./rtl$_CHIP-dkms.deb"
+                "./$_DRIVER-dkms.deb"
         else
             # The downside of using dpkg instead of apt is that dkms etc
             # will be marked as "manually installed".
             re apt-get install --yes --no-install-recommends \
                 bc dkms libc6-dev linux-libc-dev
-            re dpkg -i "./rtl$_CHIP-dkms.deb"
+            re dpkg -i "./$_DRIVER-dkms.deb"
         fi
         ;;
     *)
-        re ar x "rtl$_CHIP-dkms.deb"
+        re ar x "$_DRIVER-dkms.deb"
         re tar xf data.tar.gz
-        rtlversion=$(echo usr/src/rtl*)
-        rtlversion=${rtlversion##*-}
-        re rm -rf "/usr/src/rtl$_CHIP-$rtlversion"
-        re mv "usr/src/rtl$_CHIP-$rtlversion" /usr/src/
-        re cd "/usr/src/rtl$_CHIP-$rtlversion"
+        ver=$(echo usr/src/*-*)
+        ver=${ver##*-}
+        re rm -rf "/usr/src/$_DRIVER-$ver"
+        re mv "usr/src/$_DRIVER-$ver" /usr/src/
+        re cd "/usr/src/$_DRIVER-$ver"
         if is_command dkms; then
-            dkms remove -m "rtl$_CHIP" -v "$rtlversion" --all 2>/dev/null
-            re dkms add -m "rtl$_CHIP" -v "$rtlversion"
-            re dkms build -m "rtl$_CHIP" -v "$rtlversion"
-            re dkms install -m "rtl$_CHIP" -v "$rtlversion"
+            dkms remove -m "$_DRIVER" -v "$ver" --all 2>/dev/null
+            re dkms add -m "$_DRIVER" -v "$ver"
+            re dkms build -m "$_DRIVER" -v "$ver"
+            re dkms install -m "$_DRIVER" -v "$ver"
         else
             bold "Compiling without dkms..."
             re make
             re make install
         fi
-        # Install the conf files which blacklists the in-kernel drivers
-        if [ -L "/etc/modprobe.d/$_CHIP.conf" ]; then
-            rm -f "/etc/modprobe.d/$_CHIP.conf"
+        # Install the conf file which blacklists the in-kernel drivers
+        if [ -L "/etc/modprobe.d/$module.conf" ]; then
+            rm -f "/etc/modprobe.d/$module.conf"
         fi
-        link="/usr/src/rtl$_CHIP-$rtlversion/$_CHIP.conf"
+        link="/usr/src/$_DRIVER-$ver/$module.conf"
         if [ -f "$link" ] &&
             [ -d /etc/modprobe.d ] &&
-            [ ! -e "/etc/modprobe.d/$_CHIP.conf" ]; then
+            [ ! -e "/etc/modprobe.d/$_DRIVER.conf" ]; then
             re ln -s "$link" /etc/modprobe.d/
         fi
         ;;
     esac
     # Unload the competing in-kernel drivers
-    case "$_CHIP" in
-    88x2bu) ikd=rtw88_8822bu ;;
-    8821cu) ikd=rtw88_8821cu ;;
+    case "$_DRIVER" in
+    rtl88x2bu) ikd=rtw88_8822bu ;;
+    rtl8821cu) ikd=rtw88_8821cu ;;
     *) ikd= ;;
     esac
     if [ -n "$ikd" ] && [ -d "/sys/module/$ikd" ]; then
@@ -284,7 +275,7 @@ install_driver() {
             bold "Failed to unload the $ikd in-kernel driver, PLEASE REBOOT"
         fi
     fi
-    re modprobe "$_CHIP"
+    re modprobe "$module"
 }
 
 # Install missing packages from the ones specified
@@ -411,6 +402,44 @@ kver() {
         return $?
 }
 
+# Implement lsusb as it isn't preinstalled in some distributions
+# Return only the Brostrend devices
+# Typical lsusb descriptions (/var/lib/usbutils/usb.ids):
+# AC1,3Lv1: Bus 003 Device 008: ID 0bda:8812 Realtek Semiconductor Corp.
+#           RTL8812AU 802.11a/b/g/n/ac 2T2R DB WLAN Adapter
+# AC1,3Lv2: Bus 003 Device 007: ID 0bda:b812 Realtek Semiconductor Corp.
+#           RTL88x2bu [AC1200 Techkey]
+# AC5L:     Bus 003 Device 027: ID 0bda:c811 Realtek Semiconductor Corp.
+#           802.11ac NIC
+# AX1Lst:   Bus 003 Device 027: ID 0bda:1a2b Realtek Semiconductor Corp.
+#           RTL8188GU 802.11n WLAN Adapter (Driver CDROM Mode)
+# AX1,4L:   Bus 003 Device 027: ID 0bda:b832 Realtek Semiconductor Corp.
+#           802.11ac WLAN Adapter
+# AX5Lst:   Bus 001 Device 015: ID a69c:5721 aicsemi Aic MSC
+# AX5L:     Bus 001 Device 016: ID 368b:88df AICSemi AIC8800DC
+# The manufacturer:product description is too bare. Just use our own.
+lsusb_() {
+    local fname fdir usbid msg
+
+    for fname in /sys/bus/usb/devices/*/idVendor; do
+        fdir=${fname%/*}
+        usbid="$(cat "$fname"):$(cat "$fdir/idProduct")"
+        # Return only our own devices
+        case "$usbid" in
+        0bda:8812) msg="Brostrend AC1Lv1/AC3Lv1 Wi-Fi adapter" ;;
+        0bda:b812) msg="Brostrend AC1L/AC3L Wi-Fi adapter" ;;
+        0bda:c811) msg="Brostrend AC5L Wi-Fi adapter" ;;
+        0bda:1a2b) msg="Brostrend AX1L/AX4L Wi-Fi adapter (storage mode)" ;;
+        0bda:b832) msg="Brostrend AX1L/AX4L Wi-Fi adapter" ;;
+        a69c:5721) msg="Brostrend AX5L Wi-Fi adapter (storage mode)" ;;
+        368b:88df) msg="Brostrend AX5L Wi-Fi adapter" ;;
+        *) continue ;;
+        esac
+        # TODO: try to detect if it's a USB2 or USB3 port
+        echo "$usbid $msg"
+    done
+}
+
 pause_exit() {
     local _dummy
 
@@ -478,8 +507,9 @@ rt() {
     if [ "$eflag" = 1 ]; then
         # Use eval, e.g. for `command 1 | command 2`
         eval "$*" || return $?
+    else
+        "$@" || return $?
     fi
-    "$@" || return $?
 }
 
 troubleshoot() {
@@ -487,12 +517,13 @@ troubleshoot() {
     rt uname -a
     rt grep PRETTY /etc/os-release
     rt -i dpkg --print-architecture
-    rt -i -e "lsusb | grep -E '(0bda|a69c|368b):'"
-    rt -f -e "lsmod | grep \\b88" || rt -e "ls /sys/module/ | grep \\b88"
+    rt lsusb_
+    rt -f -e lsmod "| grep -wE '88...u|aic8800.*'" ||
+        rt -e ls "/sys/module/ | grep -wE '88...u|aic8800.*'"
     rt -i -e rfkill list
     rt -i -e mokutil --sb-state
     rt -f dkms status || rt -i apt policy dkms
-    rt -i -e "dpkg -l '*-dkms' | grep ^ii"
+    rt -i -e dpkg "-l '*-dkms' | grep ^ii"
     rt ip a
     rt ls -d /lib/modules/*/build /usr/src/linux-headers-*
     rt -f dpkg -S /boot /lib/modules /usr/src/ ||
@@ -571,7 +602,7 @@ If you want to view it, run:
 Please attach that file in an email to:
     support@brostrend.com"
     fi
-    detect_adapter
+    select_driver
     detect_package_manager
     install_prerequisites
     install_driver
