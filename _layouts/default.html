@@ -56,8 +56,8 @@ layout: table_wrappers
           {% assign collection_value = collection_entry[1] %}
           {% assign collection = site[collection_key] %}
           {% if collection_value.nav_exclude != true %}
+          <div class="nav-category">{{ collection_value.name }}</div>
             {% if collections_size > 1 %}
-              <div class="nav-category">{{ collection_value.name }}</div>
             {% endif %}
             {% include nav.html pages=collection %}
           {% endif %}
@@ -74,7 +74,7 @@ layout: table_wrappers
           <li class="nav-list-item"><a href="https://www.brostrend.com/products/ax1l" class="nav-list-link">AX1L model</a></li>
           <li class="nav-list-item"><a href="https://www.brostrend.com/products/ax4l" class="nav-list-link">AX4L model</a></li>
           <li class="nav-list-item"><a href="https://www.brostrend.com/products/ax5l" class="nav-list-link">AX5L model</a></li>
-          <li class="nav-list-item"><a href="p1l" class="nav-list-link">P1L model</a></li>
+          <li class="nav-list-item"><a href="/p1l" class="nav-list-link">P1L model</a></li>
         </ul>
       </nav>
     </nav>

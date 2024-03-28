@@ -50,7 +50,7 @@ is gone.
 
 Normally, installing our driver and using an up to date distribution should
 avoid this issue, but if it happens, the [following command line
-parameter](https://www.draisberghof.de/usb_modeswitch/bb/viewtopic.php?f=4&p=20283#p20078)
+parameter](https://www.draisberghof.de/usb_modeswitch/bb/viewtopic.php?f=4&t=3055&p=20078#p20078)
 can be [added in
 grub](https://askubuntu.com/questions/19486/how-do-i-add-a-kernel-boot-parameter)
 to completely ignore the flash storage mode:
