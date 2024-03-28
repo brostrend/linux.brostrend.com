@@ -243,7 +243,7 @@ install_driver() {
         re cd "/usr/src/$_DRIVER-$ver"
         if is_command dkms; then
             dkms remove -m "$_DRIVER" -v "$ver" --all 2>/dev/null
-            re dkms add -m "$_DRIVER" -v "$ver"
+            rw dkms add -m "$_DRIVER" -v "$ver"
             re dkms build -m "$_DRIVER" -v "$ver"
             re dkms install -m "$_DRIVER" -v "$ver"
         else
