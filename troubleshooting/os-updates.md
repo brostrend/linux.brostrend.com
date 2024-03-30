@@ -6,9 +6,12 @@ parent: Troubleshooting
 
 In some cases your operating system updates might not be properly installed and may cause our installer to fail. For example, if your running kernel has no matching kernel headers, you may receive an error like the following:
 
-> modprobe: FATAL: Module 88x2bu not found in directory /lib/modules/5.15.30
+> modprobe: FATAL: Module 88x2bu not found in directory /lib/modules/6.8.0-20
 
-To resolve this and other related issues, please fully update and reboot your system. The following command line instructions are for Ubuntu and Debian based systems; for other distributions, please use graphical tools or similar commands (`dnf upgrade`, `zypper update`, `pacman -Syu`):
+To resolve this and other related issues, please fully **update** and
+**reboot** your system. The following command line instructions are for Ubuntu
+and Debian based systems; for other distributions, please use graphical tools
+or similar commands (`dnf upgrade`, `zypper update`, `pacman -Syu`):
 
 ```shell
 sudo apt update

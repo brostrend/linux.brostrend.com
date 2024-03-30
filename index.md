@@ -15,10 +15,11 @@ of the [supported distributions](supported-distributions). All the drivers and
 the installer are open source (GPL); you may get the code from
 [here](troubleshooting/source-code).
 
-> 💡 **Tip:** Linux kernels (>= 6.2) include their own drivers for our
-> AC1L/AC3L/AC5L adapters, so they work out of the box in recent distributions.
-> But these drivers aren't yet as mature as ours, so if you encounter any
-> issues, use our installer to replace them.
+> 💡 **Tip:** Linux kernels (>= 6.2) include [their own
+> drivers](supported-distributions/#in-kernel-drivers) for our AC1L/AC3L/AC5L
+> adapters, so they work out of the box in recent distributions. But these
+> drivers aren't yet as mature as ours, so if you encounter any issues, use our
+> installer to replace them.
 
 ## Installation steps
 
@@ -26,7 +27,7 @@ the installer are open source (GPL); you may get the code from
 installation**, so as to be able to download the driver and its dependencies
 (dkms, linux-headers...). That means that you might have to use a wired
 connection (LAN cable) or [mobile phone wifi-to-usb
-tethering](https://www.makeuseof.com/tag/how-to-tether-your-smartphone-in-linux/).
+tethering](https://www.makeuseof.com/tag/how-to-tether-your-smartphone-in-linux).
 
 2. We recommend to [update and reboot your system](troubleshooting/os-updates)
 before running our installer, to avoid some common issues like mismatched

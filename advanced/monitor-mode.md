@@ -77,4 +77,9 @@ sudo airodump-ng wlan0
  3C:84:6A:05:BE:BC  -70        3      0    0   6  130   WPA2 CCMP   PSK  VODA
 ```
 
-Please note though that we have no further documentation nor experience on using the [aircrack-ng suite](https://www.aircrack-ng.org), so users should consult the upstream documentation for it.
+Please note though that we have no further documentation nor experience on
+using the [aircrack-ng suite](https://www.aircrack-ng.org), so users should
+consult the upstream documentation for it. Additionally, our adapters do not
+support [interface combinations](https://miloserdov.org/?p=6227#2), so if you
+see any tutorials using commands like `sudo iw INTERFACE interface add
+NEW_INTERFACE type monitor`, they won't work with our adapters.

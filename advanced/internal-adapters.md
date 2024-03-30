@@ -38,7 +38,7 @@ Run `nm-connection-editor` in a terminal in order to display the wifi connection
 
 To disable your internal adapter by blacklisting its module (driver), open a terminal and follow the procedure below. Note that for Raspberry Pi devices, [this procedure](https://raspberrypi.stackexchange.com/questions/43720/disable-wifi-wlan0-on-pi-3?answertab=active#tab-top) is recommended instead.
 
-The following command shows the names of the modules (drivers) for your wifi adapters. The module for our adapters is named 8812au, 88x2bu or 8821cu. The module for Intel adapters is named "iwlwifi". For Atheros it's "ath9k", etc.
+The following command shows the names of the modules (drivers) for your wifi adapters. The module for our adapters is named `8812au`, `88x2bu`, `8821cu`, `8852bu` or `aic8800_fdrv`. The module for Intel adapters is named `iwlwifi`, for Atheros it's `ath9k`, etc.
 
 ```shell
 ls -d /sys/module/cfg80211/holders/*/drivers | cut -d/ -f6
@@ -49,7 +49,7 @@ iwlwifi
 
 In the following commands, replace "iwlwifi" with the module that you want to blacklist:
 
-```
+```shell
 sudo -i
 echo "blacklist iwlwifi" > /etc/modprobe.d/local.conf
 update-initramfs -u
