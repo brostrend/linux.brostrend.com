@@ -579,7 +579,7 @@ main() {
         bold "Root access is required"
         # Prefer sudo when available, to avoid pkexec-over-ssh issues:
         # https://gitlab.freedesktop.org/polkit/polkit/-/issues/17
-        if groups | grep -qw sudo && is_command sudo; then
+        if groups | grep -qwE 'sudo|wheel' && is_command sudo; then
             exec sudo "$scriptpath" ${_PAUSE_ON_EXIT:+-p} "$@"
         else
             # TODO: for some reason, a delay is needed here, otherwise pkexec might not appear!

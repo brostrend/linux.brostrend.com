@@ -1,18 +1,41 @@
-Package: rtl8812au-dkms
-Source: rtl8812au
-Version: 5.13.6-15b7
+Package: aic8800-dkms
+Source: aic8800
+Version: 1.0.3-0b1
 Architecture: all
 Maintainer: BrosTrend <support@brostrend.com>
-Installed-Size: 15077
+Installed-Size: 2222
+Depends: dkms (>= 2.1.0.0), linux-libc-dev, libc6-dev
+Homepage: https://linux.brostrend.com
+Priority: optional
+Section: kernel
+Filename: pool/previous/a/aic8800/aic8800-dkms_1.0.3-0b1_all.deb
+Size: 535400
+SHA256: 803203f01b75f64ba05afaf6ac572936df840e1c0e37b4312547c021d9abd9a1
+SHA1: 6c92e7fb8ad13d012f3c6a79e80c7d59ee57fb8f
+MD5sum: 7776c22e6c26bf113fbe05c5b9a1f290
+Description: dkms source for the aic8800 network driver
+ aic8800 is the Linux device driver released for the AIC 8800 WiFi
+ controllers with USB interface.
+ .
+ This package provides the dkms source code for the aic8800 kernel module.
+ Kernel source or headers are required to compile these modules.
+Modaliases: aic8800_fdrv(usb:v368Bp88DFd*dc*dsc*dp*ic*isc*ip*in*)
+
+Package: rtl8812au-dkms
+Source: rtl8812au
+Version: 5.13.6-15b8
+Architecture: all
+Maintainer: BrosTrend <support@brostrend.com>
+Installed-Size: 15078
 Depends: dkms (>= 2.1.0.0), bc, linux-libc-dev, libc6-dev
 Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
-Filename: pool/previous/r/rtl8812au/rtl8812au-dkms_5.13.6-15b7_all.deb
-Size: 2870334
-SHA256: 6d2406cde823603486125786465c0aee5ae9727810d4b6d85b86764783787793
-SHA1: 566c933f570cebb469fd7a7931ea27e44c04babb
-MD5sum: 8fecb9493e744673eb585f408fd7224b
+Filename: pool/previous/r/rtl8812au/rtl8812au-dkms_5.13.6-15b8_all.deb
+Size: 2870578
+SHA256: 8b25eb22fae65c6c65e1daaed15e4330c9a3f595d859d69c4c7765dce9af7e5a
+SHA1: e6224f64b54961ddda8b3f55da591476e1dd0445
+MD5sum: b36cfe562b5ff81a8f7272013e6853e4
 Description: dkms source for the r8812au network driver
  rtl8812au is the Linux device driver released for the RealTek RTL8812AU WiFi
  controllers with USB interface.
@@ -23,19 +46,19 @@ Modaliases: 8812au(usb:v056Ep4007d*dc*dsc*dp*ic*isc*ip*in*, usb:v0411p0242d*dc*d
 
 Package: rtl8821cu-dkms
 Source: rtl8821cu
-Version: 5.12.0-16b7
+Version: 5.12.0-16b8
 Architecture: all
 Maintainer: BrosTrend <support@brostrend.com>
-Installed-Size: 28002
+Installed-Size: 28004
 Depends: dkms (>= 2.1.0.0), bc, linux-libc-dev, libc6-dev
 Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
-Filename: pool/previous/r/rtl8821cu/rtl8821cu-dkms_5.12.0-16b7_all.deb
-Size: 4035102
-SHA256: 3b56e0ea7a348a9efe760ed1b2152a1a70a896a401a4021a0643475fa2532645
-SHA1: 7cbcb5d5c561976f94050de91192c0f6fa580805
-MD5sum: bef287979913048ed5f7c7e5c36673d3
+Filename: pool/previous/r/rtl8821cu/rtl8821cu-dkms_5.12.0-16b8_all.deb
+Size: 4035366
+SHA256: 47273a614b2880b0d35e9922f01cc97b35f73df045659377c044f126924b93db
+SHA1: 77e40588c6af03fbdda95add1558d559084a464b
+MD5sum: 10c326b2f1e66bf5bb86ecf75f0602f8
 Description: dkms source for the r8821cu network driver
  rtl8821cu is the Linux device driver released for the RealTek RTL8821CU WiFi
  controllers with USB interface.
@@ -46,19 +69,19 @@ Modaliases: 8821cu(usb:v0BDApbc811*dc*dsc*dp*ic*isc*ip*in*)
 
 Package: rtl8852bu-dkms
 Source: rtl8852bu
-Version: 1.19.3-45b2
+Version: 1.19.3-45b3
 Architecture: all
 Maintainer: BrosTrend <support@brostrend.com>
-Installed-Size: 39238
+Installed-Size: 39242
 Depends: dkms (>= 2.1.0.0), bc, linux-libc-dev, libc6-dev
 Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
-Filename: pool/previous/r/rtl8852bu/rtl8852bu-dkms_1.19.3-45b2_all.deb
-Size: 6169092
-SHA256: afc6b81509bb423263e99748f0f5586812d62f0de8eefb334de7be1de046343f
-SHA1: 2bf0d9f57a0a53e03bd163b19dab1b528619108f
-MD5sum: 6e0918277637a58f463d6050f1e45714
+Filename: pool/previous/r/rtl8852bu/rtl8852bu-dkms_1.19.3-45b3_all.deb
+Size: 6169856
+SHA256: 0696ffb734d718e024928774d98ef95f384c8e9f734addde54f98e28c02e3349
+SHA1: 7c488e06e0c873d7bebd288fa9d396315aeec5c9
+MD5sum: e7c9279e0a41e623504c0259a6b0c16f
 Description: dkms source for the r8852bu network driver
  rtl8852bu is the Linux device driver released for the RealTek RTL8852BU WiFi
  controllers with USB interface.
@@ -69,19 +92,19 @@ Modaliases: 8852bu(usb:v0BDApb832d*dc*dsc*dp*ic*isc*ip*in*)
 
 Package: rtl88x2bu-dkms
 Source: rtl88x2bu
-Version: 5.13.1-20b7
+Version: 5.13.1-20b8
 Architecture: all
 Maintainer: BrosTrend <support@brostrend.com>
-Installed-Size: 28201
+Installed-Size: 28202
 Depends: dkms (>= 2.1.0.0), bc, linux-libc-dev, libc6-dev
 Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
-Filename: pool/previous/r/rtl88x2bu/rtl88x2bu-dkms_5.13.1-20b7_all.deb
-Size: 4128210
-SHA256: c0c9fc3ff3c668e37af2bf0a8fa91407dc197e03642a947e7f359393f2d0bebc
-SHA1: 5ef3a627c77c0d399dd7618ff56dd643e5a06c57
-MD5sum: 24c76e09649755cb87989c54a10d27fc
+Filename: pool/previous/r/rtl88x2bu/rtl88x2bu-dkms_5.13.1-20b8_all.deb
+Size: 4128492
+SHA256: 90dddaff632ee26e12df830f427f9c7bafe671f963353545664774e4e64e4a23
+SHA1: ba869742dd6a36f9c7b715c1d414414a71792e80
+MD5sum: 83f3271e96d325255c3e3b39bc40696b
 Description: dkms source for the r88x2bu network driver
  rtl88x2bu is the Linux device driver released for the RealTek RTL88x2BU WiFi
  controllers with USB interface.
