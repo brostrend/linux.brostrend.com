@@ -170,8 +170,9 @@ install_debian_prerequisites() {
     # We can't use `dpkg -S .../modules.builtin` as -hwe are metapackages.
     # So we use `dpkg -l linux-image-[^.][^.][^.]*` to avoid linux-image-5.11
     # but include linux-image-hwe-18.04.
+    # The [hi] part is for held kernel packages, e.g. moodleaudio.org
     for kernel in $(dpkg -l 'linux-image[^.][^.][^.]*' 'pve-kernel*[^a-z]' raspberrypi-kernel 2>/dev/null |
-        awk '/^ii/ { print $2 }'); do
+        awk '/^[hi]i/ { print $2 }'); do
         case "$kernel" in
         pve-kernel*)
             header=pve-headers

@@ -32,7 +32,7 @@ storage mode:
 | AC5L | Bus 003 Device 005: ID **0bda:c811** Realtek Semiconductor Corp. |
 | AX1L or AX4L **WLAN** mode | Bus 003 Device 005: ID **0bda:b832** Realtek Semiconductor Corp. |
 | AX1L or AX4L **storage** mode | Bus 003 Device 005: ID **0bda:1a2b** Realtek Semiconductor Corp. |
-| AX5L **WLAN** mode | Bus 003 Device 005: ID 0bda:**368b:88df** AICSemi AIC8800DC |
+| AX5L **WLAN** mode | Bus 003 Device 005: ID **368b:88df** AICSemi AIC8800DC |
 | AX5L **storage** mode | Bus 003 Device 005: ID **a69c:5721** aicsemi Aic MSC |
 
 If you have an older distribution that doesn't switch the adapter to WLAN mode,
