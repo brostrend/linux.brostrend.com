@@ -171,10 +171,14 @@ install_debian_prerequisites() {
     # So we use `dpkg -l linux-image-[^.][^.][^.]*` to avoid linux-image-5.11
     # but include linux-image-hwe-18.04.
     # The [hi] part is for held kernel packages, e.g. moodleaudio.org
-    for kernel in $(dpkg -l 'linux-image[^.][^.][^.]*' 'pve-kernel*[^a-z]' raspberrypi-kernel 2>/dev/null |
+    for kernel in $(dpkg -l 'linux-image[^.][^.][^.]*' proxmox-default-kernel 'pve-kernel*[^a-z]' raspberrypi-kernel 2>/dev/null |
         awk '/^[hi]i/ { print $2 }'); do
         case "$kernel" in
+        proxmox-default-kernel)
+            header=proxmox-default-headers
+            ;;
         pve-kernel*)
+            # That's their older name
             header=pve-headers
             ;;
         raspberrypi-kernel)
