@@ -29,7 +29,7 @@ If you disable secure boot, you don't need to read the rest of this document.
 
 When you run our installer, and your Linux distribution detects that the user tries to install a third-party driver while secure boot is enabled, it shows a series of dialogs. You're supposed to go through them, enter a "signing key password", and then reboot and enter that password once more while the computer boots! It is a bit complicated, that's why we suggest the "Disable secure boot" method instead. If you saw the following dialogs but you closed them by mistake, run our installer again so that they show up once more.
 
-This is the initial dialog that documents secure boot. Press the Enter key to continue:
+This is the initial dialog that documents secure boot. The mouse doesn't work in the terminal, so press the **`Tab`** key to focus the **`<Ok>`** button and **`Enter`** to continue:
 
 <div style="background-color: #d3d7cf; color: #333333; font-size: 0.85em;
 display: inline-block; padding: 0.5em; border-radius: 0.5em">
