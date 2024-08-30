@@ -10,7 +10,11 @@ While running our installer, the following error might show up:
 
 This isn't a issue with our installer; it will also appear if you try to install any other program. It means that at some point, package installation in your system was forcibly interrupted.
 
-One reason why this might have happened, is that Debian and Ubuntu usually have automatic updates enabled in the background, so users might reboot their PCs without realizing that they're interrupting an installation procedure. Another reason is on Raspberries; the Pi CPU, especially on Pi Zero, is extremely slow, so our installer might appear to hang, while it's actually compiling and it might need up to an hour to finish.
+Some of the reasons why this might have happened are:
+
+- Debian and Ubuntu have [unattended upgrades](https://manpages.ubuntu.com/unattended-upgrade) enabled in the background by default, so users might reboot their PCs without realizing that they're interrupting an installation procedure.
+- Some users interrupt the [secure boot configuration dialogs](../secure-boot/) by mistake.
+- Older Raspberry Pi CPUs are extremely slow and may need up to an hour to compile our driver, instead of a few seconds; some users think it's hanged and interrupt the compilation.
 
 To fix the broken system, just do what the message says. Open a terminal, and run:
 
@@ -18,4 +22,4 @@ To fix the broken system, just do what the message says. Open a terminal, and ru
 sudo dpkg --configure  -a
 ```
 
-Wait until it finishes, no matter how long it takes. Then rerun our installer, it should then work fine.
+Wait until it finishes, no matter how long it takes. **If you see any errors**, please forward the whole terminal output to us. If there were no errors, just rerun our installer, it should then work fine.
