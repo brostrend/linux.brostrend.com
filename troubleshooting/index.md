@@ -6,27 +6,30 @@ has_toc: false
 
 # Troubleshooting
 
-If you encounter problems with the driver installation, the best thing to do is to follow [installation step 7](/#installation-steps) and send us all the installer output and the generated /tmp/troubleshooting.txt file.
-Also, some common issues are documented under the Troubleshooting menu to the left of this site, do have a quick look in case yours is one of them.
+The most common issues that customers report with our adapters are shown in the
+list below. If the problem was reported by our installer, try to match the last
+lines in the terminal output with the examples below, to get directed to the
+respective page. If none of them matches your issue, please collect and send us
+the [troubleshooting information](collect-logs.md).
 
-If these didn't solve the problem, please do the following steps:
+> 💡 **Note:** in your terminal output, the module name (e.g. 88x2bu) or kernel
+> version (e.g. 6.8.0-47-generic) might be different than in the examples.
 
-1. Open a terminal and copy-paste **one** of the following commands to download our troubleshooting script:
+**For this sample output, see the [Secure boot](secure-boot.md) page:**
 
-    ```shell
-    wget linux.brostrend.com/install -O ~/troubleshooting.sh
-    busybox wget linux.brostrend.com/install -O ~/troubleshooting.sh
-    curl linux.brostrend.com/install -Lo ~/troubleshooting.sh
-    ```
+    modprobe: ERROR: could not insert '88x2bu': Key was rejected by service
+    Aborting, command failed: modprobe 88x2bu
 
-2. Reboot your system to clear the system logs.
+**For this sample output, see the [OS updates](os-updates.md) page:**
 
-3. Reproduce the problem again.
+    modprobe: FATAL: Module 88x2bu not found in directory /lib/modules/6.8.0-47-generic
+    Aborting, command failed: modprobe 88x2bu
 
-4. At that point, open a terminal and run our troubleshooting script that you have previously downloaded:
+**For this sample output, see the [Interrupted dpkg](interrupted-dpkg.md) page:**
 
-    ```shell
-    sh ~/troubleshooting.sh -t
-    ```
+    E: dpkg was interrupted, you must manually run ‘sudo dpkg –configure -a’ to correct the problem.
 
-5. This will generate a file named /tmp/troubleshooting.txt in your hard disk. Please attach it in an [email to us](mailto:support@brostrend.com), while describing the problem.
+**For this sample output, see the [Unattended upgrades](unattended-upgrades.md) page:**
+
+    E: Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporarily unavailable)
+    E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
