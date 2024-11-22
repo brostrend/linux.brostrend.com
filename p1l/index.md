@@ -40,14 +40,14 @@ Debian Buster normally comes with the 4.19 kernel. To install the 5.10 kernel, r
 
 It's also possible to manually compile the driver in older distributions where
 it doesn't work out of the box. Either go to the [Realtek driver
-page](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software)
-and [download the driver source
-code](https://www.realtek.com/en/directly-download?downloadid=8a2ffcae711e2dfb96e6f33843bbdc08),
+page](https://www.realtek.com/Download/List?cate_id=584) and [download the
+driver source
+code](https://www.realtek.com/Download/ToDownload?type=direct&downloadid=3763),
 or just run the following commands:
 
-    wget linux.brosrend.com/t1l/r8125-9.011.00.tar.bz2
-    tar xf r8125-9.011.00.tar.bz2
-    cd r8125-9.011.00
+    wget linux.brosrend.com/t1l/r8125-9.014.01.tar.bz2
+    tar xf r8125-9.014.01.tar.bz2
+    cd r8125-9.014.01
     sudo make
     sudo make install
     sudo depmod
