@@ -19,54 +19,65 @@ have backported the necessary r8169 driver:
 - OpenSUSE Leap 15.3 with kernel 5.3.18-150300.59.106
 - RHEL 8.3 with kernel 4.18.0-240.22.1.el8_3.x86_64
 
+> 💡 **Tip:** To see if your distribution supports this adapter out of the box,
+> run the following command; if the output is non-empty, it supports it:
+>
+> ```console
+> # grep 8125 /lib/modules/*/modules.alias
+> /lib/modules/5.15.0-69-generic/modules.alias:alias pci:v000010ECd00008125sv*sd*bc*sc*i* r8169
+> /lib/modules/5.19.0-38-generic/modules.alias:alias pci:v000010ECd00008125sv*sd*bc*sc*i* r8169
+> ...
+> ```
+
 The following paragraphs describe how to install a newer kernel in some older
 distributions that do not have a 5.9+ kernel.
 
-## Ubuntu Focal 20.04
+## Ubuntu 20.04 Focal Fossa
 
-Ubuntu Focal 20.04 may have either the 5.4 kernel, or the 5.15 kernel,
+Ubuntu 20.04 Focal Fossa may have either the 5.4 kernel, or the 5.15 kernel,
 depending on which installation media you used. To install the 5.15 kernel, run
 the following command and reboot:
 
-    sudo apt install linux-generic-hwe-20.04
+```shell
+sudo apt install linux-generic-hwe-20.04
+```
 
-## Debian Buster 10
+## Debian 10 Buster
 
 Debian Buster normally comes with the 4.19 kernel. To install the 5.10 kernel, run the following command and reboot:
 
-    sudo apt install linux-image-5.10-$(dpkg --print-architecture)
+```shell
+sudo apt install linux-image-5.10-$(dpkg --print-architecture)
+```
 
 ## Source compilation
 
 It's also possible to manually compile the driver in older distributions where
-it doesn't work out of the box. Either go to the [Realtek driver
+it doesn't work out of the box. Start by installing the `dkms` package, or at
+least gcc, make and the kernel headers. Then either go to the [Realtek driver
 page](https://www.realtek.com/Download/List?cate_id=584) and [download the
 driver source
 code](https://www.realtek.com/Download/ToDownload?type=direct&downloadid=3763),
 or just run the following commands:
 
-    wget linux.brosrend.com/t1l/r8125-9.014.01.tar.bz2
-    tar xf r8125-9.014.01.tar.bz2
-    cd r8125-9.014.01
-    sudo make
-    sudo make install
-    sudo depmod
-    sudo modprobe r8125
+```shell
+wget linux.brostrend.com/p1l/r8125-9.014.01.tar.bz2
+tar xf r8125-9.014.01.tar.bz2
+cd r8125-9.014.01
+sudo make
+sudo make install
+sudo depmod
+sudo modprobe r8125
+```
 
 ## Technical information
 
 The PCI ID and the driver in use can be shown using the following command:
 
-    # lspci -nn -k | grep -A 3 Ethernet
-    05:00.0 Ethernet controller [0200]: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller [10ec:8125] (rev 04)
-        Subsystem: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller [10ec:8125]
-        Kernel driver in use: r8169
-        Kernel modules: r8169
-
-To see if your distribution supports this adapter out of the box, run the
-following command; if the output is non-empty, it supports it:
-
-    # grep 8125 /lib/modules/*/modules.alias
-    /lib/modules/5.15.0-69-generic/modules.alias:alias pci:v000010ECd00008125sv*sd*bc*sc*i* r8169
-    /lib/modules/5.19.0-38-generic/modules.alias:alias pci:v000010ECd00008125sv*sd*bc*sc*i* r8169
-    ...
+```shell
+# lspci -nn -k | grep -A 3 Ethernet
+05:00.0 Ethernet controller [0200]: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller [10ec:8125] (rev 04)
+    Subsystem: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller [10ec:8125]
+    Kernel driver in use: r8169
+    Kernel modules: r8169
+```
