@@ -153,24 +153,17 @@ install_debian_prerequisites() {
     local kernel header headers
 
     rw apt-get update
+
+    if uname -r | grep -q "tegra"; then
+        bold "Jetson Tegra kernel detected, explicitly installing nvidia-l4t-kernel-headers"
+        re apt-get install --yes nvidia-l4t-kernel-headers
+        return 0
+    fi
+
     # If the appropriate headers are already installed, return
     test -d "/lib/modules/$(uname -r)/build" && return 0
 
-    # Possible image metapackage names:
-    # Ubuntu: https://packages.ubuntu.com/source/focal/linux-meta
-    # E.g. linux-image-generic, linux-image-lowlatency-hwe-18.04
-    # Debian: https://packages.debian.org/source/buster/linux-latest
-    # E.g. linux-image-686, linux-image-amd64, linux-image-armmp
-    # Proxmox: pve-kernel-5.4, pve-kernel5.15, pve-headers
-    # Raspberry Pi OS: raspberrypi-kernel
-    # OSMC: rbp2-kernel-osmc, rbp2-image-4.19.55-6-osmc, rbp2-headers-4.19.55-6-osmc
-    # ODROID-XU4: linux-odroid-5422 (Bionic, 4.14.165-172, armv7l, includes headers)
-
     headers=""
-    # We can't use `dpkg -S .../modules.builtin` as -hwe are metapackages.
-    # So we use `dpkg -l linux-image-[^.][^.][^.]*` to avoid linux-image-5.11
-    # but include linux-image-hwe-18.04.
-    # The [hi] part is for held kernel packages, e.g. moodleaudio.org
     for kernel in $(dpkg -l 'linux-image[^.][^.][^.]*' proxmox-default-kernel 'pve-kernel*[^a-z]' raspberrypi-kernel 2>/dev/null |
         awk '/^[hi]i/ { print $2 }'); do
         case "$kernel" in
@@ -178,7 +171,6 @@ install_debian_prerequisites() {
             header=proxmox-default-headers
             ;;
         pve-kernel*)
-            # That's their older name
             header=pve-headers
             ;;
         raspberrypi-kernel)
@@ -200,6 +192,7 @@ install_debian_prerequisites() {
             dpkg -S "/lib/modules/$(uname -r)"
     fi
 }
+
 
 install_driver() {
     local module reinstall ver ikd
