@@ -171,19 +171,23 @@ install_debian_prerequisites() {
     # E.g. linux-image-generic, linux-image-lowlatency-hwe-18.04
     # Debian: https://packages.debian.org/source/buster/linux-latest
     # E.g. linux-image-686, linux-image-amd64, linux-image-armmp
+    # Nvidia Jetson: nvidia-l4t-kernel, nvidia-l4t-kernel-headers
+    # ODROID-XU4: linux-odroid-5422 (Bionic, 4.14.165-172, armv7l, includes headers)
+    # OSMC: rbp2-kernel-osmc, rbp2-image-4.19.55-6-osmc, rbp2-headers-4.19.55-6-osmc
     # Proxmox: pve-kernel-5.4, pve-kernel5.15, pve-headers
     # Raspberry Pi OS: raspberrypi-kernel
-    # OSMC: rbp2-kernel-osmc, rbp2-image-4.19.55-6-osmc, rbp2-headers-4.19.55-6-osmc
-    # ODROID-XU4: linux-odroid-5422 (Bionic, 4.14.165-172, armv7l, includes headers)
 
     headers=""
     # We can't use `dpkg -S .../modules.builtin` as -hwe are metapackages.
     # So we use `dpkg -l linux-image-[^.][^.][^.]*` to avoid linux-image-5.11
     # but include linux-image-hwe-18.04.
     # The [hi] part is for held kernel packages, e.g. moodleaudio.org
-    for kernel in $(dpkg -l 'linux-image[^.][^.][^.]*' proxmox-default-kernel 'pve-kernel*[^a-z]' raspberrypi-kernel 2>/dev/null |
+    for kernel in $(dpkg -l 'linux-image[^.][^.][^.]*' nvidia-l4t-kernel proxmox-default-kernel 'pve-kernel*[^a-z]' raspberrypi-kernel 2>/dev/null |
         awk '/^[hi]i/ { print $2 }'); do
         case "$kernel" in
+        nvidia-l4t-kernel)
+            header=nvidia-l4t-kernel-headers
+            ;;
         proxmox-default-kernel)
             header=proxmox-default-headers
             ;;
