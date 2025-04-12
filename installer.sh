@@ -1,11 +1,11 @@
 #!/bin/sh
-# Copyright 2018-2024 Alkis Georgopoulos <github.com/alkisg>
+# Copyright 2018-2025 Alkis Georgopoulos <github.com/alkisg>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 usage() {
     printf "Usage: %s [OPTIONS] [COMMAND]
 
-Install the drivers for the BrosTrend AC1L/AC3L/AC5L, AX1L/AX4L/AX5L adapters.
+Install the drivers for the BrosTrend AC1L/AC3L/AC5L, AX1L/AX4L/AX5L/AX7L/AX8L adapters.
 The main difficulty is in detecting the appropriate kernel *headers* package.
 
 Options:
@@ -65,8 +65,8 @@ select_driver() {
     fname=${0##*/}
     fname=${fname%.sh}
     case "$fname" in
-    8812au | 88x2bu | 8821cu | 8852bu) _DRIVER="rtl$fname" ;;
-    aic8800) _DRIVER=$fname ;;
+    8812au | 88x2bu | 8821cu | 8852bu | 8852cu) _DRIVER="rtl$fname" ;;
+    aic8800 | TODO-ax7l) _DRIVER=$fname ;;
     esac
     while [ -z "$_DRIVER" ]; do
         while read -r product _dummy; do
@@ -75,19 +75,27 @@ select_driver() {
             0bda:b812) _DRIVER=rtl88x2bu ;;
             0bda:c811) _DRIVER=rtl8821cu ;;
             0bda:1a2b)
-                _DRIVER=rtl8852bu
                 bold "Switching the adapter from storage to WLAN mode"
-                # Background it as it can take up to 30 seconds in a VM
-                rw usb_modeswitch -KQ -v 0bda -p 1a2b &
+                # This is either 8852bu or 8852cu; wait to see which one
+                re usb_modeswitch -KQ -v 0bda -p 1a2b
+                continue 2
                 ;;
             0bda:b832) _DRIVER=rtl8852bu ;;
+            0bda:c832) _DRIVER=rtl8852cu ;;
             a69c:5721)
                 _DRIVER=aic8800
                 bold "Switching the adapter from storage to WLAN mode"
                 # Background it as it can take up to 30 seconds in a VM
                 rw usb_modeswitch -KQ -v a69c -p 5721 &
                 ;;
+            a69c:5723)
+                _DRIVER=TODO-ax7l
+                bold "Switching the adapter from storage to WLAN mode"
+                # Background it as it can take up to 30 seconds in a VM
+                rw usb_modeswitch -KQ -v a69c -p 5723 &
+                ;;
             368b:88df) _DRIVER=aic8800 ;;
+            a69c:8d80) _DRIVER=TODO-ax7l ;;
             esac
         done <<EOF
 $(lsusb_)
@@ -101,7 +109,8 @@ If you don't have the adapter currently, you may type:
   (b) to install the 88x2bu driver for the new AC1L/AC3L version 2 models, or
   (c) to install the 8821cu driver for the AC5L model, or
   (d) to install the 8852bu driver for the AX1L/AX4L models, or
-  (e) to install the aic8800 driver for the AX5L model,
+  (e) to install the 8852cu driver for the AX8L model, or
+  (f) to install the aic8800 driver for the AX5L model,
   (q) to quit without installing a driver"
         bold -n "Please type your choice, or [Enter] to autodetect: "
         read -r choice
@@ -110,7 +119,8 @@ If you don't have the adapter currently, you may type:
         b) _DRIVER=rtl88x2bu ;;
         c) _DRIVER=rtl8821cu ;;
         d) _DRIVER=rtl8852bu ;;
-        e) _DRIVER=aic8800 ;;
+        e) _DRIVER=rtl8852cu ;;
+        f) _DRIVER=aic8800 ;;
         q) die "Aborted" ;;
         esac
     done
@@ -420,8 +430,11 @@ kver() {
 #           RTL8188GU 802.11n WLAN Adapter (Driver CDROM Mode)
 # AX1,4L:   Bus 003 Device 027: ID 0bda:b832 Realtek Semiconductor Corp.
 #           802.11ac WLAN Adapter
+# AX8L:     Bus 003 Device 027: ID 0bda:c832
 # AX5Lst:   Bus 001 Device 015: ID a69c:5721 aicsemi Aic MSC
 # AX5L:     Bus 001 Device 016: ID 368b:88df AICSemi AIC8800DC
+# AX7Lst:   Bus 001 Device 015: ID a69c:5723 aicsemi Aic MSC
+# AX7L:     Bus 001 Device 016: ID a69c:8d80 aicsemi AIC Wlan
 # The manufacturer:product description is too bare. Just use our own.
 lsusb_() {
     local fname fdir usbid msg
@@ -434,10 +447,13 @@ lsusb_() {
         0bda:8812) msg="Brostrend AC1Lv1/AC3Lv1 Wi-Fi adapter" ;;
         0bda:b812) msg="Brostrend AC1L/AC3L Wi-Fi adapter" ;;
         0bda:c811) msg="Brostrend AC5L Wi-Fi adapter" ;;
-        0bda:1a2b) msg="Brostrend AX1L/AX4L Wi-Fi adapter (storage mode)" ;;
+        0bda:1a2b) msg="Brostrend AX1L/AX4L/AX8L Wi-Fi adapter (storage mode)" ;;
         0bda:b832) msg="Brostrend AX1L/AX4L Wi-Fi adapter" ;;
+        0bda:c832) msg="Brostrend AX8L Wi-Fi adapter" ;;
         a69c:5721) msg="Brostrend AX5L Wi-Fi adapter (storage mode)" ;;
         368b:88df) msg="Brostrend AX5L Wi-Fi adapter" ;;
+        a69c:5723) msg="Brostrend AX7L Wi-Fi adapter (storage mode)" ;;
+        a69c:8d80) msg="Brostrend AX7L Wi-Fi adapter" ;;
         *) continue ;;
         esac
         # TODO: try to detect if it's a USB2 or USB3 port
