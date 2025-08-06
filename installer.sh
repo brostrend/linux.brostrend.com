@@ -58,72 +58,99 @@ busybox_fallbacks() {
 }
 
 # Set $_DRIVER, based on the script filename, or the inserted adapter,
-# or the user input. It may also be set in the environment.
+# or the user input.
 select_driver() {
     local fname product _dummy choice
 
     fname=${0##*/}
     fname=${fname%.sh}
+    set --
     case "$fname" in
-    8812au | 88x2bu | 8821cu | 8852bu | 8852cu) _DRIVER="rtl$fname" ;;
-    aic8800 | TODO-ax7l) _DRIVER=$fname ;;
+    8812au | 88x2bu | 8821cu | 8852bu | 8852cu) set "rtl$fname" ;;
+    aic8800) set "$fname" ;;
     esac
-    while [ -z "$_DRIVER" ]; do
+    # We want to install a single driver on each invocation of the installer
+    while [ $# -ne 1 ]; do
         while read -r product _dummy; do
             case "$product" in
-            0bda:8812) _DRIVER=rtl8812au ;;
-            0bda:b812) _DRIVER=rtl88x2bu ;;
-            0bda:c811) _DRIVER=rtl8821cu ;;
+            0bda:8812) set -- "$@" rtl8812au ;;
+            0bda:b812) set -- "$@" rtl88x2bu ;;
+            0bda:c811) set -- "$@" rtl8821cu ;;
+            0bda:b832) set -- "$@" rtl8852bu ;;
+            0bda:c832) set -- "$@" rtl8852cu ;;
             0bda:1a2b)
                 bold "Switching the adapter from storage to WLAN mode"
                 # This is either 8852bu or 8852cu; wait to see which one
                 re usb_modeswitch -KQ -v 0bda -p 1a2b
+                # If another adapter was detected, we'll re-discover it too
+                set --
                 continue 2
                 ;;
-            0bda:b832) _DRIVER=rtl8852bu ;;
-            0bda:c832) _DRIVER=rtl8852cu ;;
-            a69c:5721)
-                _DRIVER=aic8800
+            a69c:5721 | a69c:5723)
+                set -- "$@" aic8800
                 bold "Switching the adapter from storage to WLAN mode"
                 # Background it as it can take up to 30 seconds in a VM
-                rw usb_modeswitch -KQ -v a69c -p 5721 &
+                rw usb_modeswitch -KQ -v a69c -p "${product#*:}" &
                 ;;
-            a69c:5723)
-                _DRIVER=TODO-ax7l
-                bold "Switching the adapter from storage to WLAN mode"
-                # Background it as it can take up to 30 seconds in a VM
-                rw usb_modeswitch -KQ -v a69c -p 5723 &
-                ;;
-            368b:88df) _DRIVER=aic8800 ;;
-            a69c:8d80) _DRIVER=TODO-ax7l ;;
+            368b:88df | 368b:8d83 | a69c:8d80) set -- "$@" aic8800 ;;
+            0e8d:7961) bold "NOTE: the AX9L adapter does not need a driver" ;;
             esac
         done <<EOF
 $(lsusb_)
 EOF
-        test -n "$_DRIVER" && break
-        bold "Could not detect the adapter!"
-        echo "Please insert the BrosTrend Wi-Fi adapter into a USB slot
-and press [Enter] to continue.
-If you don't have the adapter currently, you may type:
-  (a) to install the 8812au driver for the old AC1L/AC3L models before 2019, or
+        # Merge multiple occurrences of the same driver into one
+        # shellcheck disable=SC2046
+        set -- $(printf "%s\n" "$@" | sort -u)
+        echo "Autodetected drivers to be installed: $*"
+        test $# -eq 1 && break
+        if [ $# -eq 0 ]; then
+            warn "Could not detect the adapter!"
+            echo "Please insert the BrosTrend Wi-Fi adapter into a USB slot
+and press [Enter] to retry the autodetection process.
+If you don't have the adapter currently, you may type:"
+        else
+            warn "Many of our adapters are currently connected in USB slots!"
+            echo "Either only leave the one you want to install connected,
+and press [Enter] to retry the autodetection process,
+or choose the driver you want to install from the following list:"
+        fi
+        echo "  (a) to install the 8812au driver for the old AC1L/AC3L models before 2019, or
   (b) to install the 88x2bu driver for the new AC1L/AC3L version 2 models, or
   (c) to install the 8821cu driver for the AC5L model, or
   (d) to install the 8852bu driver for the AX1L/AX4L models, or
   (e) to install the 8852cu driver for the AX8L model, or
-  (f) to install the aic8800 driver for the AX5L model,
+  (f) to install the aic8800 driver for the AX5L/AX7L models,
   (q) to quit without installing a driver"
-        bold -n "Please type your choice, or [Enter] to autodetect: "
+        warn -n "Please type your choice, or [Enter] to autodetect: "
         read -r choice
         case "$choice" in
-        a) _DRIVER=rtl8812au ;;
-        b) _DRIVER=rtl88x2bu ;;
-        c) _DRIVER=rtl8821cu ;;
-        d) _DRIVER=rtl8852bu ;;
-        e) _DRIVER=rtl8852cu ;;
-        f) _DRIVER=aic8800 ;;
-        q) die "Aborted" ;;
+        a | '(a)') set rtl8812au ;;
+        b | '(b)') set rtl88x2bu ;;
+        c | '(c)') set rtl8821cu ;;
+        d | '(d)') set rtl8852bu ;;
+        e | '(e)') set rtl8852cu ;;
+        f | '(f)') set aic8800 ;;
+        q | '(q)') die "Aborted" ;;
+        # Anything else does autodetection again
         esac
     done
+    case "$1" in
+    rtl8812au) _IKD=rtw88_8812au ;;
+    rtl88x2bu) _IKD=rtw88_8822bu ;;
+    rtl8821cu) _IKD=rtw88_8821cu ;;
+    rtl8852bu) _IKD=rtw88_8852bu ;;
+    rtl8852cu) _IKD=rtw88_8852cu ;;
+    *) _IKD= ;;
+    esac
+    if [ -n "$_IKD" ] && [ -d "/sys/module/$_IKD" ]; then
+        warn "Your kernel already has a driver for this adapter!"
+        echo "It is recommended that you abort our installer and that you use the in-kernel
+driver instead; it should work out of the box:
+https://linux.brostrend.com/supported-distributions/#in-kernel-drivers"
+        warn -n "Press Ctrl+C to abort, or [Enter] to continue with the installation: "
+        read -r choice
+    fi
+    _DRIVER=$1
 }
 
 detect_package_manager() {
@@ -141,7 +168,7 @@ detect_package_manager() {
 
 # Output a message to stderr and abort execution
 die() {
-    bold "$@" >&2
+    warn "$@"
     pause_exit 1
 }
 
@@ -283,15 +310,10 @@ install_driver() {
         ;;
     esac
     # Unload the competing in-kernel drivers
-    case "$_DRIVER" in
-    rtl88x2bu) ikd=rtw88_8822bu ;;
-    rtl8821cu) ikd=rtw88_8821cu ;;
-    *) ikd= ;;
-    esac
-    if [ -n "$ikd" ] && [ -d "/sys/module/$ikd" ]; then
-        bold "Unloading the $ikd in-kernel driver"
-        if ! timeout 10 modprobe -r "$ikd"; then
-            bold "Failed to unload the $ikd in-kernel driver, PLEASE REBOOT"
+    if [ -n "$_IKD" ] && [ -d "/sys/module/$_IKD" ]; then
+        bold "Unloading the $_IKD in-kernel driver"
+        if ! timeout 10 modprobe -r "$_IKD"; then
+            warn "Failed to unload the $_IKD in-kernel driver, PLEASE REBOOT"
         fi
     fi
     re modprobe "$module"
@@ -331,6 +353,7 @@ Install dependencies manually: ar bc gcc make tar linux-headers
 Please see: https://linux.brostrend.com/supported-distributions" \
                 cat /etc/os-release
         else
+            # shellcheck disable=SC2086
             re $pmcmd $list
         fi
     fi
@@ -430,15 +453,22 @@ kver() {
 #           RTL88x2bu [AC1200 Techkey]
 # AC5L:     Bus 003 Device 027: ID 0bda:c811 Realtek Semiconductor Corp.
 #           802.11ac NIC
-# AX1Lst:   Bus 003 Device 027: ID 0bda:1a2b Realtek Semiconductor Corp.
-#           RTL8188GU 802.11n WLAN Adapter (Driver CDROM Mode)
 # AX1,4L:   Bus 003 Device 027: ID 0bda:b832 Realtek Semiconductor Corp.
 #           802.11ac WLAN Adapter
-# AX8L:     Bus 003 Device 027: ID 0bda:c832
-# AX5Lst:   Bus 001 Device 015: ID a69c:5721 aicsemi Aic MSC
+# AX1Lst:   Bus 003 Device 027: ID 0bda:1a2b Realtek Semiconductor Corp.
+#           RTL8188GU 802.11n WLAN Adapter (Driver CDROM Mode)
 # AX5L:     Bus 001 Device 016: ID 368b:88df AICSemi AIC8800DC
-# AX7Lst:   Bus 001 Device 015: ID a69c:5723 aicsemi Aic MSC
+# AX5Lst:   Bus 001 Device 015: ID a69c:5721 aicsemi Aic MSC
+# AX7L:     Bus 001 Device 016: ID 368b:8d83 aicsemi AIC 8800D80
+# AX7PL:    Bus 001 Device 016: ID 368b:8d8c TODO ???
 # AX7L:     Bus 001 Device 016: ID a69c:8d80 aicsemi AIC Wlan
+#           This ^ is after it's ejected and before the driver is loaded
+# AX7Lst:   Bus 001 Device 015: ID a69c:5723 aicsemi Aic MSC
+# AX8L:     Bus 003 Device 027: ID 0bda:c832 Realtek Semiconductor Corp.
+#           802.11ax WLAN Adapte
+# AX9L:     Bus 003 Device 027: ID 0e8d:7961 MediaTek Inc. Wireless_Device
+# AXBE1L:   ID 0bda:8912 Realtek Semiconductor Corp. 802.11be WLAN Adapter
+# WB1:      ID 0bda:b851 Realtek Semiconductor Corp. 802.11ax WLAN Adapter
 # The manufacturer:product description is too bare. Just use our own.
 lsusb_() {
     local fname fdir usbid msg
@@ -451,16 +481,18 @@ lsusb_() {
         0bda:8812) msg="Brostrend AC1Lv1/AC3Lv1 Wi-Fi adapter" ;;
         0bda:b812) msg="Brostrend AC1L/AC3L Wi-Fi adapter" ;;
         0bda:c811) msg="Brostrend AC5L Wi-Fi adapter" ;;
-        0bda:1a2b) msg="Brostrend AX1L/AX4L/AX8L Wi-Fi adapter (storage mode)" ;;
         0bda:b832) msg="Brostrend AX1L/AX4L Wi-Fi adapter" ;;
-        0bda:c832) msg="Brostrend AX8L Wi-Fi adapter" ;;
-        a69c:5721) msg="Brostrend AX5L Wi-Fi adapter (storage mode)" ;;
+        0bda:1a2b) msg="Brostrend AX1L/AX4L Wi-Fi adapter (storage mode)" ;;
         368b:88df) msg="Brostrend AX5L Wi-Fi adapter" ;;
-        a69c:5723) msg="Brostrend AX7L Wi-Fi adapter (storage mode)" ;;
+        a69c:5721) msg="Brostrend AX5L Wi-Fi adapter (storage mode)" ;;
+        368b:8d83) msg="Brostrend AX7L Wi-Fi adapter" ;;
         a69c:8d80) msg="Brostrend AX7L Wi-Fi adapter" ;;
+        a69c:5723) msg="Brostrend AX7L Wi-Fi adapter (storage mode)" ;;
+        0bda:c832) msg="Brostrend AX8L Wi-Fi adapter" ;;
+        0e8d:7961) msg="Brostrend AX9L Wi-Fi adapter" ;;
         *) continue ;;
         esac
-        # TODO: try to detect if it's a USB2 or USB3 port
+        # TODO: try to detect if it's a USB2 or USB3 port; see: lsusb -tv
         echo "$usbid $msg"
     done
 }
@@ -469,7 +501,7 @@ pause_exit() {
     local _dummy
 
     if [ "$_PAUSE_ON_EXIT" = 1 ]; then
-        bold -n "Press [Enter] to close the current window."
+        warn -n "Press [Enter] to close the current window."
         read -r _dummy
     fi
     exit "${1:-0}"
