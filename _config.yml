@@ -26,7 +26,7 @@ aux_links:
     - "https://www.brostrend.com"
 
 # Footer content appears at the bottom of every page's main content
-footer_content: "Copyright &copy; 2018-2024 <a href=\"https://www.brostrend.com\">BrosTrend</a>"
+footer_content: "Copyright &copy; 2018-2025 <a href=\"https://www.brostrend.com\">BrosTrend</a>"
 
 # Color scheme currently only supports "dark" or nil (default)
 color_scheme: nil
