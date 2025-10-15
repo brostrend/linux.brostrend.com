@@ -138,8 +138,8 @@ or choose the driver you want to install from the following list:"
     rtl8812au) _IKD=rtw88_8812au ;;
     rtl88x2bu) _IKD=rtw88_8822bu ;;
     rtl8821cu) _IKD=rtw88_8821cu ;;
-    rtl8852bu) _IKD=rtw88_8852bu ;;
-    rtl8852cu) _IKD=rtw88_8852cu ;;
+    rtl8852bu) _IKD=rtw89_8852bu ;;
+    rtl8852cu) _IKD=rtw89_8852cu ;;
     *) _IKD= ;;
     esac
     if [ -n "$_IKD" ] && [ -d "/sys/module/$_IKD" ]; then
@@ -575,8 +575,8 @@ troubleshoot() {
     rt grep PRETTY /etc/os-release
     rt -i dpkg --print-architecture
     rt lsusb_
-    rt -f -e lsmod "| grep -wE '88...u|aic8800.*'" ||
-        rt -e ls "/sys/module/ | grep -wE '88...u|aic8800.*'"
+    rt -f -e lsmod "| grep -wE '88...u|aic8800.*|rtw8._88...u'" ||
+        rt -e ls "/sys/module/ | grep -wE '88...u|aic8800.*|rtw8._88...u'"
     rt -i -e rfkill list
     rt -i -e mokutil --sb-state
     rt -f dkms status || rt -i apt policy dkms
