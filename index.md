@@ -12,7 +12,7 @@ The following instructions install the appropriate drivers for the
 [AX4L](https://www.brostrend.com/products/ax4l),
 [AX5L](https://www.brostrend.com/products/ax5l),
 [AX7L](https://www.brostrend.com/products/ax7l),
-[AX7LP](https://www.brostrend.com/products/ax7lp) and
+[AX7PL](https://www.brostrend.com/products/ax7pl) and
 [AX8L](https://www.brostrend.com/products/ax8l) BrosTrend Wi-Fi adapters in any
 of the [supported distributions](supported-distributions). All the drivers and
 the installer are open source (GPL); you may get the code from

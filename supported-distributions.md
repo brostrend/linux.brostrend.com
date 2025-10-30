@@ -4,25 +4,39 @@ nav_order: 2
 
 # Supported distributions
 
-- For the AC1L/AC3L/AC5L adapters, you may either use the [in-kernel
-  drivers](#in-kernel-drivers) that support all distributions, or [our
-  drivers](#our-drivers) that support certain distributions.
-- For the AX1L/AX4L/AX5L adapters, no in-kernel driver exists, so you have to
-  use [our drivers](#our-drivers) that support certain distributions.
+Recent Linux kernels include their own drivers for most of our adapters, so
+they work **out of the box** in the distributions that have them. We suggest
+that you use the in-kernel drivers and that you only run our installer if you
+encounter any issues.
 
 ## In-kernel drivers
 
-In February 2023, the Linux kernel 6.2 was released. Ever since that version,
-the kernel includes its own drivers for our AC1L/AC3L/AC5L adapters. **This
-means that the ACL adapters work out of the box in any recent Linux
-distribution.**
+The in-kernel drivers (modules) and the adapters they support are listed in the
+following table:
 
-The in-kernel drivers are fine for casual surfing, but they might not perform
-as well as our drivers, or they might not include all features such as the
-access point mode. We have no control over them, they're maintained by the
-Linux kernel developers, so any issues will have to be reported there. If
-you're using a supported distribution, you may run our installer to switch to
-[our drivers](#our-drivers).
+| Driver                                                          | Adapter                         | Since Linux kernel version  |
+| --------------------------------------------------------------- | ------------------------------- | --------------------------- |
+| [rtw88_8812au](https://www.kernelconfig.io/config_rtw88_8812au) | Old AC1Lv1, AC3Lv1, before 2019 | 6.13 (2025-01-19)           |
+| [rtw88_8822bu](https://www.kernelconfig.io/config_rtw88_8822bu) | New AC1Lv2, AC3Lv2              | 6.2 (2023-02-19)            |
+| [rtw88_8821cu](https://www.kernelconfig.io/config_rtw88_8821cu) | AC5L                            | 6.2 (2023-02-19)            |
+| [rtw89_8852bu](https://www.kernelconfig.io/config_rtw89_8852bu) | AX1L, AX4L                      | 6.17 (2025-09-28)           |
+| [rtw89_8852cu](https://www.kernelconfig.io/config_rtw89_8852cu) | AX8L                            | 6.18 (end of 2025)          |
+| [mt7921au](https://www.kernelconfig.io/config_mt7921u)          | AX9L                            | 5.18 (2022-05-22)           |
+| [r8169](https://www.kernelconfig.io/config_r8169)               | P1L                             | 5.9 (2020-10-11)            |
+| -                                                               | AX5L, AX7L, AX7PL               | **No in-kernel driver yet** |
+
+To see your kernel version, open a terminal and run the following command:
+
+```shell
+uname -r
+```
+
+Note that on Debian, you might have to install the related firmware packages
+and reboot for the drivers to work:
+
+```shell
+sudo apt install --yes firmware-realtek firmware-mediatek
+```
 
 ## Our drivers
 
@@ -40,9 +54,10 @@ and are not [immutable](https://itsfoss.com/immutable-linux-distros).**
 But this also means that we cannot support distributions that frequently have a
 newer kernel than Ubuntu, such as ArchLinux or PoP!_OS, or distributions that
 have a modified kernel, such as Kali Linux or Armbian. For these distributions,
-consider using an ACL adapter and the [in-kernel drivers](#in-kernel-drivers).
+consider using using one of our adapters that have [in-kernel
+drivers](#in-kernel-drivers).
 
-### A non-exhaustive list of distributions that our drivers support is:
+### A non-exhaustive list of distributions that our drivers support is
 
 - [All official Ubuntu flavors](https://wiki.ubuntu.com/UbuntuFlavors) and
   their derivatives with the same kernel, such as [Bodhi
@@ -69,7 +84,7 @@ consider using an ACL adapter and the [in-kernel drivers](#in-kernel-drivers).
 - [Raspberry Pi OS](https://www.raspberrypi.org) and its derivatives with the
   same kernel.
 
-### A non-exhaustive list of distributions that our drivers do NOT support is:
+### A non-exhaustive list of distributions that our drivers do NOT support is
 
 [ALT Linux](http://en.altlinux.org), [antiX Linux](https://antixlinux.com),
 [Arch Linux](https://archlinux.org), [Arco Linux](https://arcolinux.com),
@@ -100,8 +115,8 @@ Linux](http://www.tinycorelinux.net), [Ubuntu Core](https://ubuntu.com/core),
 [Void Linux](https://voidlinux.org), [Windows Subsystem for
 Linux](https://docs.microsoft.com/en-us/windows/wsl/install)
 
-For the distributions that our drivers do not support, consider using an ACL
-adapter and the [in-kernel drivers](#in-kernel-drivers).
+For the distributions that our drivers do not support, consider using one of
+our adapters that have [in-kernel drivers](#in-kernel-drivers).
 
 > 📝 **Note** that if your distribution or architecture is unsupported and you
 > didn't notice it when you purchased our adapter, you may return the adapter
