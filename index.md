@@ -9,17 +9,20 @@ The following instructions install the appropriate drivers for the
 [AC3L](https://www.brostrend.com/products/ac3l),
 [AC5L](https://www.brostrend.com/products/ac5l),
 [AX1L](https://www.brostrend.com/products/ax1l),
-[AX4L](https://www.brostrend.com/products/ax4l) and
-[AX5L](https://www.brostrend.com/products/ax5l) BrosTrend Wi-Fi adapters in any
+[AX4L](https://www.brostrend.com/products/ax4l),
+[AX5L](https://www.brostrend.com/products/ax5l),
+[AX7L](https://www.brostrend.com/products/ax7l),
+[AX7LP](https://www.brostrend.com/products/ax7lp) and
+[AX8L](https://www.brostrend.com/products/ax8l) BrosTrend Wi-Fi adapters in any
 of the [supported distributions](supported-distributions). All the drivers and
 the installer are open source (GPL); you may get the code from
 [here](troubleshooting/source-code).
 
-> 💡 **Tip:** Linux kernels (>= 6.2) include [their own
-> drivers](supported-distributions/#in-kernel-drivers) for our AC1L/AC3L/AC5L
-> adapters, so they work out of the box in recent distributions. But these
-> drivers aren't yet as mature as ours, so if you encounter any issues, use our
-> installer to replace them.
+> 💡 **Tip:** Recent Linux kernels include [their own
+> drivers](supported-distributions/#in-kernel-drivers) for several of our
+> adapters, so they work out of the box. We recommend that you use the
+> in-kernel drivers and only run our installer if you encounter any issues with
+> them.
 
 ## Installation steps
 
@@ -61,6 +64,6 @@ automatically added to your software sources, to provide automatic driver
 updates. For non-Debian distributions please re-run our installer whenever you
 need to update to our latest drivers.
 
-In case you need any assistance in using the BrosTrend Wi-Fi adapters, please do
-not hesitate to contact us by sending an email at
+In case you need any assistance in using the BrosTrend Wi-Fi adapters, please
+do not hesitate to contact us by sending an email at
 [support@brostrend.com](mailto:support@brostrend.com).
