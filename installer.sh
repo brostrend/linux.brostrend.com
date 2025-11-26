@@ -86,7 +86,7 @@ select_driver() {
                 set --
                 continue 2
                 ;;
-            a69c:5721 | a69c:5723)
+            a69c:5721 | a69c:5723 | a69c:5725)
                 set -- "$@" aic8800
                 bold "Switching the adapter from storage to WLAN mode"
                 # Background it as it can take up to 30 seconds in a VM
@@ -460,7 +460,8 @@ kver() {
 # AX5L:     Bus 001 Device 016: ID 368b:88df AICSemi AIC8800DC
 # AX5Lst:   Bus 001 Device 015: ID a69c:5721 aicsemi Aic MSC
 # AX7L:     Bus 001 Device 016: ID 368b:8d83 aicsemi AIC 8800D80
-# AX7PL:    Bus 001 Device 016: ID 368b:8d8c TODO ???
+# AX7PL:    Bus 001 Device 016: ID 368b:8d8c AICSemi AIC 8800D80
+# AX7PL:    Bus 001 Device 016: ID a69c:5725 aicsemi Aic MSC
 # AX7L:     Bus 001 Device 016: ID a69c:8d80 aicsemi AIC Wlan
 #           This ^ is after it's ejected and before the driver is loaded
 # AX7Lst:   Bus 001 Device 015: ID a69c:5723 aicsemi Aic MSC
@@ -488,6 +489,7 @@ lsusb_() {
         368b:8d83) msg="Brostrend AX7L Wi-Fi adapter" ;;
         a69c:8d80) msg="Brostrend AX7L Wi-Fi adapter" ;;
         a69c:5723) msg="Brostrend AX7L Wi-Fi adapter (storage mode)" ;;
+	a69c:5725) msg="Brostrend AX7PL Wi-Fi adapter (storage mode)" ;;
         0bda:c832) msg="Brostrend AX8L Wi-Fi adapter" ;;
         0e8d:7961) msg="Brostrend AX9L Wi-Fi adapter" ;;
         *) continue ;;
