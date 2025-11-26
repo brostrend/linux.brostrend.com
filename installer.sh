@@ -489,7 +489,7 @@ lsusb_() {
         368b:8d83) msg="Brostrend AX7L Wi-Fi adapter" ;;
         a69c:8d80) msg="Brostrend AX7L Wi-Fi adapter" ;;
         a69c:5723) msg="Brostrend AX7L Wi-Fi adapter (storage mode)" ;;
-	a69c:5725) msg="Brostrend AX7PL Wi-Fi adapter (storage mode)" ;;
+        a69c:5725) msg="Brostrend AX7PL Wi-Fi adapter (storage mode)" ;;
         0bda:c832) msg="Brostrend AX8L Wi-Fi adapter" ;;
         0e8d:7961) msg="Brostrend AX9L Wi-Fi adapter" ;;
         *) continue ;;
