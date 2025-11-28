@@ -20,25 +20,30 @@ call the [usb_modeswitch command](https://manpages.debian.org/usb_modeswitch)
 and switch the adapter to WLAN mode. To check if the adapter has been switched
 to WLAN mode, run:
 
-    lsusb | grep -E '(0bda|368b|a69c):(8812|b812|c811|b832|c832|1a2b|88df|8d80|8d83|5721|5723)'
+    lsusb | grep -E '(0bda|368b|a69c|0e8d):(8812|b812|c811|b832|1a2b|5721|88df|8d83|8d80|5723|8d8c|5725|c832|7961|8912|b851)'
 
 Then consult the following table to see if the adapter is in WLAN mode or in
 storage mode:
 
-| Model                         | Output of lsusb                                |
-| ----------------------------- | ---------------------------------------------- |
-| AC1L or AC3L version 1        | ID **0bda:8812** Realtek Semiconductor Corp.   |
-| AC1L or AC3L version 2        | ID **0bda:b812** Realtek Semiconductor Corp.   |
-| AC5L                          | ID **0bda:c811** Realtek Semiconductor Corp.   |
-| AX1L or AX4L **WLAN** mode    | ID **0bda:b832** Realtek Semiconductor Corp.   |
-| AX1L or AX4L **storage** mode | ID **0bda:1a2b** Realtek Semiconductor Corp.   |
-| AX5L **WLAN** mode            | ID **368b:88df** AICSemi AIC8800DC             |
-| AX5L **storage** mode         | ID **a69c:5721** aicsemi Aic MSC               |
-| AX7L **WLAN** mode            | ID **368b:8d83** AICSemi AIC 8800D80           |
-| AX7L **WLAN** mode (2nd ID)   | ID **a69c:8d80** aicsemi AIC Wlan              |
-| AX7L **storage** mode         | ID **a69c:5723** aicsemi Aic MSC               |
-| AX8L                          | ID **0bda:c832** Realtek Semiconductor Corp.   |
-| AX9L                          | ID **0e8d:7961** MediaTek Inc. Wireless_Device |
+| Model                               | Output of lsusb                                |
+| ----------------------------------- | ---------------------------------------------- |
+| AC1L or AC3L version 1 (AC1200)     | ID **0bda:8812** Realtek Semiconductor Corp.   |
+| AC1L or AC3L version 2 (AC1200)     | ID **0bda:b812** Realtek Semiconductor Corp.   |
+| AC5L (AC650)                        | ID **0bda:c811** Realtek Semiconductor Corp.   |
+| Realtek **storage** mode            | ID **0bda:1a2b** Realtek Semiconductor Corp.   |
+| AX1L or AX4L **WLAN** mode (AX1800) | ID **0bda:b832** Realtek Semiconductor Corp.   |
+| AX5L **WLAN** mode (AX300)          | ID **368b:88df** AICSemi AIC8800DC             |
+| AX5L **storage** mode               | ID **a69c:5721** aicsemi Aic MSC               |
+| AX7L **WLAN** mode (AX900)          | ID **368b:8d83** AICSemi AIC 8800D80           |
+| AX7L **ejected** mode               | ID **a69c:8d80** aicsemi AIC Wlan              |
+| AX7L **storage** mode               | ID **a69c:5723** aicsemi Aic MSC               |
+| AX7PL **WLAN** mode (AX900)         | ID **368b:8d8c** AICSemi AIC 8800D80           |
+| AX7PL **ejected** mode              | ID **a69c:8d80** aicsemi AIC Wlan              |
+| AX7PL **storage** mode              | ID **a69c:5725** aicsemi Aic MSC               |
+| AX8L **WLAN** mode (AXE5400)        | ID **0bda:c832** Realtek Semiconductor Corp.   |
+| AX9L (AXE3000)                      | ID **0e8d:7961** MediaTek Inc. Wireless_Device |
+| BE1L **WLAN** mode (BE6500)         | ID **0bda:8912** Realtek Semiconductor Corp.   |
+| WB1L **WLAN** mode (AX900)          | ID **0bda:b851** Realtek Semiconductor Corp.   |
 
 If you have an older distribution that doesn't switch the adapter to WLAN mode,
 you may use the following commands to switch it manually:

@@ -80,20 +80,27 @@ select_driver() {
             0bda:c832) set -- "$@" rtl8852cu ;;
             0bda:1a2b)
                 bold "Switching the adapter from storage to WLAN mode"
-                # This is either 8852bu or 8852cu; wait to see which one
+                # Wait to see which one of the Realtek adapters it is
                 re usb_modeswitch -KQ -v 0bda -p 1a2b
                 # If another adapter was detected, we'll re-discover it too
                 set --
                 continue 2
                 ;;
-            a69c:5721 | a69c:5723)
+            a69c:5721 | a69c:5723 | a69c:5725)
                 set -- "$@" aic8800
                 bold "Switching the adapter from storage to WLAN mode"
                 # Background it as it can take up to 30 seconds in a VM
                 rw usb_modeswitch -KQ -v a69c -p "${product#*:}" &
                 ;;
-            368b:88df | 368b:8d83 | a69c:8d80) set -- "$@" aic8800 ;;
-            0e8d:7961) bold "NOTE: the AX9L adapter does not need a driver" ;;
+            368b:88df | 368b:8d83 | 368b:8d8c | a69c:8d80)
+                set -- "$@" aic8800
+                ;;
+            0e8d:7961) bold "NOTE: the AX9L adapter does not need a driver, see:
+https://linux.brostrend.com/supported-distributions/#in-kernel-drivers" ;;
+            0bda:8912) bold "NOTE: the BE1L adapter does not need a driver, see:
+https://linux.brostrend.com/supported-distributions/#in-kernel-drivers" ;;
+            0bda:b851) bold "NOTE: the WB1L adapter does not need a driver, see:
+https://linux.brostrend.com/supported-distributions/#in-kernel-drivers" ;;
             esac
         done <<EOF
 $(lsusb_)
@@ -447,28 +454,26 @@ kver() {
 # Implement lsusb as it isn't preinstalled in some distributions
 # Return only the Brostrend devices
 # Typical lsusb descriptions (/var/lib/usbutils/usb.ids):
-# AC1,3Lv1: Bus 003 Device 008: ID 0bda:8812 Realtek Semiconductor Corp.
+# AC1,3Lv1: ID 0bda:8812 Realtek Semiconductor Corp.
 #           RTL8812AU 802.11a/b/g/n/ac 2T2R DB WLAN Adapter
-# AC1,3Lv2: Bus 003 Device 007: ID 0bda:b812 Realtek Semiconductor Corp.
-#           RTL88x2bu [AC1200 Techkey]
-# AC5L:     Bus 003 Device 027: ID 0bda:c811 Realtek Semiconductor Corp.
-#           802.11ac NIC
-# AX1,4L:   Bus 003 Device 027: ID 0bda:b832 Realtek Semiconductor Corp.
-#           802.11ac WLAN Adapter
-# AX1Lst:   Bus 003 Device 027: ID 0bda:1a2b Realtek Semiconductor Corp.
+# AC1,3Lv2: ID 0bda:b812 Realtek Semiconductor Corp. RTL88x2bu [AC1200 Techkey]
+# AC5L:     ID 0bda:c811 Realtek Semiconductor Corp. 802.11ac NIC
+# ©:        The indicated Realtek adapters also have this CDROM mode:
+#           ID 0bda:1a2b Realtek Semiconductor Corp.
 #           RTL8188GU 802.11n WLAN Adapter (Driver CDROM Mode)
-# AX5L:     Bus 001 Device 016: ID 368b:88df AICSemi AIC8800DC
-# AX5Lst:   Bus 001 Device 015: ID a69c:5721 aicsemi Aic MSC
-# AX7L:     Bus 001 Device 016: ID 368b:8d83 aicsemi AIC 8800D80
-# AX7PL:    Bus 001 Device 016: ID 368b:8d8c TODO ???
-# AX7L:     Bus 001 Device 016: ID a69c:8d80 aicsemi AIC Wlan
-#           This ^ is after it's ejected and before the driver is loaded
-# AX7Lst:   Bus 001 Device 015: ID a69c:5723 aicsemi Aic MSC
-# AX8L:     Bus 003 Device 027: ID 0bda:c832 Realtek Semiconductor Corp.
-#           802.11ax WLAN Adapte
-# AX9L:     Bus 003 Device 027: ID 0e8d:7961 MediaTek Inc. Wireless_Device
-# AXBE1L:   ID 0bda:8912 Realtek Semiconductor Corp. 802.11be WLAN Adapter
-# WB1:      ID 0bda:b851 Realtek Semiconductor Corp. 802.11ax WLAN Adapter
+# AX1,4L©:  ID 0bda:b832 Realtek Semiconductor Corp. 802.11ax WLAN Adapter
+# AX5L:     ID 368b:88df AICSemi AIC8800DC
+# AX5Lst:   ID a69c:5721 aicsemi Aic MSC
+# AX7L:     ID 368b:8d83 AICSemi AIC 8800D80
+# AX7Lej:   ID a69c:8d80 aicsemi AIC Wlan (after eject, before firmware)
+# AX7Lst:   ID a69c:5723 aicsemi Aic MSC
+# AX7PL:    ID 368b:8d8c AICSemi AIC 8800D80
+# AX7PLej:  ID a69c:8d80 aicsemi AIC Wlan (after eject, before firmware)
+# AX7PLst:  ID a69c:5725 aicsemi Aic MSC
+# AX8L©:    ID 0bda:c832 Realtek Semiconductor Corp. 802.11ax WLAN Adapter
+# AX9L:     ID 0e8d:7961 MediaTek Inc. Wireless_Device
+# BE1L©:    ID 0bda:8912 Realtek Semiconductor Corp. 802.11be WLAN Adapter
+# WB1L©:    ID 0bda:b851 Realtek Semiconductor Corp. 802.11ax WLAN Adapter
 # The manufacturer:product description is too bare. Just use our own.
 lsusb_() {
     local fname fdir usbid msg
@@ -481,15 +486,19 @@ lsusb_() {
         0bda:8812) msg="Brostrend AC1Lv1/AC3Lv1 Wi-Fi adapter" ;;
         0bda:b812) msg="Brostrend AC1L/AC3L Wi-Fi adapter" ;;
         0bda:c811) msg="Brostrend AC5L Wi-Fi adapter" ;;
+        0bda:1a2b) msg="Brostrend Realtek Wi-Fi adapter (storage mode)" ;;
         0bda:b832) msg="Brostrend AX1L/AX4L Wi-Fi adapter" ;;
-        0bda:1a2b) msg="Brostrend AX1L/AX4L Wi-Fi adapter (storage mode)" ;;
         368b:88df) msg="Brostrend AX5L Wi-Fi adapter" ;;
         a69c:5721) msg="Brostrend AX5L Wi-Fi adapter (storage mode)" ;;
         368b:8d83) msg="Brostrend AX7L Wi-Fi adapter" ;;
-        a69c:8d80) msg="Brostrend AX7L Wi-Fi adapter" ;;
+        a69c:8d80) msg="Brostrend AX7L/AX7PL Wi-Fi adapter (ejected mode)" ;;
         a69c:5723) msg="Brostrend AX7L Wi-Fi adapter (storage mode)" ;;
+        368b:8d8c) msg="Brostrend AX7PL Wi-Fi adapter" ;;
+        a69c:5725) msg="Brostrend AX7PL Wi-Fi adapter (storage mode)" ;;
         0bda:c832) msg="Brostrend AX8L Wi-Fi adapter" ;;
         0e8d:7961) msg="Brostrend AX9L Wi-Fi adapter" ;;
+        0bda:8912) msg="Brostrend BE1L Wi-Fi adapter" ;;
+        0bda:b851) msg="Brostrend WB1L Wi-Fi adapter" ;;
         *) continue ;;
         esac
         # TODO: try to detect if it's a USB2 or USB3 port; see: lsusb -tv

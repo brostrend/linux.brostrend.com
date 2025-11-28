@@ -22,6 +22,7 @@ following table:
 | [rtw89_8852bu](https://www.kernelconfig.io/config_rtw89_8852bu) | AX1L, AX4L                      | 6.17 (2025-09-28)           |
 | [rtw89_8852cu](https://www.kernelconfig.io/config_rtw89_8852cu) | AX8L                            | 6.18 (end of 2025)          |
 | [mt7921au](https://www.kernelconfig.io/config_mt7921u)          | AX9L                            | 5.18 (2022-05-22)           |
+| [rtw89_8851bu](https://www.kernelconfig.io/config_rtw89_8851bu) | WB1L                            | 6.17 (2025-09-28)           |
 | [r8169](https://www.kernelconfig.io/config_r8169)               | P1L                             | 5.9 (2020-10-11)            |
 | -                                                               | AX5L, AX7L, AX7PL               | **No in-kernel driver yet** |
 
