@@ -20,7 +20,7 @@ following table:
 | [rtw88_8822bu](https://www.kernelconfig.io/config_rtw88_8822bu) | New AC1Lv2, AC3Lv2              | 6.2 (2023-02-19)            |
 | [rtw88_8821cu](https://www.kernelconfig.io/config_rtw88_8821cu) | AC5L                            | 6.2 (2023-02-19)            |
 | [rtw89_8852bu](https://www.kernelconfig.io/config_rtw89_8852bu) | AX1L, AX4L                      | 6.17 (2025-09-28)           |
-| [rtw89_8852cu](https://www.kernelconfig.io/config_rtw89_8852cu) | AX8L                            | 6.18 (end of 2025)          |
+| [rtw89_8852cu](https://www.kernelconfig.io/config_rtw89_8852cu) | AX8L                            | 6.19 (February 2026)        |
 | [mt7921au](https://www.kernelconfig.io/config_mt7921u)          | AX9L                            | 5.18 (2022-05-22)           |
 | [rtw89_8851bu](https://www.kernelconfig.io/config_rtw89_8851bu) | WB1L                            | 6.17 (2025-09-28)           |
 | [r8169](https://www.kernelconfig.io/config_r8169)               | P1L                             | 5.9 (2020-10-11)            |
