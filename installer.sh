@@ -581,11 +581,12 @@ rt() {
 troubleshoot() {
     echo "Troubleshooting information collected on $(date)"
     rt uname -a
+    rt uptime
     rt grep PRETTY /etc/os-release
     rt -i dpkg --print-architecture
     rt lsusb_
-    rt -f -e lsmod "| grep -wE '88...u|aic8800.*|rtw8._88...u'" ||
-        rt -e ls "/sys/module/ | grep -wE '88...u|aic8800.*|rtw8._88...u'"
+    rt -f -e lsmod "| grep -wE '88...u|aic8800.*|rtw8._88...u|mt7921u'" ||
+        rt -e ls "/sys/module/ | grep -wE '88...u|aic8800.*|rtw8._88...u|mt7921u'"
     rt -i -e rfkill list
     rt -i -e mokutil --sb-state
     rt -f dkms status || rt -i apt policy dkms
