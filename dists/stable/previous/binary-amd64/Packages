@@ -1,18 +1,18 @@
 Package: aic8800-dkms
 Source: aic8800
-Version: 1.0.6-0b1
+Version: 1.0.7-0b1
 Architecture: all
 Maintainer: BrosTrend <support@brostrend.com>
-Installed-Size: 2479
+Installed-Size: 5069
 Depends: dkms (>= 2.1.0.0), eject, linux-libc-dev, libc6-dev
 Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
-Filename: pool/previous/a/aic8800/aic8800-dkms_1.0.6-0b1_all.deb
-Size: 594776
-SHA256: 123f616f4fd0ee1ae664c9a51f4390d18fdf6a9f42a2276ec34d42f5ae616984
-SHA1: da5c071bccf4d78ab0fbed3ea880cf24b7f3871b
-MD5sum: f16380accdb4148fd53a3b3cb277ed85
+Filename: pool/previous/a/aic8800/aic8800-dkms_1.0.7-0b1_all.deb
+Size: 2089154
+SHA256: b921c156b927b499204c4f775ab11490e8fdc06036b7827f00e62015ff0a61d8
+SHA1: 801f3c98a65a848ca654b4567320dd2e4cab4a88
+MD5sum: 38931ea4a545c76c0dafd3b602d0e7c2
 Description: dkms source for the aic8800 network driver
  aic8800 is the Linux device driver released for the AIC 8800 WiFi
  controllers with USB interface.
@@ -69,19 +69,19 @@ Modaliases: 8821cu(usb:v0BDApbc811*dc*dsc*dp*ic*isc*ip*in*)
 
 Package: rtl8852bu-dkms
 Source: rtl8852bu
-Version: 1.19.3-45b10
+Version: 1.19.14-127b11
 Architecture: all
 Maintainer: BrosTrend <support@brostrend.com>
-Installed-Size: 39242
+Installed-Size: 52683
 Depends: dkms (>= 2.1.0.0), bc, linux-libc-dev, libc6-dev
 Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
-Filename: pool/previous/r/rtl8852bu/rtl8852bu-dkms_1.19.3-45b10_all.deb
-Size: 6171110
-SHA256: 70d4530e3222f9650b65c1d6cadea5ac92a1fd126bdb459783ebd1d6e3d3092e
-SHA1: 3a177097ccf65168e6ab6b518fabfdd4c745568e
-MD5sum: d31acf903ad737ef68e6c8b38c5186f0
+Filename: pool/previous/r/rtl8852bu/rtl8852bu-dkms_1.19.14-127b11_all.deb
+Size: 8185130
+SHA256: 6375924e607f479e79e1c9fd16a97c15f7091646617bedb24f966f034404a392
+SHA1: 7f8a5f1d12232bd79e2b65d2658e0e1c75543cd3
+MD5sum: 19b4eb8ccd8421b4d1e183ff07970677
 Description: dkms source for the r8852bu network driver
  rtl8852bu is the Linux device driver released for the RealTek RTL8852BU WiFi
  controllers with USB interface.
