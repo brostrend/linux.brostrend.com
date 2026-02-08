@@ -585,8 +585,8 @@ troubleshoot() {
     rt grep PRETTY /etc/os-release
     rt -i dpkg --print-architecture
     rt lsusb_
-    rt -f -e lsmod "| grep -wE '88...u|aic8800.*|rtw8._88...u|mt7921u'" ||
-        rt -e ls "/sys/module/ | grep -wE '88...u|aic8800.*|rtw8._88...u|mt7921u'"
+    rt -f -e lsmod "| grep '^cfg80211" ||
+        rt -e ls /sys/module/cfg80211/holders/
     rt -i -e rfkill list
     rt -i -e mokutil --sb-state
     rt -f dkms status || rt -i apt policy dkms
