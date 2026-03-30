@@ -4,15 +4,23 @@ nav_order: 2
 
 # Supported distributions
 
-Recent Linux kernels include their own drivers for most of our adapters, so
-they work **out of the box** in the distributions that have them. We suggest
-that you use the in-kernel drivers and that you only run our installer if you
-encounter any issues.
+Recent Linux kernels include their own drivers (modules) for most of our
+adapters, so they work **out of the box** in the distributions that have them.
+We suggest that you use the [in-kernel drivers](#in-kernel-drivers) and that
+you only install [our drivers](#our-drivers) if you encounter any issues.
+
+If you open a terminal and run the following command, you'll see your kernel
+version. Then use the tables below to verify that your kernel supports the
+adapter and driver that you are interested in:
+
+```shell
+uname -r
+```
 
 ## In-kernel drivers
 
-The in-kernel drivers (modules) and the adapters they support are listed in the
-following table:
+The in-kernel drivers and the adapters they support are listed in the following
+table:
 
 | Driver                                                          | Adapter                         | Since Linux kernel version  |
 | --------------------------------------------------------------- | ------------------------------- | --------------------------- |
@@ -26,14 +34,10 @@ following table:
 | [r8169](https://www.kernelconfig.io/config_r8169)               | P1L                             | 5.9 (2020-10-11)            |
 | -                                                               | AX5L, AX7L, AX7PL               | **No in-kernel driver yet** |
 
-To see your kernel version, open a terminal and run the following command:
-
-```shell
-uname -r
-```
-
-Note that on Debian, you might have to install the related firmware packages
-and reboot for the drivers to work:
+Recent distributions include all those drivers by default, except for some rare
+cases; for example [OpenWRT](https://openwrt.org/) wants to be tiny to fit in
+routers, so it omits most drivers. Also note that on Debian, you might have to
+install the related firmware packages and reboot for the drivers to work:
 
 ```shell
 sudo apt install --yes firmware-realtek firmware-mediatek
@@ -41,16 +45,36 @@ sudo apt install --yes firmware-realtek firmware-mediatek
 
 ## Our drivers
 
+Our drivers and the range of Linux kernel versions they support are listed in
+the following table:
+
+| Driver                       | Adapter            | From kernel                                 | To kernel    |
+| ---------------------------- | ------------------ | ------------------------------------------- | ------------ |
+| [aic8800](aic8800-dkms.deb)  | AX5L, AX7L, AX7PL  | 4.4 (Ubuntu 16.04)                          | 6.17 (25.10) |
+| [8821au](rtl88x2bu-dkms.deb) | Old AC1Lv1, AC3Lv1 | 4.4                                         | 6.8 (24.04)  |
+| [88x2bu](rtl88x2bu-dkms.deb) | New AC1Lv2, AC3Lv2 | 4.4                                         | 6.17         |
+| [8821cu](rtl8821cu-dkms.deb) | AC5L               | 4.4                                         | 6.17         |
+| [8852bu](rtl8852bu-dkms.deb) | AX1L, AX4L         | 4.4                                         | 6.17         |
+| [8852cu](rtl8852cu-dkms.deb) | AX8L               | 5.14 (20.04)                                | 6.17         |
+| -                            | AX9L               | [In-kernel driver only](#in-kernel-drivers)               ||
+| -                            | WB1L               | [In-kernel driver only](#in-kernel-drivers)               ||
+| -                            | P1L                | [In-kernel driver only](#in-kernel-drivers)               ||
+
+We maintain our drivers until [in-kernel drivers](#in-kernel-drivers) appear
+for our adapters. Then the in-kernel drivers should be used wherever possible.
+Our drivers should only be used when no in-kernel drivers exist yet, such as
+for the AX5L, AX7L and AX7PL adapters, or if using old Linux distributions.
+
 Hundreds of Linux distributions exist so it's impossible to list or support all
 of them. Our driver release process is as follows:
 
 > 💡 Every time a new official Ubuntu, Debian or Raspberry Pi OS version is
-> released, we make sure that we have already uploaded a compatible driver in
-> our repository.
+> released, we make sure that we have already uploaded compatible drivers in
+> our repository, for all adapters that don't have in-kernel drivers.
 
-**This means that we support all official Ubuntu, Debian and Raspberry Pi OS
-versions, including all their derivatives as long as they use the same kernel
-and are not [immutable](https://itsfoss.com/immutable-linux-distros).**
+**This means that our drivers support all official Ubuntu, Debian and Raspberry
+Pi OS versions, including all their derivatives as long as they use the same
+kernel and are not [immutable](https://itsfoss.com/immutable-linux-distros).**
 
 But this also means that we cannot support distributions that frequently have a
 newer kernel than Ubuntu, such as ArchLinux or PoP!_OS, or distributions that
