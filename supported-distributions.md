@@ -28,7 +28,7 @@ table:
 | [rtw88_8822bu](https://www.kernelconfig.io/config_rtw88_8822bu) | New AC1Lv2, AC3Lv2              | 6.2 (2023-02-19)            |
 | [rtw88_8821cu](https://www.kernelconfig.io/config_rtw88_8821cu) | AC5L                            | 6.2 (2023-02-19)            |
 | [rtw89_8852bu](https://www.kernelconfig.io/config_rtw89_8852bu) | AX1L, AX4L                      | 6.17 (2025-09-28)           |
-| [rtw89_8852cu](https://www.kernelconfig.io/config_rtw89_8852cu) | AX8L                            | 6.19 (February 2026)        |
+| [rtw89_8852cu](https://www.kernelconfig.io/config_rtw89_8852cu) | AX8L                            | 6.19 (2026-02-08)           |
 | [mt7921au](https://www.kernelconfig.io/config_mt7921u)          | AX9L                            | 5.18 (2022-05-22)           |
 | [rtw89_8851bu](https://www.kernelconfig.io/config_rtw89_8851bu) | WB1L                            | 6.17 (2025-09-28)           |
 | [r8169](https://www.kernelconfig.io/config_r8169)               | P1L                             | 5.9 (2020-10-11)            |
@@ -48,17 +48,15 @@ sudo apt install --yes firmware-realtek firmware-mediatek
 Our drivers and the range of Linux kernel versions they support are listed in
 the following table:
 
-| Driver                       | Adapter            | From kernel                                 | To kernel    |
-| ---------------------------- | ------------------ | ------------------------------------------- | ------------ |
-| [aic8800](aic8800-dkms.deb)  | AX5L, AX7L, AX7PL  | 4.4 (Ubuntu 16.04)                          | 6.17 (25.10) |
-| [8821au](rtl88x2bu-dkms.deb) | Old AC1Lv1, AC3Lv1 | 4.4                                         | 6.8 (24.04)  |
-| [88x2bu](rtl88x2bu-dkms.deb) | New AC1Lv2, AC3Lv2 | 4.4                                         | 6.17         |
-| [8821cu](rtl8821cu-dkms.deb) | AC5L               | 4.4                                         | 6.17         |
-| [8852bu](rtl8852bu-dkms.deb) | AX1L, AX4L         | 4.4                                         | 6.17         |
-| [8852cu](rtl8852cu-dkms.deb) | AX8L               | 5.14 (20.04)                                | 6.17         |
-| -                            | AX9L               | [In-kernel driver only](#in-kernel-drivers)               ||
-| -                            | WB1L               | [In-kernel driver only](#in-kernel-drivers)               ||
-| -                            | P1L                | [In-kernel driver only](#in-kernel-drivers)               ||
+| Driver                       | Adapter            | From kernel                   | To kernel     |
+| ---------------------------- | ------------------ | ----------------------------- | ------------- |
+| [aic8800](aic8800-dkms.deb)  | AX5L, AX7L, AX7PL  | 4.4 (Ubuntu 16.04)            | 7.0 (26.04)   |
+| [8852cu](rtl8852cu-dkms.deb) | AX8L               | 5.14 (Ubuntu 20.04)           | 7.0 (26.04)   |
+| [8852bu](rtl8852bu-dkms.deb) | AX1L, AX4L         | 4.4                           | 7.0 (26.04)   |
+| [8821cu](rtl8821cu-dkms.deb) | AC5L               | 4.4                           | 6.17 (25.10)  |
+| [88x2bu](rtl88x2bu-dkms.deb) | New AC1Lv2, AC3Lv2 | 4.4                           | 6.17 (25.10)  |
+| [8821au](rtl88x2bu-dkms.deb) | Old AC1Lv1, AC3Lv1 | 4.4                           | 6.8 (24.04)   |
+| -                            | AX9L, WB1L, P1L    | [In-kernel drivers only](#in-kernel-drivers) ||
 
 We maintain our drivers until [in-kernel drivers](#in-kernel-drivers) appear
 for our adapters. Then the in-kernel drivers should be used wherever possible.

@@ -15,21 +15,31 @@ with the host computer. The following procedure will help you determine this.
 2. Open a terminal and run the following command:
 
     ```shell
-    lsusb | grep -E '(0bda|368b|a69c):(8812|b812|c811|b832|1a2b|88df|5721)'
+    lsusb | grep -E '(0bda|368b|a69c|0e8d):(8812|b812|c811|b832|1a2b|5721|88df|8d83|8d80|5723|8d8c|5725|c832|7961|8912|b851)'
     ```
 
    This command works even if no drivers are installed, and is supposed to show
    one of the following lines, depending on the model of your adapter:
 
-   | Model                     | Output of lsusb                                                  |
-   | ------------------------- | ---------------------------------------------------------------- |
-   | AC1L or AC3L version 1    | Bus 003 Device 005: ID **0bda:8812** Realtek Semiconductor Corp. |
-   | AC1L or AC3L version 2    | Bus 003 Device 005: ID **0bda:b812** Realtek Semiconductor Corp. |
-   | AC5L                      | Bus 003 Device 005: ID **0bda:c811** Realtek Semiconductor Corp. |
-   | AX1L or AX4L wlan mode    | Bus 003 Device 005: ID **0bda:b832** Realtek Semiconductor Corp. |
-   | AX1L or AX4L storage mode | Bus 003 Device 005: ID **0bda:1a2b** Realtek Semiconductor Corp. |
-   | AX5L wlan mode            | Bus 003 Device 005: ID **368b:88df** AICSemi AIC8800DC           |
-   | AX5L storage mode         | Bus 003 Device 005: ID **a69c:5721** aicsemi Aic MSC             |
+   | Model                               | Output of lsusb                                |
+   | ----------------------------------- | ---------------------------------------------- |
+   | AC1L or AC3L version 1 (AC1200)     | ID **0bda:8812** Realtek Semiconductor Corp.   |
+   | AC1L or AC3L version 2 (AC1200)     | ID **0bda:b812** Realtek Semiconductor Corp.   |
+   | AC5L (AC650)                        | ID **0bda:c811** Realtek Semiconductor Corp.   |
+   | Realtek **storage** mode            | ID **0bda:1a2b** Realtek Semiconductor Corp.   |
+   | AX1L or AX4L **WLAN** mode (AX1800) | ID **0bda:b832** Realtek Semiconductor Corp.   |
+   | AX5L **WLAN** mode (AX300)          | ID **368b:88df** AICSemi AIC8800DC             |
+   | AX5L **storage** mode               | ID **a69c:5721** aicsemi Aic MSC               |
+   | AX7L **WLAN** mode (AX900)          | ID **368b:8d83** AICSemi AIC 8800D80           |
+   | AX7L **ejected** mode               | ID **a69c:8d80** aicsemi AIC Wlan              |
+   | AX7L **storage** mode               | ID **a69c:5723** aicsemi Aic MSC               |
+   | AX7PL **WLAN** mode (AX900)         | ID **368b:8d8c** AICSemi AIC 8800D80           |
+   | AX7PL **ejected** mode              | ID **a69c:8d80** aicsemi AIC Wlan              |
+   | AX7PL **storage** mode              | ID **a69c:5725** aicsemi Aic MSC               |
+   | AX8L **WLAN** mode (AXE5400)        | ID **0bda:c832** Realtek Semiconductor Corp.   |
+   | AX9L (AXE3000)                      | ID **0e8d:7961** MediaTek Inc. Wireless_Device |
+   | BE1L **WLAN** mode (BE6500)         | ID **0bda:8912** Realtek Semiconductor Corp.   |
+   | WB1L **WLAN** mode (AX900)          | ID **0bda:b851** Realtek Semiconductor Corp.   |
 
 3. If you see one of the above IDs in the output, this means that your adapter
    properly communicates with the computer. In that case, please follow our
