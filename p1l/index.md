@@ -4,7 +4,7 @@ nav_exclude: true
 
 # P1L Ethernet adapter
 
-The [P1L 2.5 Gigabit Ethernet PCI-E Network Interface
+The [P1L 2.5 Gigabit Ethernet PCIe Network Interface
 Card](https://www.brostrend.com/products/p1l) works out of the box in all Linux
 distributions that have **at least kernel 5.9**, which was released in Oct
 2020, or any later kernel. This includes for example Ubuntu 20.04+, Debian 11+,
