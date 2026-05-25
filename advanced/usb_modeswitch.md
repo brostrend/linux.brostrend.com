@@ -87,6 +87,6 @@ If that didn't resolve the issue, then the second thing to try is to [add the
 following parameter in
 grub](https://askubuntu.com/questions/19486/how-do-i-add-a-kernel-boot-parameter),
 which instructs the kernel to [completely ignore the flash storage mode of our
-adapters]((https://www.draisberghof.de/usb_modeswitch/bb/viewtopic.php?f=4&t=3055&p=20078#p20078)):
+adapters](https://www.draisberghof.de/usb_modeswitch/bb/viewtopic.php?f=4&t=3055&p=20078#p20078):
 
     usb-storage.quirks=0bda:1a2b:i

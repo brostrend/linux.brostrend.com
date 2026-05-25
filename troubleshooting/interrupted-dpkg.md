@@ -12,9 +12,15 @@ This isn't a issue with our installer; it will also appear if you try to install
 
 Some of the reasons why this might have happened are:
 
-- Debian and Ubuntu have [unattended upgrades](https://manpages.ubuntu.com/unattended-upgrade) enabled in the background by default, so users might reboot their PCs without realizing that they're interrupting an installation procedure.
-- Some users interrupt the [secure boot configuration dialogs](../secure-boot/) by mistake.
-- Older Raspberry Pi CPUs are extremely slow and may need up to an hour to compile our driver, instead of a few seconds; some users think it's hanged and interrupt the compilation.
+- Debian and Ubuntu have [unattended
+  upgrades](https://manpages.debian.org/unattended-upgrades) enabled in the
+  background by default, so users might reboot their PCs without realizing that
+  they're interrupting an installation procedure.
+- Some users interrupt the [secure boot configuration dialogs](../secure-boot/)
+  by mistake.
+- Older Raspberry Pi CPUs are extremely slow and may need up to an hour to
+  compile our driver, instead of a few seconds; some users think it's hanged
+  and interrupt the compilation.
 
 To fix the broken system, just do what the message says. Open a terminal, and run:
 

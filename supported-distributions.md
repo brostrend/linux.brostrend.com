@@ -114,12 +114,11 @@ drivers](#in-kernel-drivers).
 [Armbian](https://www.armbian.com), [Artix
 Linux](https://artixlinux.org/download.php), [Bluestar
 Linux](https://sourceforge.net/projects/bluestarlinux), [CentOS
-Linux](https://www.centos.org), [CentOS Stream](https://www.centos.org), [Clear
-Linux](https://clearlinux.org), [deepin](https://www.deepin.org),
-[EndeavourOS](https://endeavouros.com), [Endless OS](https://endlessos.com),
-[Fedora Workstation](https://getfedora.org), [Garuda
-Linux](https://garudalinux.org), [Gecko
-Linux](https://sourceforge.net/projects/geckolinux), [Gentoo
+Linux](https://www.centos.org), [CentOS Stream](https://www.centos.org),
+[deepin](https://www.deepin.org), [EndeavourOS](https://endeavouros.com),
+[Endless OS](https://endlessos.com), [Fedora
+Workstation](https://getfedora.org), [Garuda Linux](https://garudalinux.org),
+[Gecko Linux](https://sourceforge.net/projects/geckolinux), [Gentoo
 Linux](https://www.gentoo.org), [Guix](https://guix.gnu.org), [KaOS
 Linux](https://kaosx.us), [Kali Linux](https://www.kali.org),
 [Kodachi](https://www.digi77.com/linux-kodachi),
