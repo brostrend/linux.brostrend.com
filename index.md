@@ -57,7 +57,7 @@ adapter. In some cases a reboot might be necessary.
 7. If the installer reports an error, please copy all the text in the terminal
 and paste it in a mail to [support@brostrend.com](mailto:support@brostrend.com)
 so that we can see what went wrong. Please also attach the auto-generated log
-file, /tmp/troubleshooting.txt.
+file, /tmp/brostrend.log.txt.
 
 If your distribution is based on Debian, our apt repository will be
 automatically added to your software sources, to provide automatic driver

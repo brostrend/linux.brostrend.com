@@ -27,11 +27,11 @@ collect it, please follow these steps:
     sh ~/troubleshooter.sh -t
     ```
 
-5. Paste the following command to open the /tmp/troubleshooting.txt log file in
+5. Paste the following command to open the /tmp/brostrend.log.txt log file in
    your editor:
 
     ```shell
-    xdg-open /tmp/troubleshooting.txt
+    xdg-open /tmp/brostrend.log.txt
     ```
 
 6. Attach that log file (or its contents) to the email thread where our support

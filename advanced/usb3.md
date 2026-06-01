@@ -10,6 +10,9 @@ parameters as possible. For example, Realtek has chosen to disable the USB 3
 port mode by default for compatibility with some older systems, which sometimes
 results in lower Wi-Fi connection speeds.
 
+> 💡 **Note:** If your access point is using the slow 2.4 GHz band, there's no
+> benefit in switching to USB3 mode; it's recommended to leave it in USB2 mode.
+
 The instructions below mention `8852bu`, which is the
 [driver name](../supported-distributions.md#our-drivers) for our AX1L and AX4L
 adapters. For AC1L/AC3L, replace it with `88x2bu`. For AX8L, replace it with
@@ -44,6 +47,3 @@ sudo -i
 echo 2 >/sys/module/8852bu/parameters/rtw_switch_usb_mode
 rm /etc/modprobe.d/local.conf
 ```
-
-> 💡 **Note:** If your access point is using the slow 2.4 GHz band, there's no
-> benefit in switching to USB3 mode; it's recommended to leave it in USB2 mode.
