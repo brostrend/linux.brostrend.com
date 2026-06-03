@@ -69,19 +69,19 @@ Modaliases: 8821cu(usb:v0BDApbc811*dc*dsc*dp*ic*isc*ip*in*)
 
 Package: rtl8852bu-dkms
 Source: rtl8852bu
-Version: 1.19.21-86b2
+Version: 1.19.21-86b3
 Architecture: all
 Maintainer: BrosTrend <support@brostrend.com>
-Installed-Size: 56024
+Installed-Size: 56023
 Depends: dkms (>= 2.1.0.0), bc, linux-libc-dev, libc6-dev, usb-modeswitch
 Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
-Filename: pool/main/r/rtl8852bu/rtl8852bu-dkms_1.19.21-86b2_all.deb
-Size: 8530788
-SHA256: 1132af42365509e039fb49d0dbb62286a4607da7ae116e17b7bf69494332a7de
-SHA1: 85ed79ece5a32a98dc9c1a4a81cf47acbe5e8f19
-MD5sum: 8121c3a07c20e7c5ec0fea39de2e00e8
+Filename: pool/main/r/rtl8852bu/rtl8852bu-dkms_1.19.21-86b3_all.deb
+Size: 8530638
+SHA256: 2c5b7efc675d01656ce3ec6ac3d5da7a607207e6e2f7529e228135db95f38045
+SHA1: 33f0190d5c0bce8b60b839e25e3677e0eff9683f
+MD5sum: 4c2ab98701f64da82322b5e9f362dceb
 Description: dkms source for the r8852bu network driver
  rtl8852bu is the Linux device driver released for the RealTek RTL8852BU WiFi
  controllers with USB interface.
