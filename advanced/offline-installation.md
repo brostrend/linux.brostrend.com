@@ -34,18 +34,19 @@ mkdir /media/user/stick/driver
 cd /media/user/stick/driver
 wget 'http://us.archive.ubuntu.com/ubuntu/pool/main/d/dkms/dkms_2.8.1-4ubuntu1_all.deb'
 ...
-wget https://linux.brostrend.com/rtl8812au-dkms.deb
+wget https://linux.brostrend.com/aic8800-dkms.deb
 ```
 
 Note the last command there. You're supposed to manually replace the
-`rtl8812au-dkms.deb` package name with the appropriate one for your adapter,
+`aic8800-dkms.deb` package name with the appropriate one for your adapter,
 from the following list (while our installer autodetects it):
 
 * [rtl8812au-dkms.deb](../rtl8812au-dkms.deb) for the old AC1L and AC3L version 1 models (before 2019)
 * [rtl88x2bu-dkms.deb](../rtl88x2bu-dkms.deb) for the new AC1L and AC3L version 2 models
 * [rtl8821cu-dkms.deb](../rtl8821cu-dkms.deb) for AC5L
 * [rtl8852bu-dkms.deb](../rtl8852bu-dkms.deb) for AX1L and AX4L
-* [aic8800-dkms.deb](../aic8800-dkms.deb) for AX5L
+* [rtl8852cu-dkms.deb](../rtl8852cu-dkms.deb) for AX8L
+* [aic8800-dkms.deb](../aic8800-dkms.deb) for AX5L, AX7L and AX7PL
 
 Also note that if your computer was offline for weeks, it's possible that newer kernel or dkms packages were published, and the old ones were deleted, and the URLs above are no longer valid. In this case you'd need to connect the target computer online and run `apt update` to get an updated list of URLs.
 

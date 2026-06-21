@@ -109,7 +109,7 @@ drivers](#in-kernel-drivers).
 
 ### A non-exhaustive list of distributions that our drivers do NOT support is
 
-[ALT Linux](http://en.altlinux.org), [antiX Linux](https://antixlinux.com),
+[ALT Linux](https://en.altlinux.org), [antiX Linux](https://antixlinux.com),
 [Arch Linux](https://archlinux.org), [Arco Linux](https://arcolinux.com),
 [Armbian](https://www.armbian.com), [Artix
 Linux](https://artixlinux.org/download.php), [Bluestar
@@ -128,7 +128,7 @@ Linux](https://www.oracle.com/linux),
 [OpenMandriva](https://www.openmandriva.org), [openSUSE
 Leap](https://www.opensuse.org), [openSUSE
 Tumbleweed](https://www.opensuse.org), [PCLinuxOS](https://www.pclinuxos.com),
-[Pop! OS](https://pop.system76.com), [Puppy Linux](http://puppylinux.com),
+[Pop! OS](https://pop.system76.com), [Puppy Linux](https://puppylinux-woof-ce.github.io/),
 [Reborn OS](https://rebornos.org), [Red Hat Enterprise
 Linux](https://www.redhat.com), [Scientific
 Linux](https://scientificlinux.org), [Slackware](https://www.slackware.com),
