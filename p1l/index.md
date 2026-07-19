@@ -2,9 +2,9 @@
 nav_exclude: true
 ---
 
-# P1L Ethernet adapter
+# P1L PCIe Ethernet adapter
 
-The [P1L 2.5 Gigabit Ethernet PCIe Network Interface
+The [P1L 2.5Gbps PCIe Ethernet Network Interface
 Card](https://www.brostrend.com/products/p1l) works out of the box in all Linux
 distributions that have **at least kernel 5.9**, which was released in Oct
 2020, or any later kernel. This includes for example Ubuntu 20.04+, Debian 11+,
@@ -23,9 +23,8 @@ have backported the necessary r8169 driver:
 > run the following command; if the output is non-empty, it supports it:
 >
 > ```console
-> # grep 8125 /lib/modules/*/modules.alias
+> # grep 10EC.*8125 /lib/modules/*/modules.alias
 > /lib/modules/5.15.0-69-generic/modules.alias:alias pci:v000010ECd00008125sv*sd*bc*sc*i* r8169
-> /lib/modules/5.19.0-38-generic/modules.alias:alias pci:v000010ECd00008125sv*sd*bc*sc*i* r8169
 > ...
 > ```
 
@@ -44,31 +43,21 @@ sudo apt install linux-generic-hwe-20.04
 
 ## Debian 10 Buster
 
-Debian Buster normally comes with the 4.19 kernel. To install the 5.10 kernel, run the following command and reboot:
+Debian Buster normally comes with the 4.19 kernel. To install the 5.10 kernel,
+run the following command and reboot:
 
 ```shell
 sudo apt install linux-image-5.10-$(dpkg --print-architecture)
 ```
 
-## Source compilation
+## DKMS package
 
-It's also possible to manually compile the driver in older distributions where
-it doesn't work out of the box. Start by installing the `dkms` package, or at
-least gcc, make and the kernel headers. Then either go to the [Realtek driver
-page](https://www.realtek.com/Download/List?cate_id=584) and [download the
-driver source
-code](https://www.realtek.com/Download/ToDownload?type=direct&downloadid=3763),
-or just run the following commands:
+In older distributions that don't have a 5.9+ kernel, it's possible to compile
+the driver locally. The following github page provides the driver in various
+forms, for example via Launchpad PPA, Debian package, DKMS package, or source
+code compilation:
 
-```shell
-wget linux.brostrend.com/p1l/r8125-9.014.01.tar.bz2
-tar xf r8125-9.014.01.tar.bz2
-cd r8125-9.014.01
-sudo make
-sudo make install
-sudo depmod
-sudo modprobe r8125
-```
+**<https://github.com/awesometic/realtek-r8125-dkms>**
 
 ## Technical information
 

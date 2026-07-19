@@ -31,7 +31,12 @@ table:
 | [rtw89_8852cu](https://www.kernelconfig.io/config_rtw89_8852cu) | AX8L                            | 6.19 (2026-02-08)           |
 | [mt7921au](https://www.kernelconfig.io/config_mt7921u)          | AX9L                            | 5.18 (2022-05-22)           |
 | [rtw89_8851bu](https://www.kernelconfig.io/config_rtw89_8851bu) | WB1L                            | 6.17 (2025-09-28)           |
+| [r8152](https://www.kernelconfig.io/config_usb_rtl8152)         | U2, U2C                         | 5.13 (2021-06-27)           |
+| [r8152](https://www.kernelconfig.io/config_usb_rtl8152)         | U5, U5A                         | 7.1 (2026-06-14)            |
+| [r8152](https://www.kernelconfig.io/config_usb_rtl8152)         | U6                              | 7.2 (2026-08-xx)            |
 | [r8169](https://www.kernelconfig.io/config_r8169)               | P1L                             | 5.9 (2020-10-11)            |
+| [r8169](https://www.kernelconfig.io/config_r8169)               | P2                              | 6.9 (2024-05-12)            |
+| [r8169](https://www.kernelconfig.io/config_r8169)               | P3                              | 6.16 (2025-07-27)           |
 | -                                                               | AX5L, AX7L, AX7PL               | **No in-kernel driver yet** |
 
 Recent distributions include all those drivers by default, except for some rare
