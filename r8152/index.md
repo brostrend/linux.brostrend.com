@@ -6,13 +6,13 @@ nav_exclude: true
 
 This page provides documentation for the following Brostrend USB to Ethernet adapters:
 
-| Model                                | Description                                               | Minimum kernel                                                                   | Chipset      | USB-ID    |
-| ------------------------------------ | --------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------ | --------- |
-| [U6](https://www.brostrend.com/u6)   | USB-C to 10 Gigabit Ethernet Adapter                      | [7.2 (2026-08-xx)](https://www.phoronix.com/news/Realtek-RTL8159-Linux-7.2)      | RTL8159      | 0bda:815a |
-| [U5](https://www.brostrend.com/u5)   | USB-C to 5 Gbps Ethernet Adapter                          | [7.1 (2026-06-14)](https://www.phoronix.com/news/Linux-7.1-Networking)           | RTL8157-CG   | 0bda:8157 |
-| [U5A](https://www.brostrend.com/u5a) | USB-A to 5 Gigabit Ethernet Adapter                       | [7.1 (2026-06-14)](https://www.phoronix.com/news/Linux-7.1-Networking)           | RTL8157-CG   | 0bda:8157 |
-| [U2](https://www.brostrend.com/u2)   | USB-C to 2.5 Gbps Ethernet Adapter                        | [5.13 (2021-06-27)](https://www.phoronix.com/news/Realtek-RTL8153-RTL8156-Linux) | RTL8156BG-CG | 0bda:8156 |
-| [U2C](https://www.brostrend.com/u2c) | USB-C to 2.5 Gigabit Ethernet Cable with Built-in Adapter | [5.13 (2021-06-27)](https://www.phoronix.com/news/Realtek-RTL8153-RTL8156-Linux) | RTL8156BG-CG | 0bda:8156 |
+| Model                                | Description                                            | Minimum kernel                                                                   | Chipset      | USB-ID    |
+| ------------------------------------ | ------------------------------------------------------ | -------------------------------------------------------------------------------- | ------------ | --------- |
+| [U6](https://www.brostrend.com/u6)   | USB-C to 10 Gbps Ethernet Adapter                      | [7.2 (2026-08-xx)](https://www.phoronix.com/news/Realtek-RTL8159-Linux-7.2)      | RTL8159      | 0bda:815a |
+| [U5](https://www.brostrend.com/u5)   | USB-C to 5 Gbps Ethernet Adapter                       | [7.1 (2026-06-14)](https://www.phoronix.com/news/Linux-7.1-Networking)           | RTL8157-CG   | 0bda:8157 |
+| [U5A](https://www.brostrend.com/u5a) | USB-A to 5 Gbps Ethernet Adapter                       | [7.1 (2026-06-14)](https://www.phoronix.com/news/Linux-7.1-Networking)           | RTL8157-CG   | 0bda:8157 |
+| [U2](https://www.brostrend.com/u2)   | USB-C to 2.5 Gbps Ethernet Adapter                     | [5.13 (2021-06-27)](https://www.phoronix.com/news/Realtek-RTL8153-RTL8156-Linux) | RTL8156BG-CG | 0bda:8156 |
+| [U2C](https://www.brostrend.com/u2c) | USB-C to 2.5 Gbps Ethernet Cable with Built-in Adapter | [5.13 (2021-06-27)](https://www.phoronix.com/news/Realtek-RTL8153-RTL8156-Linux) | RTL8156BG-CG | 0bda:8156 |
 
 These adapters work out of the box in all Linux distributions that have at
 least the minimum kernel version mentioned in the table, using the built-in
@@ -33,7 +33,7 @@ additionally supported:
 The best way to setup our USB to Ethernet adapters is to run our installer; see
 the initial page for instructions:
 
-- **<https://linux.brostrend.com>**
+**<https://linux.brostrend.com>**
 
 The installer will:
 
@@ -83,7 +83,7 @@ it might be 1.2 Gbps instead of 10 Gbps. To resolve that, we recommend that you
 run our installer. If you prefer to install the r8152 driver from elsewhere, a
 github page and a PPA is available there:
 
-https://github.com/awesometic/realtek-r8152-dkms
+**<https://github.com/awesometic/realtek-r8152-dkms>**
 
 ## Adapter speed
 
@@ -99,15 +99,17 @@ be met:
 
 ### USB port speed
 
-These are the USB versions and port speeds:
+These are the [USB versions and port
+speeds](https://en.wikipedia.org/wiki/USB#Connector_type_quick_reference):
 
-| USB Version       | Speed    | Slows down adapter  | Identical to          |
-| ----------------- | -------- | ------------------- | --------------------- |
-| Thunderbolt 3, 4+ | 40+ Gbps |                     |                       |
-| USB4+             | 40+ Gbps |                     |                       |
-| USB 3.2 Gen 2x2   | 20 Gbps  |                     |                       |
-| USB 3.2 Gen 2x1   | 10 Gbps  | U6 (TODO test)      | USB 3.1 Gen2          |
-| USB 3.2 Gen 1     | 5 Gbps   | U6, U5 (~3.75 Gbps) | USB 3.1 Gen1, USB 3.0 |
+| USB Version    | Speed    | Slows down adapter  | Also known as   |
+| -------------- | -------- | ------------------- | --------------- |
+| Thunderbolt 3+ | 40+ Gbps |                     |                 |
+| USB4+          | 40+ Gbps |                     |                 |
+| USB 3.2        | 20 Gbps  |                     | USB 3.2 Gen 2x2 |
+| USB 3.1        | 10 Gbps  | U6 (~7.5 Gbps)      | USB 3.2 Gen 2x1 |
+| USB 3.0        | 5 Gbps   | U6, U5 (~3.75 Gbps) | USB 3.2 Gen 1x1 |
+| USB 2.0        | 480 Mbps | All (~0.4 Gbps)     |                 |
 
 Let's focus again on the [sample output listed
 above](#collect-current-information), and particularly on the lsusb command.
@@ -119,9 +121,9 @@ it can be. What is wrong?
 For the explanation we'll need to consult the manufacturer's manual. In this
 example, the [Dell Pro Slim Desktop QCS1250
 specifications](https://www.dellstore.com/dell-pro-slim-desktop-bto009-qcs1250-i2x.html)
-mention that the USB-C port in the front of the PC is USB 3.2 Gen 1 (5 Gbps),
-while if we had bought the optional port module, we'd have a USB 3.2 Gen 2 (10
-Gbps) port in the back.
+mention that the USB-C port in the front of the PC is USB 3.2 Gen 1x1 (5 Gbps),
+while if we had bought the optional port module, we'd have a USB 3.2 Gen 2x1
+(10 Gbps) port in the back.
 
 ### Ethernet speed
 
