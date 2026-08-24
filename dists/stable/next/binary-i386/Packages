@@ -1,18 +1,18 @@
 Package: aic8800-dkms
 Source: aic8800
-Version: 1.0.9-0b1
+Version: 6.4.3.0-0b1
 Architecture: all
 Maintainer: BrosTrend <support@brostrend.com>
-Installed-Size: 5074
+Installed-Size: 5441
 Depends: dkms (>= 2.1.0.0), eject, linux-libc-dev, libc6-dev
 Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
-Filename: pool/next/a/aic8800/aic8800-dkms_1.0.9-0b1_all.deb
-Size: 2089182
-SHA256: fd83788d564bb3018e382e236c911a616275e769740e622d42934b5a6f0d714a
-SHA1: dfaa70403d3fe4ee57371dcd2247720fd94c9ba1
-MD5sum: 23aeb00e3af393be441de572054f66f3
+Filename: pool/next/a/aic8800/aic8800-dkms_6.4.3.0-0b1_all.deb
+Size: 2346720
+SHA256: 5abe730ee9edec292a894f5cdf407c205491b8c57fd39b87886aae3785cd5fac
+SHA1: deb632d47d12a3a226c726d2bc97723b0e5f232b
+MD5sum: 8f1369b83dbe03f6430be75b1525cfec
 Description: dkms source for the aic8800 network driver
  aic8800 is the Linux device driver released for the AIC 8800 WiFi
  controllers with USB interface.
