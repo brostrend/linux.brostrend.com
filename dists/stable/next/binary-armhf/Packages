@@ -21,6 +21,34 @@ Description: dkms source for the aic8800 network driver
  Kernel source or headers are required to compile these modules.
 Modaliases: aic8800_fdrv(usb:v368Bp88DFd*dc*dsc*dp*ic*isc*ip*in*)
 
+Package: r8152-dkms
+Source: r8152
+Version: 2.22.1-0b1
+Architecture: all
+Maintainer: BrosTrend <support@brostrend.com>
+Installed-Size: 1006
+Depends: dkms (>= 2.1.0.0), linux-libc-dev, libc6-dev
+Homepage: https://linux.brostrend.com
+Priority: optional
+Section: kernel
+Filename: pool/next/r/r8152/r8152-dkms_2.22.1-0b1_all.deb
+Size: 134674
+SHA256: 2fc95be826b3b0a038971d3fda8009e98542aa4e4ff7fa499dac250ff676cce5
+SHA1: 827d5d0ddbfe82a478eb5e39f12195dc2f637bc4
+MD5sum: 78cfd6f9736fa72f1d712bfb61ee3e2f
+Description: dkms source for the r8152 network driver
+ r8152 is the Linux device driver released by RealTek for their network
+ controllers with USB interface.
+ .
+ This driver should only be used for devices not yet supported by the
+ in-kernel driver r8152.
+ .
+ Installation of the r8152-dkms package will disable the in-kernel r8152
+ module. To re-enable r8152, the r8152-dkms package must be purged.
+ .
+ This package provides the dkms source code for the r8152 kernel module.
+ Kernel source or headers are required to compile these modules.
+
 Package: rtl8812au-dkms
 Source: rtl8812au
 Version: 5.13.6-23b13
