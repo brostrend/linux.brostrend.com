@@ -7,7 +7,7 @@ nav_exclude: true
 To uninstall our drivers on **Debian derivatives**, run this command:
 
 ```shell
-sudo apt purge aic8800-dkms rtl8812au-dkms rtl88x2bu-dkms rtl8821cu-dkms rtl8852bu-dkms rtl8852cu-dkms
+sudo apt purge aic8800-dkms r8152-dkms rtl8812au-dkms rtl88x2bu-dkms rtl8821cu-dkms rtl8852bu-dkms rtl8852cu-dkms
 ```
 
 It's OK to list all our drivers in the command even if you only have one of

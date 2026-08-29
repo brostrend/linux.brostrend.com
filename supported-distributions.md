@@ -33,7 +33,7 @@ table:
 | [rtw89_8851bu](https://www.kernelconfig.io/config_rtw89_8851bu) | WB1L                            | 6.17 (2025-09-28)           |
 | [r8152](https://www.kernelconfig.io/config_usb_rtl8152)         | U2, U2C                         | 5.13 (2021-06-27)           |
 | [r8152](https://www.kernelconfig.io/config_usb_rtl8152)         | U5, U5A                         | 7.1 (2026-06-14)            |
-| [r8152](https://www.kernelconfig.io/config_usb_rtl8152)         | U6                              | 7.2 (2026-08-xx)            |
+| [r8152](https://www.kernelconfig.io/config_usb_rtl8152)         | U6                              | 7.2 (2026-08-16)            |
 | [r8169](https://www.kernelconfig.io/config_r8169)               | P1L                             | 5.9 (2020-10-11)            |
 | [r8169](https://www.kernelconfig.io/config_r8169)               | P2                              | 6.9 (2024-05-12)            |
 | [r8169](https://www.kernelconfig.io/config_r8169)               | P3                              | 6.16 (2025-07-27)           |
@@ -55,6 +55,7 @@ the following table:
 
 | Driver                       | Adapter            | From kernel                   | To kernel     |
 | ---------------------------- | ------------------ | ----------------------------- | ------------- |
+| [r8152](r8152-dkms.deb)      | U6, U5/U5A, U2/U2C | 5.4 (Ubuntu 20.04)            | 7.0 (26.04)   |
 | [aic8800](aic8800-dkms.deb)  | AX5L, AX7L, AX7PL  | 4.4 (Ubuntu 16.04)            | 7.0 (26.04)   |
 | [8852cu](rtl8852cu-dkms.deb) | AX8L               | 5.14 (Ubuntu 20.04)           | 7.0 (26.04)   |
 | [8852bu](rtl8852bu-dkms.deb) | AX1L, AX4L         | 4.4                           | 7.0 (26.04)   |

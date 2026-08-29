@@ -5,7 +5,7 @@
 usage() {
     printf "Usage: %s [OPTIONS] [COMMAND]
 
-Install the drivers for the BrosTrend AC1L/AC3L/AC5L, AX1L/AX4L/AX5L/AX7L/AX8L adapters.
+Install the drivers for the BrosTrend network adapters.
 The main difficulty is in detecting the appropriate kernel *headers* package.
 
 Options:
@@ -67,12 +67,13 @@ select_driver() {
     set --
     case "$fname" in
     8812au | 88x2bu | 8821cu | 8852bu | 8852cu) set "rtl$fname" ;;
-    aic8800) set "$fname" ;;
+    aic8800 | r8152) set "$fname" ;;
     esac
     # We want to install a single driver on each invocation of the installer
     while [ $# -ne 1 ]; do
         while read -r product _dummy; do
             case "$product" in
+            0bda:815[67a]) set -- r8152 ;;
             0bda:8812) set -- "$@" rtl8812au ;;
             0bda:b812) set -- "$@" rtl88x2bu ;;
             0bda:c811) set -- "$@" rtl8821cu ;;
@@ -112,7 +113,7 @@ EOF
         test $# -eq 1 && break
         if [ $# -eq 0 ]; then
             warn "Could not detect the adapter!"
-            echo "Please insert the BrosTrend Wi-Fi adapter into a USB slot
+            echo "Please insert the BrosTrend network adapter into a USB slot
 and press [Enter] to retry the autodetection process.
 If you don't have the adapter currently, you may type:"
         else
@@ -121,27 +122,30 @@ If you don't have the adapter currently, you may type:"
 and press [Enter] to retry the autodetection process,
 or choose the driver you want to install from the following list:"
         fi
-        echo "  (a) to install the 8812au driver for the old AC1L/AC3L models before 2019, or
-  (b) to install the 88x2bu driver for the new AC1L/AC3L version 2 models, or
-  (c) to install the 8821cu driver for the AC5L model, or
-  (d) to install the 8852bu driver for the AX1L/AX4L models, or
-  (e) to install the 8852cu driver for the AX8L model, or
-  (f) to install the aic8800 driver for the AX5L/AX7L models,
-  (q) to quit without installing a driver"
+        echo "  1) r8152 for U6 (10G), U5/U5A (5G), U2/U2C (2G USB Ethernet)
+  2) 8852cu for AX8L (AXE5400 USB Wi-Fi)
+  3) aic8800 for AX7L/AX7LP (AX900), AX5L (AX300)
+  4) 8852bu for AX1L/AX4L (AX1800)
+  5) 8821cu for AC5L (AX300)
+  6) 88x2bu for AC1L/AC3L v2 (current AC1200)
+  7) 8812au for AC1L/AC3L v1 (old AC1200, before 2019)
+  0) to quit without installing a driver"
         warn -n "Please type your choice, or [Enter] to autodetect: "
         read -r choice
         case "$choice" in
-        a | '(a)') set rtl8812au ;;
-        b | '(b)') set rtl88x2bu ;;
-        c | '(c)') set rtl8821cu ;;
-        d | '(d)') set rtl8852bu ;;
-        e | '(e)') set rtl8852cu ;;
-        f | '(f)') set aic8800 ;;
-        q | '(q)') die "Aborted" ;;
+        1*) set r8152 ;;
+        2*) set rtl8852cu ;;
+        3*) set aic8800 ;;
+        4*) set rtl8852bu ;;
+        5*) set rtl8821cu ;;
+        6*) set rtl88x2bu ;;
+        7*) set rtl8812au ;;
+        0*) die "Aborted" ;;
         # Anything else does autodetection again
         esac
     done
     case "$1" in
+    r8152) _IKD=r8152 ;;
     rtl8812au) _IKD=rtw88_8812au ;;
     rtl88x2bu) _IKD=rtw88_8822bu ;;
     rtl8821cu) _IKD=rtw88_8821cu ;;
@@ -151,8 +155,8 @@ or choose the driver you want to install from the following list:"
     esac
     if [ -n "$_IKD" ] && [ -d "/sys/module/$_IKD" ]; then
         warn "Your kernel already has a driver for this adapter!"
-        echo "It is recommended that you abort our installer and that you use the in-kernel
-driver instead; it should work out of the box:
+        echo "It is recommended that you abort our installer
+and that you use the in-kernel driver instead; it should work out of the box:
 https://linux.brostrend.com/supported-distributions/#in-kernel-drivers"
         warn -n "Press Ctrl+C to abort, or [Enter] to continue with the installation: "
         read -r choice
@@ -250,10 +254,11 @@ install_debian_prerequisites() {
 }
 
 install_driver() {
-    local module reinstall ver ikd
+    local module reinstall ver
 
     case "$_DRIVER" in
     rtl*) module=${_DRIVER#rtl} ;;
+    r8152) module=r8152 ;;
     *) module=aic8800_fdrv ;;
     esac
     bold "Downloading the $_DRIVER driver"
@@ -293,6 +298,7 @@ install_driver() {
         ver=${ver##*-}
         re rm -rf "/usr/src/$_DRIVER-$ver"
         re mv "usr/src/$_DRIVER-$ver" /usr/src/
+        # TODO: to support r8152 and aic8800, we also need the udev rules
         re cd "/usr/src/$_DRIVER-$ver"
         if is_command dkms; then
             dkms remove -m "$_DRIVER" -v "$ver" --all 2>/dev/null
@@ -317,13 +323,17 @@ install_driver() {
         ;;
     esac
     # Unload the competing in-kernel drivers
-    if [ -n "$_IKD" ] && [ -d "/sys/module/$_IKD" ]; then
-        bold "Unloading the $_IKD in-kernel driver"
-        if ! timeout 10 modprobe -r "$_IKD"; then
-            warn "Failed to unload the $_IKD in-kernel driver, PLEASE REBOOT"
+    if [ "$_DRIVER" = "r8152" ]; then
+        warn "Please reboot for the r8152 driver to get loaded"
+    else
+        if [ -n "$_IKD" ] && [ -d "/sys/module/$_IKD" ]; then
+            bold "Unloading the $_IKD in-kernel driver"
+            if ! timeout 10 modprobe -r "$_IKD"; then
+                warn "Failed to unload the $_IKD in-kernel driver, PLEASE REBOOT"
+            fi
         fi
+        re modprobe "$module"
     fi
-    re modprobe "$module"
 }
 
 # Install missing packages from the ones specified
@@ -474,9 +484,12 @@ kver() {
 # AX9L:     ID 0e8d:7961 MediaTek Inc. Wireless_Device
 # BE1L©:    ID 0bda:8912 Realtek Semiconductor Corp. 802.11be WLAN Adapter
 # WB1L©:    ID 0bda:b851 Realtek Semiconductor Corp. 802.11ax WLAN Adapter
+# U2, U2C:  ID 0bda:8156 Realtek Semiconductor Corp. USB 10/100/1G/2.5G/5G/10G LAN
+# U5, U5A:  ID 0bda:8157 Realtek Semiconductor Corp. USB 10/100/1G/2.5G/5G/10G LAN
+# U6:       ID 0bda:815a Realtek Semiconductor Corp. USB 10/100/1G/2.5G/5G/10G LAN
 # The manufacturer:product description is too bare. Just use our own.
 lsusb_() {
-    local fname fdir usbid msg
+    local fname fdir usbid msg speed
 
     for fname in /sys/bus/usb/devices/*/idVendor; do
         fdir=${fname%/*}
@@ -499,9 +512,25 @@ lsusb_() {
         0e8d:7961) msg="Brostrend AX9L Wi-Fi adapter" ;;
         0bda:8912) msg="Brostrend BE1L Wi-Fi adapter" ;;
         0bda:b851) msg="Brostrend WB1L Wi-Fi adapter" ;;
+        0bda:8156) msg="Brostrend U2/U2C USB Ethernet adapter" ;;
+        0bda:8157) msg="Brostrend U5/U5A USB Ethernet adapter" ;;
+        0bda:815a) msg="Brostrend U6 USB Ethernet adapter" ;;
         *) continue ;;
         esac
-        # TODO: try to detect if it's a USB2 or USB3 port; see: lsusb -tv
+        case "$(cat "$fdir/speed" 2>/dev/null)" in
+        1.5 | 12) speed="USB 1" ;;
+        480) speed="USB 2" ;;
+        5000) speed="USB 3" ;;
+        10000) speed="USB 3.1" ;;
+        *0000) speed="USB 3.2+" ;;
+        *) speed="" ;;
+        esac
+        if [ -n "$speed" ]; then
+            case "$msg" in
+            *')') msg="${msg%)}, $speed)" ;;
+            *) msg="$msg ($speed)" ;;
+            esac
+        fi
         echo "$usbid $msg"
     done
 }
@@ -598,6 +627,8 @@ troubleshoot() {
     # iw isn't available in vanilla Ubuntu GNOME 22.04, but iwlist is
     rt -i iw reg get
     rt -f nmcli dev wifi || rt -i iwlist scanning
+    rt -i lsusb -tv
+    rt -i free
     # Try the faster variant, fallback to the safer one
     SYSTEMD_COLORS=16 rt -f journalctl -b -n 5000 ||
         rt "dmesg --color=always | tail -n 5000"

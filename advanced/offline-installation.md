@@ -47,6 +47,7 @@ from the following list (while our installer autodetects it):
 * [rtl8852bu-dkms.deb](../rtl8852bu-dkms.deb) for AX1L and AX4L
 * [rtl8852cu-dkms.deb](../rtl8852cu-dkms.deb) for AX8L
 * [aic8800-dkms.deb](../aic8800-dkms.deb) for AX5L, AX7L and AX7PL
+* [r8152-dkms.deb](../r8152-dkms.deb) for U2, U2C, U5, U5A and U6
 
 Also note that if your computer was offline for weeks, it's possible that newer kernel or dkms packages were published, and the old ones were deleted, and the URLs above are no longer valid. In this case you'd need to connect the target computer online and run `apt update` to get an updated list of URLs.
 

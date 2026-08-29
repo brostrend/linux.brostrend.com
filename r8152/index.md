@@ -8,7 +8,7 @@ This page provides documentation for the following Brostrend USB to Ethernet ada
 
 | Model                                | Description                                            | Minimum kernel                                                                   | Chipset      | USB-ID    |
 | ------------------------------------ | ------------------------------------------------------ | -------------------------------------------------------------------------------- | ------------ | --------- |
-| [U6](https://www.brostrend.com/u6)   | USB-C to 10 Gbps Ethernet Adapter                      | [7.2 (2026-08-xx)](https://www.phoronix.com/news/Realtek-RTL8159-Linux-7.2)      | RTL8159      | 0bda:815a |
+| [U6](https://www.brostrend.com/u6)   | USB-C to 10 Gbps Ethernet Adapter                      | [7.2 (2026-08-16)](https://www.phoronix.com/news/Realtek-RTL8159-Linux-7.2)      | RTL8159      | 0bda:815a |
 | [U5](https://www.brostrend.com/u5)   | USB-C to 5 Gbps Ethernet Adapter                       | [7.1 (2026-06-14)](https://www.phoronix.com/news/Linux-7.1-Networking)           | RTL8157-CG   | 0bda:8157 |
 | [U5A](https://www.brostrend.com/u5a) | USB-A to 5 Gbps Ethernet Adapter                       | [7.1 (2026-06-14)](https://www.phoronix.com/news/Linux-7.1-Networking)           | RTL8157-CG   | 0bda:8157 |
 | [U2](https://www.brostrend.com/u2)   | USB-C to 2.5 Gbps Ethernet Adapter                     | [5.13 (2021-06-27)](https://www.phoronix.com/news/Realtek-RTL8153-RTL8156-Linux) | RTL8156BG-CG | 0bda:8156 |
@@ -23,12 +23,9 @@ the correct r8152 driver in certain distributions even though they have an
 older kernel. In that fallback scenario, the following distributions are
 additionally supported:
 
-- Ubuntu 20.04+, Debian 12+, Raspberry Pi OS 12+, ...
+- Ubuntu 20.04+, Debian 11+, Raspberry Pi OS 11+, ...
 
 ## Installer
-
-> 💡 **Note:** The installer isn't available yet; it will be implemented in
-> August 2026.
 
 The best way to setup our USB to Ethernet adapters is to run our installer; see
 the initial page for instructions:
@@ -56,7 +53,7 @@ by copy/pasting the text after the $ signs. A sample output is included:
 ```shell
 # See the current kernel version
 $ uname -r
-7.0.0-27-generic
+7.0.0-30-generic
 
 # See the current driver and the USB negotiated speed
 $ lsusb -tv | grep -B3 0bda:815
@@ -80,10 +77,8 @@ which installed the r8152 driver for you.
 The compatibility driver name is cdc_ncm. If you see that, you're not reaching
 the adapter's full potential. In some cases you might see full speed; in others
 it might be 1.2 Gbps instead of 10 Gbps. To resolve that, we recommend that you
-run our installer. If you prefer to install the r8152 driver from elsewhere, a
-github page and a PPA is available there:
-
-**<https://github.com/awesometic/realtek-r8152-dkms>**
+[run our installer](/). Alternatively, you could manually install the [upstream
+Realtek driver](https://www.realtek.com/Download/List?cate_id=585).
 
 ## Adapter speed
 
