@@ -59,9 +59,9 @@ the following table:
 | [aic8800](aic8800-dkms.deb)  | AX5L, AX7L, AX7PL  | 4.4 (Ubuntu 16.04)            | 7.0 (26.04)   |
 | [8852cu](rtl8852cu-dkms.deb) | AX8L               | 5.14 (Ubuntu 20.04)           | 7.0 (26.04)   |
 | [8852bu](rtl8852bu-dkms.deb) | AX1L, AX4L         | 4.4                           | 7.0 (26.04)   |
-| [8821cu](rtl8821cu-dkms.deb) | AC5L               | 4.4                           | 6.17 (25.10)  |
-| [88x2bu](rtl88x2bu-dkms.deb) | New AC1Lv2, AC3Lv2 | 4.4                           | 6.17 (25.10)  |
-| [8821au](rtl88x2bu-dkms.deb) | Old AC1Lv1, AC3Lv1 | 4.4                           | 6.8 (24.04)   |
+| [8821cu](rtl8821cu-dkms.deb) | AC5L               | 4.4                           | 7.0 (26.04)   |
+| [88x2bu](rtl88x2bu-dkms.deb) | New AC1Lv2, AC3Lv2 | 4.4                           | 7.0 (26.04)   |
+| [8821au](rtl88x2bu-dkms.deb) | Old AC1Lv1, AC3Lv1 | 4.4                           | 7.0 (26.04)   |
 | -                            | AX9L, WB1L, P1L    | [In-kernel drivers only](#in-kernel-drivers) ||
 
 We maintain our drivers until [in-kernel drivers](#in-kernel-drivers) appear
