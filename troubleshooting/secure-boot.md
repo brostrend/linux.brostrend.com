@@ -27,7 +27,27 @@ If you disable secure boot, you don't need to read the rest of this document.
 
 ## Create your own driver signing key
 
-When you run our installer, and your Linux distribution detects that the user tries to install a third-party driver while secure boot is enabled, it shows a series of dialogs. You're supposed to go through them, enter a "signing key password", and then reboot and enter that password once more while the computer boots! It is a bit complicated, that's why we suggest the "Disable secure boot" method instead. If you saw the following dialogs but you closed them by mistake, run our installer again so that they show up once more.
+Each distribution has its own method for creating driver signing keys for
+secure boot. For Debian, see [this
+page](https://wiki.debian.org/SecureBoot#MOK_-_Machine_Owner_Key). For Ubuntu
+based distributions, see below.
+
+When you run our installer, Ubuntu detects that the user tries to install a
+third-party driver while secure boot is enabled, and it shows a series of
+dialogs. You're supposed to go through them, enter a "signing key password",
+and then reboot and enter that password once more while the computer boots! It
+is a bit complicated, that's why we suggest the "Disable secure boot" method
+instead.
+
+> 💡 **Tip:** If you don't see the dialogs, it either means that you're not
+> using an Ubuntu based distribution, or that they were displayed some time in
+> the past and a signing key already exists. To delete the existing signing key
+> and generate a new one, run the following command, and then re-run our
+> installer:
+>
+> ```shell
+> sudo mv /var/lib/shim-signed/mok/MOK.* /var/backups/
+> ```
 
 This is the initial dialog that documents secure boot. The mouse doesn't work in the terminal, so press the **`Tab`** key to focus the **`<Ok>`** button and **`Enter`** to continue:
 
