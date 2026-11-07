@@ -97,7 +97,7 @@ Modaliases: 8821cu(usb:v0BDApbc811*dc*dsc*dp*ic*isc*ip*in*)
 
 Package: rtl8852bu-dkms
 Source: rtl8852bu
-Version: 1.19.21-86b4
+Version: 1.19.21-86b5
 Architecture: all
 Maintainer: BrosTrend <support@brostrend.com>
 Installed-Size: 56023
@@ -105,11 +105,11 @@ Depends: dkms (>= 2.1.0.0), bc, linux-libc-dev, libc6-dev, usb-modeswitch
 Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
-Filename: pool/next/r/rtl8852bu/rtl8852bu-dkms_1.19.21-86b4_all.deb
-Size: 8530878
-SHA256: 9bcd116a3945f614af1d8413eddb43fc5167f936c93e21233e8f893c7d529946
-SHA1: 0b04de3a395b8bf8cf4e92b02817447542691813
-MD5sum: 167b419dfc05486d2cfab288cbe87d17
+Filename: pool/next/r/rtl8852bu/rtl8852bu-dkms_1.19.21-86b5_all.deb
+Size: 8531216
+SHA256: 90f2a139c7f3792dea4e6977b7c0dced7f8224e5fb48a9071d71382628b94235
+SHA1: 59ff34dc2a2ea0a03762cab592c410fbf9e22c02
+MD5sum: 9ddf124c15ecec1e5e192fa1cfb874f9
 Description: dkms source for the r8852bu network driver
  rtl8852bu is the Linux device driver released for the RealTek RTL8852BU WiFi
  controllers with USB interface.
@@ -120,19 +120,19 @@ Modaliases: 8852bu(usb:v0BDApb832d*dc*dsc*dp*ic*isc*ip*in*)
 
 Package: rtl8852cu-dkms
 Source: rtl8852cu
-Version: 1.19.22-103b3
+Version: 1.19.22-103b4
 Architecture: all
 Maintainer: BrosTrend <support@brostrend.com>
-Installed-Size: 48654
+Installed-Size: 48653
 Depends: dkms (>= 2.1.0.0), bc, linux-libc-dev, libc6-dev
 Homepage: https://linux.brostrend.com
 Priority: optional
 Section: kernel
-Filename: pool/next/r/rtl8852cu/rtl8852cu-dkms_1.19.22-103b3_all.deb
-Size: 6994622
-SHA256: 3ebeb4c8f32f19d53565b4795711ed4622b0637f5ccf8195f8f375a4385539ba
-SHA1: 88334349325cf104ffcdc900c4663cfef53cd692
-MD5sum: d376d29d797eaad5a6080af9eff1dbb7
+Filename: pool/next/r/rtl8852cu/rtl8852cu-dkms_1.19.22-103b4_all.deb
+Size: 6994860
+SHA256: 18477df16e40a4d1559e6ea5d70f0868868de4b59aa13f85e303866526f0e54f
+SHA1: a97f3fe97cfd7ecbe2ab241923ee0284ce776d1a
+MD5sum: f328c16f1227bc06e4b3f7cfb855c8ef
 Description: dkms source for the r8852cu network driver
  rtl8852cu is the Linux device driver released for the RealTek RTL8852BU WiFi
  controllers with USB interface.
